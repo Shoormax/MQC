@@ -11,6 +11,8 @@ if(file_exists("C:/Users/Valentin")){
     define("__LOCAL_PATH__", "http://localhost:8001/ProjectOne");
 } elseif( file_exists("C:/Users/AifeDesPaix") ) {
     define("__LOCAL_PATH__", "http://localhost/ProjectOne");
+} elseif (file_exists("C:/Users/Ben")) {
+    define("__LOCAL_PATH__", "http://localhost/MQC/MQC/");
 }
 
 define("__INCLUDE_PATH__", __LOCAL_PATH__."/php/include/");
