@@ -1,0 +1,48 @@
+/*
+ * CSS de la navbar
+ */
+
+/* NAVBAR */
+#menu_haut {
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999999;
+    position: fixed;
+    width: inherit;
+    height: 13%;
+    color: #fff;
+    background-color: rgb(129, 205, 209);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    font-size: 1.3em;
+}
+
+.nav_item {
+    display: block;
+    width: calc(100% / 7);
+}
+
+.nav_item img, .nav_item .nav_txt {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: auto;
+    height: 50%;
+    overflow: hidden;
+    font-size: 0.8em;
+    padding-top: 4%;
+}
+
+.nav_item:link, .nav_item:visited {
+    text-decoration: none;
+    color : white;
+}
+
+.nav_item:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+/* FIN NAVBAR */
