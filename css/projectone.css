@@ -1,0 +1,189 @@
+/* CSS de la page principale du projet */
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2d373d;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 1.2em;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display:block;
+}
+
+.fleft{
+    float: left;
+}
+
+.tcenter{
+    text-align: center;
+}
+
+.moitie {
+    cursor: pointer;
+    width: 50%;
+    border: 0;
+    margin: 0;
+    padding-top: 3%;
+}
+
+/* DEPLOIEMENT */
+
+.article{
+    overflow: hidden;
+    width:100%;
+    max-height: 100%;
+    transition: all .5s ease;
+}
+
+.article .explicatif{
+    width: 50%;
+    color: black;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.imgArticle:hover {
+    filter: saturate(250%) brightness(60%);
+}
+
+.imgArticle{
+    width:50%;
+    height: 40%;
+    float: right;
+    transition: all .5s ease;
+}
+
+.imgArticle:hover {
+    filter: saturate(250%) brightness(60%);
+}
+
+.article .articleCollapse{
+    display: inline-block;
+    max-height: 0px;
+    transition: all .8s ease;
+}
+
+/* FIN DEPLOIEMENT */
+
+#container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CONTENU */
+#Musee{
+    background-color: lavender;
+}
+
+#Contact{
+    background-color: gray;
+}
+
+#Prochainement{
+    background-color: brown;
+}
+
+#Accessibilite{
+    background-color: purple;
+}
+
+#Commerces{
+    background-color: pink;
+}
+
+#Quais{
+    background-color: white;
+}
+
+#divAccueil{
+    padding-top: 7%;
+    position: relative;
+    min-height: 920px;
+    overflow: hidden;
+    background-color: #00bcd4;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.subPage {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* FIN CONTENU */
+
+#articleContact {
+    margin-top: 10px;
+}
+
+#contactInfos input {
+    display: block;
+    width: 80%;
+    font-size: 1em;
+    height: 9%;
+    margin: auto;
+    margin-bottom: 7.5%;
+    padding: 10px;
+}
+
+input[type="button"] {
+    width: 50%;
+    line-height: 1.5em;
+    display: block;
+    margin: auto;
+    background-color: #0076ff;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+#messageContact {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    height: 40%;
+    font-size: 1em;
+}
+
+/* MENTIONS LEGALES */
+#mentions_legales{
+    margin-left: 44%;
+    color: white;
+    font-size: 1em;
+}
+
+#mentions_legales:hover{
+    color: #00bcd4;
+}
+
+#contenu_mentions_legales{
+    padding: 1% 1% 1% 3%;
+    width: 23%;
+    margin-top: 2%;
+    height: 61%;
+    background-color: #00bcd4;
+    margin-left: 6%;
+}
+
+#retour_site:hover{
+    color: #00bcd4;
+}
+
+#retour_site{
+    color: white;
+    font-size: 1em;
+}
+/* MENTIONS LEGALES */
