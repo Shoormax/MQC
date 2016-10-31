@@ -10,7 +10,7 @@
 
   <div id="panorama" >
     <div class="p_flou"></div>
-      <p>Car le sida n'est pas une fatalité ...</p>
+      <p>Car le sida n'est pas une fatalité...</p>
   </div>
 
 </div>
