@@ -46,7 +46,7 @@ require_once (__INCLUDE_PATH__.'header.php');
 
     <div id="container">
 
-        <div id="Accueil" class="sous-container">
+        <div id="Accueil">
             <?php
             include 'php/accueil.php'
             ?>
