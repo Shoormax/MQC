@@ -63,6 +63,12 @@ html, body{
     float: left;
 }
 
+.wrap-textuel{
+    width:50%;
+    float: left;
+}
+
+
 .article{
     width:100%;
     max-height: 100%;
