@@ -20,7 +20,7 @@ require_once (__INCLUDE_PATH__.'header.php');
     <br>- Quentin BENYAHIA
     <br>- Joan TASSEL
     <br>- Thibault MOREY
-    <br>- Boris SAINT-BONNET
+    <br>- Benjamin BERNARD-BOUISSIERES
     </p>
 </div>
 
