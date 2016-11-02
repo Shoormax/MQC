@@ -17,7 +17,7 @@ include_once('../path.php');
         <title>Mon Quartier Confluence</title>
         <link rel="stylesheet" href="'.__CSS_PATH__.'projectone.css" type="text/css">
         <link rel="stylesheet" href="'.__CSS_PATH__.'navbar.css" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="'.__CSS_PATH__.'cartes.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 		<meta charset="utf-8">
     </head>';
