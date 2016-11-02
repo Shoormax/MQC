@@ -14,7 +14,7 @@ require_once (__INCLUDE_PATH__.'header.php');
 <body>
     <div id="menu_haut">
         <div id="link_Accueil" class="nav_item">
-            <img src="img/min/LogoAccueil.png">
+            <img src="img/SVG/LogoAccueil.svg">
             <span class="nav_txt">Accueil</span>
         </div>
         <div id="link_Musee" class="nav_item">
@@ -22,23 +22,23 @@ require_once (__INCLUDE_PATH__.'header.php');
             <span class="nav_txt">Musée</span>
         </div>
         <div id="link_Quais" class="nav_item">
-            <img src="img/min/LogoQuaisTransparent.png">
+            <img src="img/SVG/LogoQuais.svg">
             <span class="nav_txt">Quais</span>
         </div>
         <div id="link_Commerces" class="nav_item">
-            <img src="img/min/LogoCommerceTransparent.png">
+            <img src="img/SVG/LogoCommerce.svg">
             <span class="nav_txt">Commerces</span>
         </div>
         <div id="link_Accessibilite" class="nav_item">
-            <img src="img/min/LogoTransportTransparent.png">
+            <img src="img/SVG/LogoTransport.svg">
             <span class="nav_txt">Accessibilité</span>
         </div>
         <div id="link_Prochainement" class="nav_item">
-            <img src="img/min/LogoProchainement.png">
+            <img src="img/SVG/LogoProchainement.svg">
             <span class="nav_txt">Prochainement</span>
         </div>
         <div id="link_Contact" class="nav_item">
-            <img src="img/min/LogoContact.png">
+            <img src="img/SVG/LogoContact.svg">
             <span class="nav_txt">Contact</span>
         </div>
     </div>
