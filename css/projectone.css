@@ -179,6 +179,7 @@ input[type="button"] {
     height: 61%;
     background-color: #00bcd4;
     margin-left: 6%;
+    box-shadow: 15px 15px #044767;
 }
 
 #retour_site:hover{
@@ -190,3 +191,12 @@ input[type="button"] {
     font-size: 1em;
 }
 /* MENTIONS LEGALES */
+
+#errorMail {
+    color : red !important;
+    float: right;
+    margin-right: 16%;
+    line-height: 1.5em;
+    padding: 5px;
+    font-size: 1em;
+}

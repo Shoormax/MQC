@@ -11,7 +11,6 @@
 include_once('php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 ?>
-
 <body>
     <div id="menu_haut">
         <div id="link_Accueil" class="nav_item">

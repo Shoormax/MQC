@@ -15,5 +15,6 @@
 	<div class="moitie fleft">
 		<textarea id="messageContact" placeholder="Entrez votre message ici."></textarea>
 	</div>
-	<input type="button" onclick="alert(emailvalidation())" value="Envoyer">
+	<input type="button" onclick="emailvalidation()" value="Envoyer">
+	<div id="errorMail" class="hide"></div>
 </div>
