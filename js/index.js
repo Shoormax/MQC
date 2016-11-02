@@ -24,8 +24,9 @@ function findPos(obj) {
 function emailvalidation(){
     if(/^[^@]+@[^@]+$/.test(document.getElementById("mail_contact").value))
     {
+        document.getElementById("errorMail").style.display = "none";
         return true;
     }
-    alert("Adresse mail invalide.");
-    return false;
+    document.getElementById("errorMail").style.display = "block";
+    document.getElementById("errorMail").innerHTML = "Adresse mail invalide.";
 }

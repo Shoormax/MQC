@@ -185,3 +185,12 @@ input[type="button"] {
     font-size: 1em;
 }
 /* MENTIONS LEGALES */
+
+#errorMail {
+    color : red !important;
+    float: right;
+    margin-right: 16%;
+    line-height: 1.5em;
+    padding: 5px;
+    font-size: 1em;
+}
