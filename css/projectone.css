@@ -63,6 +63,27 @@ html, body{
     float: left;
 }
 
+.wrap-textuel{
+    width:40%;
+    float: left;
+    background-color: #F8F8F8;
+    box-shadow: 13px 13px 7px 0px rgba(0,0,0,0.2);
+    color: #000000;
+    height: 51%;
+    margin-left: 10%;
+}
+
+.sous-wrap-text p{
+    font-weight: bold;
+}
+
+.sous-wrap-text{
+    height: 100%;
+    font-size: 14px;
+    padding: 22px;
+}
+
+
 .article{
     width:100%;
     max-height: 100%;
@@ -173,6 +194,7 @@ input[type="button"] {
     height: 61%;
     background-color: #00bcd4;
     margin-left: 6%;
+    box-shadow: 15px 15px #044767;
 }
 
 #retour_site:hover{
@@ -184,3 +206,12 @@ input[type="button"] {
     font-size: 1em;
 }
 /* MENTIONS LEGALES */
+
+#errorMail {
+    color : red !important;
+    float: right;
+    margin-right: 16%;
+    line-height: 1.5em;
+    padding: 5px;
+    font-size: 1em;
+}

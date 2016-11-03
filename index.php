@@ -20,7 +20,6 @@ $aPages = [
 'Contact'       => 'contact.php'
 ];
 ?>
-
 <body>
   <div id="menu_haut">
     <?php
