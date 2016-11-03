@@ -133,6 +133,10 @@ html, body{
     box-shadow: 2vh 2vh 2vh 0 rgba(0,0,0,0.3);
 }
 
+#Contact.sous-container{
+    margin-bottom: 0;
+}
+
 #accueil.sous-container {
     padding: 0;
 }
