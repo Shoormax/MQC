@@ -30,7 +30,6 @@ html, body{
 }
 
 .moitie {
-    cursor: pointer;
     width: 50%;
     border: 0;
     margin: 0;
@@ -137,7 +136,7 @@ html, body{
     margin-bottom: 0;
 }
 
-#accueil.sous-container {
+#Accueil.sous-container {
     padding: 0;
 }
 
@@ -149,9 +148,10 @@ html, body{
 
 /* PAGE CONTACT */
 h3 {
+    font-weight: normal;
     text-align: center;
 }
-
+/*
 #contactInfos input {
     display: block;
     width: 80%;
@@ -161,29 +161,28 @@ h3 {
     padding: 1.5vw;
     font-size: 1.5vw;
 }
-
-input[type="button"] {
-    width: 50%;
+*/
+#contactInfos input, input[type="button"], #messageContact {
     line-height: 5vh;
     display: block;
-    margin: auto;
-    background-color: #0076ff;
     color: #fff;
-    padding: 2vw;
-    border: none;
     font-size: 1.5vw;
+    padding: 1vw;
+    width: 90%;
+    margin: 1vw auto;
 }
 
 #messageContact {
-    margin: 0;
-    padding: 2vw;
-    width: 100%;
-    height: 30%;
-    font-size: 1.5vw;
+    line-height: 4.6vh;
 }
 
-/* FIN PAGE CONTACT */
+input[type="button"] {
+    background-color: #0076ff;
+    border: none;
+}
 
+
+/* FIN PAGE CONTACT */
 
 /* MENTIONS LEGALES */
 #mentions_legales{
@@ -196,7 +195,7 @@ input[type="button"] {
 }
 
 #mentions_legales:hover{
-    color: #00bcd4;
+    color: var(--color-fond);
 }
 
 #contenu_mentions_legales{
@@ -228,3 +227,6 @@ input[type="button"] {
     font-size: 1.5vw;
 }
 
+.flexbox {
+    display: flex;
+}

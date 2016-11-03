@@ -22,8 +22,8 @@
 
 .p_flou {
 	position: absolute;
-	width: 60.3%;
-	height: 52%;
+	width: 67%;
+	height: 51.8%;
 	background-color: rgba(255, 255, 255, 0.2);
 	z-index: 1;
 }
