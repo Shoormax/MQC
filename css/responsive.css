@@ -12,7 +12,11 @@
   }
 
   #messageContact {
-    height: 26.8%;
+    height: 35.6%;
+  }
+
+  input[type="button"] {
+    width: 93.3%;
   }
   
 }

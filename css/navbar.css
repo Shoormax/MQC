@@ -8,7 +8,7 @@
     z-index: 9999999;
     position: fixed;
     width: inherit;
-    height: 13%;
+    height: 8%;
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -21,7 +21,7 @@
 }
 
 #menu_haut span {
-    font-size: 2vw;
+    font-size: 3vh;
     color: #008bcd;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .nav_item .nav_txt {
-    padding-top: 10%;
+    padding-top: 3%;
     height: 30%;
 
 }
