@@ -1,5 +1,5 @@
 /**
- * @author Joan
+ * @author JoanLeBolosse 
  * Objet Scroll
  *
  * Permet de naviguer d'une partie à une autre dans le site au clique du menu
@@ -34,9 +34,9 @@ var scroll = (function() {
 
       if (E > 1 || E < -1) {
         if (E < 0) {
-          window.scrollBy( 0,-increment );
+          window.scrollBy( 0, -increment );
         } else {
-          window.scrollBy( 0,increment );
+          window.scrollBy( 0, increment );
         }
         setTimeout(scroller, time);
       } else {

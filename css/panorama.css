@@ -9,15 +9,13 @@
   background-size: auto 100%;
   display: flex;
   justify-content: space-between;
-  /*filter: blur(1px);*/
 }
 
 #panorama p {
   font-size: 12vw;
-  letter-spacing: 3px;
+  letter-spacing: 0.5vw;
   text-align: center;
   color: rgba(0, 164, 184, 0.7);
-  /*text-shadow: 3px 1px 1px rgba(0, 0, 0, 0.5);*/
   width: 100%;
   text-align: center;
 }

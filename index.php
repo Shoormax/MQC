@@ -37,7 +37,7 @@ $aPages = [
     <?php
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
-      echo '<div id="'.$sSsAccent.'">';
+      echo '<div id="'.$sSsAccent.'" class="sous-container">';
         include 'php/'.$page;
       echo '</div>';
     }
