@@ -64,8 +64,23 @@ html, body{
 }
 
 .wrap-textuel{
-    width:50%;
+    width:40%;
     float: left;
+    background-color: #F8F8F8;
+    box-shadow: 13px 13px 7px 0px rgba(0,0,0,0.2);
+    color: #000000;
+    height: 51%;
+    margin-left: 10%;
+}
+
+.sous-wrap-text p{
+    font-weight: bold;
+}
+
+.sous-wrap-text{
+    height: 100%;
+    font-size: 14px;
+    padding: 22px;
 }
 
 
