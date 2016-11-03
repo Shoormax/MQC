@@ -27,8 +27,8 @@ $aPages = [
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
-      echo '<img src="img/min/Logo'.$sSsAccent.'.png">';
-      echo '<span class="nav_txt">'.$titre.'</span>';
+        echo '<img src="img/min/Logo'.$sSsAccent.'.png">';
+        echo '<span class="nav_txt">'.$titre.'</span>';
       echo '</div>';
     }
     ?>
@@ -39,7 +39,7 @@ $aPages = [
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="'.$sSsAccent.'">';
-      include 'php/'.$page;
+        include 'php/'.$page;
       echo '</div>';
     }
     ?>
