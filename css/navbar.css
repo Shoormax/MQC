@@ -39,7 +39,16 @@
     line-height: 50%;
     overflow: hidden;
     font-size: 2vw;
+}
+.nav_item img {
+    padding-top: 1%;
+    height: 50%;
+}
+
+.nav_item .nav_txt {
     padding-top: 10%;
+    height: 30%;
+
 }
 
 .nav_item:link, .nav_item:visited {

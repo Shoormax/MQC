@@ -12,7 +12,7 @@
 }
 
 #panorama p {
-  font-size: 12vw;
+  font-size: 10.5vw;
   letter-spacing: 0.5vw;
   text-align: center;
   color: rgba(0, 139, 205, 0.7);
@@ -22,8 +22,8 @@
 
 .p_flou {
 	position: absolute;
-	width: 67%;
-	height: 80%;
+	width: 60.3%;
+	height: 52%;
 	background-color: rgba(255, 255, 255, 0.2);
 	z-index: 1;
 }
