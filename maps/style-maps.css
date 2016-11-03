@@ -9,26 +9,10 @@ h2
 	margin: 0px;
 }
 
-.map {
-	float: left;
-	width: 25%;
-	margin: 0% 4%;
-}
 
-#carteFamille
+#carte
 {
 	margin: auto;
-	height:80%;
-}
-
-#carteSportif
-{
-	margin: auto;
-	height:80%;
-}
-
-#carteCulturel
-{
-	margin: auto;
-	height:80%;
+	width: 100%;
+	height:88%;
 }

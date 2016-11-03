@@ -19,314 +19,166 @@
 					zoom: 14,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
-				var optionsCulturel = {
-					center: new google.maps.LatLng(45.739, 4.818),
-					zoom: 15,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				};
 				
 				//constructeur de la carte qui prend en paramètre le conteneur HTML
 				//dans lequel la carte doit s'afficher et les options
-				var carteFamille = new google.maps.Map(document.getElementById("carteFamille"), options);
-				var carteSportif = new google.maps.Map(document.getElementById("carteSportif"), options);
-				/* Afficher les pistes cyclables
-				var bikeLayer = new google.maps.BicyclingLayer();
-					bikeLayer.setMap(carteSportif);*/
-				var carteCulturel = new google.maps.Map(document.getElementById("carteCulturel"), optionsCulturel);
+				var carte = new google.maps.Map(document.getElementById("carte"), options);
 				
+				// ------------------- Liste des Marqueurs par carte -------------------
+				
+				var nomsMarkerFamille = ['musee','pointe','centreCommercial','quais','patinoire','ouagadougou','ereva','mjc','maisonConfluence'];
+				var nomsMarkerSportif = ['mjc','skiNautique','escalade','goSport','foot','fitness','keepCool','patinoire'];
+				var nomsMarkerCulturel = ['musee','ouagadougou','ereva','jeanCouty','maisonConfluence','sucriere','orange','douane','vert','gare','pontArts','galerie','eglise','marche','decitre','marche'];
+								
+				// Constructeur de marqueur personnalisé
+				function Marker(lat, lng, desc) {
+					this.marker = new google.maps.Marker({
+						position: new google.maps.LatLng(lat, lng),
+						map: carte
+					});
+					this.info = new google.maps.InfoWindow({content: desc});
+				}
 				
 				// ------------------- Marqueurs -------------------
+				
 				// --- Musée --- RAJOUTER Lien vers la page
-				var musee = new google.maps.Marker({
-					position: new google.maps.LatLng(45.732700, 4.818213),
-					map: carteFamille
-				});
-				var infoMusee = new google.maps.InfoWindow({content: 'Le Musée des Confluences'});
-				musee.addListener('click', function() {
-					infoMusee.open(carteFamille, musee);
-				});
-				var musee2 = new google.maps.Marker({
-					position: new google.maps.LatLng(45.732700, 4.818213),
-					map: carteCulturel
-				});
-				var infoMusee2 = new google.maps.InfoWindow({content: 'Le Musée des Confluences'});
-				musee2.addListener('click', function() {
-					infoMusee2.open(carteCulturel, musee2);
-				});
-				// --- La pointe de Confluence ---
-				var pointe = new google.maps.Marker({
-					position: new google.maps.LatLng(45.729324, 4.818430),
-					map: carteFamille
-				});
-				var infoPointe = new google.maps.InfoWindow({content: 'La pointe de Confluence'});
-				pointe.addListener('click', function() {
-					infoPointe.open(carteFamille, pointe);
-				});
-				// --- Centre Commercial --- RAJOUTER Lien vers la page
-				var centreCommercial = new google.maps.Marker({
-					position: new google.maps.LatLng(45.741073, 4.817735),
-					map: carteFamille
-				});
-				var infoCentreCommercial = new google.maps.InfoWindow({content: 'Le Centre Commercial'});
-				centreCommercial.addListener('click', function() {
-					infoCentreCommercial.open(carteFamille, centreCommercial);
-				});
-				// --- Les Quais ---
-				var quais = new google.maps.Marker({
-					position: new google.maps.LatLng(45.739697, 4.814061),
-					map: carteFamille
-				});
-				var infoQuais = new google.maps.InfoWindow({content: 'Les Quais de Confluence'});
-				quais.addListener('click', function() {
-					infoQuais.open(carteFamille, quais);
+				var musee = new Marker(45.732700, 4.818213, 'Le Musée des Confluences');
+				musee.marker.addListener('click', function() {
+					musee.info.open(carte, musee.marker);
 				});
 				// --- Patinoire ---
-				var patinoire = new google.maps.Marker({
-					position: new google.maps.LatLng(45.742400, 4.819914),
-					map: carteFamille
+				var patinoire = new Marker(45.742400, 4.819914, 'La Patinoire Charlemagne');
+				patinoire.marker.addListener('click', function() {
+					patinoire.info.open(carte, patinoire.marker);
 				});
-				var infoPatinoire = new google.maps.InfoWindow({content: 'La patinoire Charlemagne'});
-				patinoire.addListener('click', function() {
-					infoPatinoire.open(carteFamille, patinoire);
+				// --- La pointe de Confluence ---
+				var pointe = new Marker(45.729324, 4.818430, 'La pointe de Confluence');
+				pointe.marker.addListener('click', function() {
+					pointe.info.open(carte, pointe.marker);
+				});
+				// --- Centre Commercial --- RAJOUTER Lien vers la page
+				var centreCommercial = new Marker(45.741073, 4.817735, 'Le Centre Commercial');
+				centreCommercial.marker.addListener('click', function() {
+					centreCommercial.info.open(carte, centreCommercial.marker);
+				});
+				// --- Les Quais ---
+				var quais = new Marker(45.739697, 4.814061, 'Les Quais de Confluence');
+				quais.marker.addListener('click', function() {
+					quais.info.open(carte, quais.marker);
 				});
 				// --- Jardins Ouagadougou ---
-				var ouagadougou = new google.maps.Marker({
-					position: new google.maps.LatLng(45.744070, 4.814948),
-					map: carteFamille
-				});
-				var infoOuagadougou = new google.maps.InfoWindow({content: 'Les Jardins de Ouagadougou'});
-				ouagadougou.addListener('click', function() {
-					infoOuagadougou.open(carteFamille, ouagadougou);
-				});
-				var ouagadougou2 = new google.maps.Marker({
-					position: new google.maps.LatLng(45.744070, 4.814948),
-					map: carteCulturel
-				});
-				var infoOuagadougou2 = new google.maps.InfoWindow({content: 'Les Jardins de Ouagadougou'});
-				ouagadougou2.addListener('click', function() {
-					infoOuagadougou2.open(carteCulturel, ouagadougou2);
+				var ouagadougou = new Marker(45.744070, 4.814948, 'Les Jardins de Ouagadougou');
+				ouagadougou.marker.addListener('click', function() {
+					ouagadougou.info.open(carte, ouagadougou.marker);
 				});
 				// --- Jardins d'Ereva ---
-				var ereva = new google.maps.Marker({
-					position: new google.maps.LatLng(45.743411, 4.816987),
-					map: carteFamille
-				});
-				var infoEreva = new google.maps.InfoWindow({content: 'Les Jardins d\'Ereva'});
-				ereva.addListener('click', function() {
-					infoEreva.open(carteFamille, ereva);
-				});
-				var ereva2 = new google.maps.Marker({
-					position: new google.maps.LatLng(45.743411, 4.816987),
-					map: carteCulturel
-				});
-				var infoEreva2 = new google.maps.InfoWindow({content: 'Les Jardins d\'Ereva'});
-				ereva2.addListener('click', function() {
-					infoEreva2.open(carteCulturel, ereva2);
+				var ereva = new Marker(45.743411, 4.816987, 'Les Jardins d\'Ereva');
+				ereva.marker.addListener('click', function() {
+					ereva.info.open(carte, ereva.marker);
 				});
 				// --- MJC ---
-				var mjc = new google.maps.Marker({
-					position: new google.maps.LatLng(45.743001, 4.814974),
-					map: carteFamille
+				var mjc = new Marker(45.743001, 4.814974, 'La Maison de la Jeunesse et Culture de Confluence');
+				mjc.marker.addListener('click', function() {
+					mjc.info.open(carte, mjc.marker);
 				});
-				var infoMJC = new google.maps.InfoWindow({content: 'La Maison de la Jeunesse et Culture de Confluence'});
-				mjc.addListener('click', function() {
-					infoMJC.open(carteFamille, mjc);
-				});
-				var mjc2 = new google.maps.Marker({
-					position: new google.maps.LatLng(45.743001, 4.814974),
-					map: carteSportif
-				});
-				var infoMJC2 = new google.maps.InfoWindow({content: 'La Maison de la Jeunesse et Culture de Confluence'});
-				mjc2.addListener('click', function() {
-					infoMJC2.open(carteSportif, mjc2);
+				var mjc2 = new Marker(45.743001, 4.814974, 'La Maison de la Jeunesse et Culture de Confluence');
+				mjc2.marker.addListener('click', function() {
+					mjc2.info.open(carte, mjc.marker2);
 				});
 				// --- Maison de la Confluence ---
-				var maisonConfluence = new google.maps.Marker({
-					position: new google.maps.LatLng(45.741160, 4.821978),
-					map: carteFamille
-				});
-				var infoMaisonConfluence = new google.maps.InfoWindow({content: 'La Maison de la Confluence'});
-				maisonConfluence.addListener('click', function() {
-					infoMaisonConfluence.open(carteFamille, maisonConfluence);
-				});
-				var maisonConfluence2 = new google.maps.Marker({
-					position: new google.maps.LatLng(45.741160, 4.821978),
-					map: carteCulturel
-				});
-				var infoMaisonConfluence2 = new google.maps.InfoWindow({content: 'La Maison de la Confluence'});
-				maisonConfluence2.addListener('click', function() {
-					infoMaisonConfluence2.open(carteCulturel, maisonConfluence2);
+				var maisonConfluence = new Marker(45.741160, 4.821978, 'La Maison de la Confluence');
+				maisonConfluence.marker.addListener('click', function() {
+					maisonConfluence.info.open(carte, maisonConfluence.marker);
 				});
 				// --- Ski Nautique ---
-				var skiNautique = new google.maps.Marker({
-					position: new google.maps.LatLng(45.744422, 4.828798),
-					map: carteSportif
-				});
-				var infoSkiNautique = new google.maps.InfoWindow({content: 'Lyon Sport Metropole Ski Nautique / Wakeboard'});
-				skiNautique.addListener('click', function() {
-					infoSkiNautique.open(carteSportif, skiNautique);
+				var skiNautique = new Marker(45.744422, 4.828798, 'Lyon Sport Metropole Ski Nautique / Wakeboard');
+				skiNautique.marker.addListener('click', function() {
+					skiNautique.info.open(carte, skiNautique.marker);
 				});
 				// --- Escalade ---
-				var escalade = new google.maps.Marker({
-					position: new google.maps.LatLng(45.740650, 4.817785),
-					map: carteSportif
-				});
-				var infoEscalade = new google.maps.InfoWindow({content: 'AZIUM Escalade'});
-				escalade.addListener('click', function() {
-					infoEscalade.open(carteSportif, escalade);
+				var escalade = new Marker(45.740650, 4.817785, 'AZIUM Escalade');
+				escalade.marker.addListener('click', function() {
+					escalade.info.open(carte, escalade.marker);
 				});
 				// --- Go Sport ---
-				var goSport = new google.maps.Marker({
-					position: new google.maps.LatLng(45.741007, 4.818351),
-					map: carteSportif
-				});
-				var infoGoSport = new google.maps.InfoWindow({content: 'GO Sport, magasin de sport'});
-				goSport.addListener('click', function() {
-					infoGoSport.open(carteSportif, goSport);
+				var goSport = new Marker(45.741007, 4.818351, 'GO Sport, magasin de sport');
+				goSport.marker.addListener('click', function() {
+					goSport.info.open(carte, goSport.marker);
 				});
 				// --- Stade de Foot ---
-				var foot = new google.maps.Marker({
-					position: new google.maps.LatLng(45.744907, 4.817025),
-					map: carteSportif
-				});
-				var infoFoot = new google.maps.InfoWindow({content: 'Stade de Foot'});
-				foot.addListener('click', function() {
-					infoFoot.open(carteSportif, foot);
+				var foot = new Marker(45.744907, 4.817025, 'Stade de Foot');
+				foot.marker.addListener('click', function() {
+					foot.info.open(carte, foot.marker);
 				});
 				// --- Fitness Park ---
-				var fitness = new google.maps.Marker({
-					position: new google.maps.LatLng(45.7408445,4.8188146),
-					map: carteSportif
-				});
-				var infoFitness = new google.maps.InfoWindow({content: 'Fitness Park, club de remise en forme'});
-				fitness.addListener('click', function() {
-					infoFitness.open(carteSportif, fitness);
+				var fitness = new Marker(45.7408445,4.8188146, 'Fitness Park, club de remise en forme');
+				fitness.marker.addListener('click', function() {
+					fitness.info.open(carte, fitness.marker);
 				});
 				// --- Keep Cool ---
-				var keepCool = new google.maps.Marker({
-					position: new google.maps.LatLng(45.7448014,4.8200559),
-					map: carteSportif
-				});
-				var infoKeepCool = new google.maps.InfoWindow({content: 'Keep Cool, salle de sport'});
-				keepCool.addListener('click', function() {
-					infoKeepCool.open(carteSportif, keepCool);
-				});
-				// --- Patinoire 2---
-				var patinoire2 = new google.maps.Marker({
-					position: new google.maps.LatLng(45.742400, 4.819914),
-					map: carteSportif
-				});
-				var infoPatinoire2 = new google.maps.InfoWindow({content: 'La patinoire Charlemagne'});
-				patinoire2.addListener('click', function() {
-					infoPatinoire2.open(carteSportif, patinoire2);
+				var keepCool = new Marker(45.7448014,4.8200559, 'Keep Cool, salle de sport');
+				keepCool.marker.addListener('click', function() {
+					keepCool.info.open(carte, keepCool.marker);
 				});
 				// --- La Sucrière ---
-				var sucriere = new google.maps.Marker({
-					position: new google.maps.LatLng(45.737088, 4.814949),
-					map: carteCulturel
-				});
-				var infoSucriere = new google.maps.InfoWindow({content: 'La Sucrière'});
-				sucriere.addListener('click', function() {
-					infoSucriere.open(carteCulturel, sucriere);
+				var sucriere = new Marker(45.737088, 4.814949, 'La Sucrière');
+				sucriere.marker.addListener('click', function() {
+					sucriere.info.open(carte, sucriere.marker);
 				});
 				// --- Le Cube orange ---
-				var orange = new google.maps.Marker({
-					position: new google.maps.LatLng(45.739147, 4.814407),
-					map: carteCulturel
-				});
-				var infoOrange = new google.maps.InfoWindow({content: 'Le Cube Orange'});
-				orange.addListener('click', function() {
-					infoOrange.open(carteCulturel, orange);
+				var orange = new Marker(45.739147, 4.814407, 'Le Cube Orange');
+				orange.marker.addListener('click', function() {
+					orange.info.open(carte, orange.marker);
 				});
 				// --- L'Entrepôt des Douanes ---
-				var douane = new google.maps.Marker({
-					position: new google.maps.LatLng(45.738090, 4.814660),
-					map: carteCulturel
-				});
-				var infoDouane = new google.maps.InfoWindow({content: 'L\'Entrepôt des Douanes'});
-				douane.addListener('click', function() {
-					infoDouane.open(carteCulturel, douane);
+				var douane = new Marker(45.738090, 4.814660, 'L\'Entrepôt des Douanes');
+				douane.marker.addListener('click', function() {
+					douane.info.open(carte, douane.marker);
 				});
 				// --- Le Batiment vert ---
-				var vert = new google.maps.Marker({
-					position: new google.maps.LatLng(45.734477, 4.815629),
-					map: carteCulturel
-				});
-				var infoVert = new google.maps.InfoWindow({content: 'Siège d\Euronews, le bâtiment vert'});
-				vert.addListener('click', function() {
-					infoVert.open(carteCulturel, vert);
+				var vert = new Marker(45.734477, 4.815629, 'Siège d\Euronews, le bâtiment vert');
+				vert.marker.addListener('click', function() {
+					vert.info.open(carte, vert.marker);
 				});
 				// --- La gare ferroviaire ---
-				var gare = new google.maps.Marker({
-					position: new google.maps.LatLng(45.739721,4.8141153),
-					map: carteCulturel
-				});
-				var infoGare = new google.maps.InfoWindow({content: 'La gare ferroviaire'});
-				gare.addListener('click', function() {
-					infoGare.open(carteCulturel, gare);
+				var gare = new Marker(45.739721,4.8141153, 'La gare ferroviaire');
+				gare.marker.addListener('click', function() {
+					gare.info.open(carte, gare.marker);
 				});
 				// --- Le Jardin aquatique Jean Couty ---
-				var jeanCouty = new google.maps.Marker({
-					position: new google.maps.LatLng(45.740932, 4.814330),
-					map: carteCulturel
-				});
-				var infoJeanCouty = new google.maps.InfoWindow({content: 'Le Jardin aquatique Jean Couty'});
-				jeanCouty.addListener('click', function() {
-					infoJeanCouty.open(carteCulturel, jeanCouty);
+				var jeanCouty = new Marker(45.740932, 4.814330, 'Le Jardin aquatique Jean Couty');
+				jeanCouty.marker.addListener('click', function() {
+					jeanCouty.info.open(carte, jeanCouty.marker);
 				});
 				// --- Le Pont des Arts ---
-				var pontArts = new google.maps.Marker({
-					position: new google.maps.LatLng(45.742499, 4.816081),
-					map: carteCulturel
-				});
-				var infoPontArts = new google.maps.InfoWindow({content: 'Le Pont des Arts'});
-				pontArts.addListener('click', function() {
-					infoPontArts.open(carteCulturel, pontArts);
+				var pontArts = new Marker(45.742499, 4.816081, 'Le Pont des Arts');
+				pontArts.marker.addListener('click', function() {
+					pontArts.info.open(carte, pontArts.marker);
 				});
 				// --- Galeri Henri Chartier ---
-				var galerie = new google.maps.Marker({
-					position: new google.maps.LatLng(45.742759, 4.817828),
-					map: carteCulturel
-				});
-				var infoGalerie = new google.maps.InfoWindow({content: 'Galerie d\'Art Henri Chartier'});
-				galerie.addListener('click', function() {
-					infoGalerie.open(carteCulturel, galerie);
+				var galerie = new Marker(45.742759, 4.817828, 'Galerie d\'Art Henri Chartier');
+				galerie.marker.addListener('click', function() {
+					galerie.info.open(carte, galerie.marker);
 				});
 				// --- Eglise Lyon Centre ---
-				var eglise = new google.maps.Marker({
-					position: new google.maps.LatLng(45.744952, 4.823641),
-					map: carteCulturel
-				});
-				var infoEglise = new google.maps.InfoWindow({content: 'Eglise Lyon Centre'});
-				eglise.addListener('click', function() {
-					infoEglise.open(carteCulturel, eglise);
+				var eglise = new Marker(45.744952, 4.823641, 'Eglise Lyon Centre');
+				eglise.marker.addListener('click', function() {
+					eglise.info.open(carte, eglise.marker);
 				});
 				// --- le Marché Gare ---
-				var marche = new google.maps.Marker({
-					position: new google.maps.LatLng(45.741381, 4.822727),
-					map: carteCulturel
-				});
-				var infoMarche = new google.maps.InfoWindow({content: 'Le Marché Gare, salle de concert'});
-				marche.addListener('click', function() {
-					infoMarche.open(carteCulturel, marche);
+				var marche = new Marker(45.741381, 4.822727, 'Le Marché Gare, salle de concert');
+				marche.marker.addListener('click', function() {
+					marche.info.open(carte, marche.marker);
 				});
 				// --- Librairie Decitre Confluence ---
-				var decitre = new google.maps.Marker({
-					position: new google.maps.LatLng(45.741124, 4.816998),
-					map: carteCulturel
-				});
-				var infoDecitre = new google.maps.InfoWindow({content: 'Librairie Decitre Confluence'});
-				decitre.addListener('click', function() {
-					infoDecitre.open(carteCulturel, decitre);
+				var decitre = new Marker(45.741124, 4.816998, 'Librairie Decitre Confluence');
+				decitre.marker.addListener('click', function() {
+					decitre.info.open(carte, decitre.marker);
 				});
 				// --- Le Monolithe ---
-				var monolithe = new google.maps.Marker({
-					position: new google.maps.LatLng(45.742283, 4.818252),
-					map: carteCulturel
-				});
-				var infoMonolithe = new google.maps.InfoWindow({content: 'Le Monolithe'});
-				monolithe.addListener('click', function() {
-					infoMonolithe.open(carteCulturel, monolithe);
+				var monolithe = new Marker(45.742283, 4.818252, 'Le Monolithe');
+				monolithe.marker.addListener('click', function() {
+					monolithe.info.open(carte, monolithe.marker);
 				});
 				
 				// --------------------------------- Itinéraires ---------------------------------
@@ -379,7 +231,7 @@
 					strokeColor: "#0000FF",
 					strokeOpacity: 1.0,
 					strokeWeight: 2,
-					map: carteFamille
+					map: carte
 				});
 				//--- Itinéraire n°2 - Sportif
 				var itineraireSportif = [
@@ -432,7 +284,7 @@
 					strokeColor: "#FF0000",
 					strokeOpacity: 1.0,
 					strokeWeight: 2,
-					map: carteSportif
+					map: carte
 				});
 				//--- Itinéraire n°3 - Culturel
 				var itineraireCulturel = [
@@ -508,7 +360,7 @@
 					strokeColor: "#00FF00",
 					strokeOpacity: 1.0,
 					strokeWeight: 2,
-					map: carteCulturel
+					map: carte
 				});
 			}
 		</script>
@@ -516,19 +368,9 @@
 
 	<body onload="initialiser()">
 		<div class="map">
-			<h1>Itinéraire n°1</h1>
-			<h2>Famille</h2>
-			<div id="carteFamille"></div>
-		</div>
-		<div class="map">
-			<h1>Itinéraire n°2</h1>
-			<h2>Sportif</h2>
-			<div id="carteSportif"></div>
-		</div>
-		<div class="map">
-			<h1>Itinéraire n°3</h1>
-			<h2>Culturel</h2>
-			<div id="carteCulturel"></div>
+			<h1>Cartes Google Maps</h1>
+			<h2>Phase de Test</h2>
+			<div id="carte"></div>
 		</div>
 	</body>
 </html>
