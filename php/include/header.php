@@ -11,15 +11,24 @@
  */
 header( 'content-type: text/html; charset=utf-8' );
 include_once('../path.php');
-   echo'
- <HTML>
-    <head>
-        <title>Mon Quartier Confluence</title>
-        <link rel="stylesheet" href="'.__CSS_PATH__.'projectone.css" type="text/css">
-        <link rel="stylesheet" href="'.__CSS_PATH__.'navbar.css" type="text/css">
-        <link rel="stylesheet" href="'.__CSS_PATH__.'panorama.css" type="text/css">
-        <link rel="stylesheet" href="'.__CSS_PATH__.'responsive.css" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-		<meta charset="utf-8">
-    </head>';
+
+$aCss = [
+    'projectone',
+    'navbar',
+    'panorama',
+    'responsive'
+]; ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mon Quartier Confluence</title>
+  <?php
+  foreach ($aCss as $sNomFicher) {
+    echo '<link rel="stylesheet" href="'.__CSS_PATH__.$sNomFicher.'.css" type="text/css">';
+  }
+  ?>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>

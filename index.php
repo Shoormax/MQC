@@ -22,11 +22,11 @@ $aPages = [
 ?>
 <body>
   <div id="menu_haut">
-    <?php
+    <?php // DA MENU FRERE
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
-        echo '<img src="img/min/Logo'.$sSsAccent.'.png">';
+        echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
         echo '<span class="nav_txt">'.$titre.'</span>';
       echo '</div>';
     }
@@ -34,7 +34,7 @@ $aPages = [
   </div>
 
   <div id="container">
-    <?php
+    <?php //  DA CONTENT FRERE
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="'.$sSsAccent.'" class="sous-container">';

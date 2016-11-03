@@ -1,10 +1,13 @@
-/* CSS de la page principale du projet */
+:root {
+    --color-fond: #008BCD;
+
+}
 html, body{
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #008BCD ;
+    background-color: var(--color-fond);
     font-family: 'Roboto', sans-serif;
     color: white;
     font-size: 2vw;
@@ -41,8 +44,8 @@ html, body{
 
 /* DEPLOIEMENT */
 
-.wrap-titre-sous-container{
-    color: #AEC8DA;
+.wrap-titre-sous-container, h3 {
+    color: var(--color-fond);
     margin-bottom: 4%;
     background-color: #F8FCFD;
     font-size: 3vw;
@@ -141,9 +144,8 @@ html, body{
 
 
 /* PAGE CONTACT */
-
-#articleContact {
-    margin-top: 10vh;
+h3 {
+    text-align: center;
 }
 
 #contactInfos input {

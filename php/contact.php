@@ -7,6 +7,7 @@
  */
 ?>
 <div class="article" id="articleContact">
+	<h3>Contact</h3>
 	<div class="moitie fleft" id="contactInfos">
 		<input type="text" name="" placeholder="Nom">
 		<input type="text" name="" placeholder="Prénom">

@@ -16,13 +16,13 @@
     align-items: stretch;
     margin: 0;
     padding: 0;
-    font-size: 2vw;
     top: 0;
     box-shadow: 0 1vh 0.5vh 0 rgba(0,0,0,0.3)
 }
 
 #menu_haut span {
-    color: #AEC8DA;
+    font-size: 2vw;
+    color: #008bcd;
 }
 
 .nav_item {
@@ -35,11 +35,11 @@
     display: block;
     text-align: center;
     margin: auto;
-    height: 50%;
+    height: 40%;
     line-height: 50%;
     overflow: hidden;
     font-size: 2vw;
-    padding-top: 4%;
+    padding-top: 10%;
 }
 
 .nav_item:link, .nav_item:visited {
