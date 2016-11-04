@@ -18,5 +18,6 @@ echo'
         <script type="text/javascript" src="'.__JS_PATH__.'scroll.js"></script>
         <script type="text/javascript" src="'.__JS_PATH__.'event.js"></script>
         <script type="text/javascript" src="'.__JS_PATH__.'deploiement.js"></script>
+        <script type="text/javascript" src="'.__JS_PATH__.'panorama.js"></script>
     </footer>
 </HTML>';

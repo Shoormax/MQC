@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Valentin
+ * User: ValentinLeGentil
  * Date: 20/09/2016
  * Time: 17:08
  */
@@ -10,78 +10,41 @@
  */
 include_once('php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
+$aPages = [
+'Accueil'       => 'accueil.php',
+'Musée'         => 'musee.php',
+'Quais'         => 'quais.php',
+'Commerces'     => 'commerces.php',
+'Accessibilité' => 'accessibilite.php',
+'Prochainement' => 'prochainement.php',
+'Contact'       => 'contact.php'
+];
 ?>
 <body>
-    <div id="container">
-        <div id="menu_haut">
-            <div id="link_Accueil" class="nav_item">
-                <img src="img/min/LogoAccueil.png">
-                <span class="nav_txt">Accueil</span>
-            </div>
-            <div id="link_Musee" class="nav_item">
-                <img src="img/min/LogoMuseeTransparent.png">
-                <span class="nav_txt">Musée</span>
-            </div>
-            <div id="link_Quais" class="nav_item">
-                <img src="img/min/LogoQuaisTransparent.png">
-                <span class="nav_txt">Quais</span>
-            </div>
-            <div id="link_Commerces" class="nav_item">
-                <img src="img/min/LogoCommerceTransparent.png">
-                <span class="nav_txt">Commerces</span>
-            </div>
-            <div id="link_Accessibilite" class="nav_item">
-                <img src="img/min/LogoTransportTransparent.png">
-                <span class="nav_txt">Accessibilité</span>
-            </div>
-            <div id="link_Prochainement" class="nav_item">
-                <img src="img/min/LogoProchainement.png">
-                <span class="nav_txt">Prochainement</span>
-            </div>
-            <div id="link_Contact" class="nav_item">
-                <img src="img/min/LogoContact.png">
-                <span class="nav_txt">Contact</span>
-            </div>
-        </div>
-        <div id="Accueil" class="subPage">
-            <?php
-            include 'php/accueil.php'
-            ?>
-        </div>
-        <div id="Musee" class="subPage">
-            <?php
-            include 'php/musee.php'
-            ?>
-        </div>
-        <div id="Quais" class="subPage">
-            <?php
-            include 'php/quais.php'
-            ?>
-        </div>
-        <div id="Commerces" class="subPage">
-            <?php
-            include 'php/commerces.php'
-            ?>
-        </div>
-        <div id="Accessibilite" class="subPage">
-            <?php
-            include 'php/accessibilite.php'
-            ?>
-        </div>
-        <div id="Prochainement" class="subPage">
-            <?php
-            include 'php/prochainement.php'
-            ?>
-        </div>
-        <div id="Contact" class="subPage">
-            <?php
-                include 'php/contact.php'
-            ?>
-        </div>
-        <a id="mentions_legales" href="php/mentions_legales.php">Mentions légales</a>
-    </div>
+  <div id="menu_haut">
+    <?php // DA MENU FRERE
+    foreach ($aPages as $titre => $page) {
+      $sSsAccent = ucfirst(str_replace('.php', '', $page));
+      echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
+        echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
+        echo '<span class="nav_txt">'.$titre.'</span>';
+      echo '</div>';
+    }
+    ?>
+  </div>
+
+  <div id="container">
+    <?php //  DA CONTENT FRERE
+    foreach ($aPages as $titre => $page) {
+      $sSsAccent = ucfirst(str_replace('.php', '', $page));
+      echo $page == "accueil.php" ? '<div id="'.$sSsAccent.'" class="">' : '<div id="'.$sSsAccent.'" class="sous-container">';
+        include 'php/'.$page;
+      echo '</div>';
+    }
+    ?>
+    <a id="mentions_legales" href="php/mentions_legales.php">Mentions légales</a>
+  </div>
 </body>
 
 <?php
-    include_once(__INCLUDE_PATH__.'footer.php');
-
+include_once(__INCLUDE_PATH__.'footer.php');
