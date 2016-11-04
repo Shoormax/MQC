@@ -8,13 +8,20 @@
 
 if(file_exists("C:/Users/Valentin")){
     define("__LOCAL_PATH__", "http://localhost/MQC");
-} else if(file_exists("C:/Users/quentin")){
+}
+elseif(file_exists("C:/Users/quentin")){
     define("__LOCAL_PATH__", "http://localhost:8001/ProjectOne");
-} elseif( file_exists("C:/Users/AifeDesPaix") ) {
+}
+elseif( file_exists("C:/Users/AifeDesPaix") ) {
     define("__LOCAL_PATH__", "http://localhost/connardedeconfluence/MQC");
-} else {
+}
+elseif(file_exists("C:/Users/Shosho")) {
+    define("__LOCAL_PATH__", "http://localhost/MySites/MQC");
+}
+else {
     define("__LOCAL_PATH__", "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence");
 }
+
 define("__INCLUDE_PATH__", __LOCAL_PATH__."/php/include/");
 define("__CSS_PATH__",  __LOCAL_PATH__."/css/");
 define("__JS_PATH__",  __LOCAL_PATH__."/js/");
