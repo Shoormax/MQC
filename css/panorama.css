@@ -23,8 +23,8 @@
 .p_flou {
 	position: absolute;
 	width: 67%;
-	height: 51.8%;
-	background-color: rgba(255, 255, 255, 0.2);
+	height: 64%;
+	background-color: rgba(255, 255, 255, 0.4);
 	z-index: 1;
 }
 /*

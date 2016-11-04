@@ -11,23 +11,24 @@
 include_once('php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 $aPages = [
-'Accueil'       => 'accueil.php',
-'Musée'         => 'musee.php',
-'Quais'         => 'quais.php',
-'Commerces'     => 'commerces.php',
-'Accessibilité' => 'accessibilite.php',
-'Prochainement' => 'prochainement.php',
-'Contact'       => 'contact.php'
+    'Accueil'       => 'accueil.php',
+    'Musée'         => 'musee.php',
+    'Quais'         => 'quais.php',
+    'Commerces'     => 'commerces.php',
+    'Accessibilité' => 'accessibilite.php',
+    'Prochainement' => 'prochainement.php',
+    'Contact'       => 'contact.php'
 ];
 ?>
-<body>
+  <link rel="icon" type="image/png" href="img/min/Musee.png" />
+  <body>
   <div id="menu_haut">
     <?php // DA MENU FRERE
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
-        echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
-        echo '<span class="nav_txt">'.$titre.'</span>';
+      echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
+      echo '<span class="nav_txt">'.$titre.'</span>';
       echo '</div>';
     }
     ?>
@@ -38,13 +39,13 @@ $aPages = [
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo $page == "accueil.php" ? '<div id="'.$sSsAccent.'" class="">' : '<div id="'.$sSsAccent.'" class="sous-container">';
-        include 'php/'.$page;
+      include 'php/'.$page;
       echo '</div>';
     }
     ?>
     <a id="mentions_legales" href="php/mentions_legales.php">Mentions légales</a>
   </div>
-</body>
+  </body>
 
 <?php
 include_once(__INCLUDE_PATH__.'footer.php');
