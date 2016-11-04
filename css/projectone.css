@@ -171,6 +171,18 @@ h3 {
     height: 7vh;
 }
 
+.button {
+    width: 50%;
+    line-height: 1.5em;
+    display: block;
+    margin: auto;
+    background-color: #0076ff;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    font-size: 1em;
+}
+
 #messageContact {
     padding: 1vh;
     margin-bottom: 0;

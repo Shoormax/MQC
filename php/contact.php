@@ -6,18 +6,42 @@
  * Time: 13:46
  */
 ?>
-<div class="article" id="articleContact">
-	<h3>Contact</h3>
-	<div class="flexbox">
-		<div class="moitie" id="contactInfos">
-			<input type="text" name="" placeholder="Nom">
-			<input type="text" name="" placeholder="Prénom">
-			<input id="mail_contact" type="mail" name="email" placeholder="Email">
-		</div>
-		<div class="moitie">
-			<textarea id="messageContact" placeholder="Entrez votre message ici." rows="10"></textarea>
-			<input type="button" onclick="emailvalidation()" value="Envoyer">
-		</div>
-	</div>
-	<div id="errorMail" class="hide"></div>
-</div>
+    <div class="article" id="articleContact">
+        <form method="post" action="#Contact">
+            <div class="moitie fleft" id="contactInfos">
+                <input type="text" name="nom" placeholder="Nom">
+                <input type="text" name="prenom" placeholder="Prénom">
+                <input id="mail_contact" type="mail" name="email" placeholder="E-m@il">
+            </div>
+            <div class="moitie fleft">
+                <textarea id="messageContact" name="messageContact" placeholder="Entrez votre message ici."></textarea>
+            </div>
+            <input class="button" type="submit" value="Envoyer"">
+        </form>
+    </div>
+
+<?php
+if(!empty($_POST)) {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $userMail = $_POST['email'];
+    $contenu = $_POST['messageContact'];
+
+    if(empty($nom)) {
+        echo '<div id="errorMail">Veuillez entrer votre prénom.</div>';
+    }
+    else if(empty($prenom)){
+        echo '<div id="errorMail">Veuillez entrer votre nom.</div>';
+    }
+    else if(empty($userMail) || !preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $userMail)) {
+        echo '<div id="errorMail">Veuillez entrer une adresse email valide.</div>';
+    }
+    else if(empty($contenu)) {
+        echo '<div id="errorMail">Veuillez entrer un message.</div>';
+    }
+    else{
+        require_once ('mail.php');
+        echo '<div id="errorMail">'.$tabRetour['message'].'</div>';
+    }
+}
+
