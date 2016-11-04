@@ -147,32 +147,21 @@ h3 {
     font-weight: normal;
     text-align: center;
 }
-/*
-#contactInfos input {
-    display: block;
-    width: 80%;
-    height: 9%;
-    margin: auto;
-    margin-bottom: 7.5%;
-    padding: 1.5vw;
-    font-size: 1.5vw;
-}
-*/
+
 #contactInfos input, input[type="button"], #messageContact {
     line-height: 5vh;
     display: block;
-    color: #fff;
     font-size: 1.2vw;
     width: 90%;
     margin: 1vw auto;
     color: #000;
     font-family: "Roboto";
     padding: 1vh;
-    height: 7vh;
+    height: 6.5vh;
 }
 
 .button {
-    width: 50%;
+    width: 47%;
     line-height: 1.5em;
     display: block;
     margin: auto;
