@@ -18,5 +18,13 @@
   input[type="button"] {
     width: 93.3%;
   }
-  
+ 
+ #menu_haut span {
+  display: none;
+ }
+
+  .nav_item img {
+    height: 75%;
+  }
+
 }

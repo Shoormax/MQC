@@ -37,7 +37,7 @@ $aPages = [
     <?php //  DA CONTENT FRERE
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
-      echo '<div id="'.$sSsAccent.'" class="sous-container">';
+      echo $page == "accueil.php" ? '<div id="'.$sSsAccent.'" class="">' : '<div id="'.$sSsAccent.'" class="sous-container">';
         include 'php/'.$page;
       echo '</div>';
     }
