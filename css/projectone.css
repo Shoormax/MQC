@@ -1,6 +1,7 @@
 :root {
     --color-fond: #008BCD;
-
+    --police-titre: "Proza Libre script=all rev=2", "Adobe Blank", sans-serif;
+    --police-texte: "Segoe UI", sans-serif;
 }
 html, body{
     margin: 0;
@@ -8,7 +9,7 @@ html, body{
     width: 100%;
     height: 100%;
     background-color: var(--color-fond);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--police-texte);
     color: white;
     font-size: 2vw;
 }
@@ -48,7 +49,7 @@ html, body{
     margin-bottom: 4%;
     background-color: #F8FCFD;
     font-size: 3vw;
-    font-family: "Proza Libre script=all rev=2", "Adobe Blank", sans-serif;
+    font-family: var(--police-titre);
     display: table;
     width: 100%;
     box-shadow: 1vh 1vh 0vh 0 #AEC8DA;
@@ -156,7 +157,7 @@ h3 {
     width: 90%;
     margin: 1vw auto;
     color: #000;
-    font-family: "Roboto";
+    font-family: var(--police-texte);
     padding: 1vh;
     height: 6.5vh;
 }

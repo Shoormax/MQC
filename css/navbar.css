@@ -4,7 +4,7 @@
 
 /* NAVBAR */
 #menu_haut {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--police-texte);
     z-index: 9999999;
     position: fixed;
     width: inherit;

@@ -29,5 +29,5 @@ $aCss = [
     echo '<link rel="stylesheet" href="'.__CSS_PATH__.$sNomFicher.'.css" type="text/css">';
   }
   ?>
-  <link href="https://fonts.googleapis.com/css?family=Roboto|Proza+Libre" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
 </head>
