@@ -1,0 +1,13 @@
+@media print {
+    html {
+
+    }
+
+    img, #menu_haut, #mentions_legales, #articleContact {
+        display: none;
+    }
+
+    #container, .sous-container, .wrap-titre-sous-container, h3, .wrap-textuel {
+        box-shadow: none;
+    }
+}

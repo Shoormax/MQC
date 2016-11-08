@@ -16,7 +16,8 @@ $aCss = [
     'projectone',
     'navbar',
     'panorama',
-    'responsive'
+    'responsive',
+    'print'
 ]; ?>
 <!DOCTYPE html>
 <html>
