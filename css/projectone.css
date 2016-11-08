@@ -100,7 +100,7 @@ html, body{
 }
 
 .imgArticle:hover {
-    filter: saturate(250%) brightness(60%);
+    /*filter: saturate(250%) brightness(60%);*/
 }
 
 .imgArticle{
