@@ -23,7 +23,7 @@ $aPages = [
   <link rel="icon" type="image/png" href="img/min/Musee.png" />
   <body>
   <div id="menu_haut">
-    <?php // DA MENU FRERE
+    <?php
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
@@ -35,7 +35,7 @@ $aPages = [
   </div>
 
   <div id="container">
-    <?php //  DA CONTENT FRERE
+    <?php
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo $page == "accueil.php" ? '<div id="'.$sSsAccent.'" class="">' : '<div id="'.$sSsAccent.'" class="sous-container">';

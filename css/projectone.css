@@ -118,6 +118,7 @@ html, body{
 
 /* FIN DEPLOIEMENT */
 
+/* CONTENU */
 #container{
     width: 67%;
     background-color: #CFD8DC;
@@ -137,9 +138,6 @@ html, body{
 #Contact.sous-container{
     margin-bottom: 0;
 }
-
-/* CONTENU */
-
 
 /* FIN CONTENU */
 
