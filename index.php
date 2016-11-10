@@ -26,15 +26,10 @@ $aPages = [
     <?php
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
-      echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
-      if ($page == 'architecture.php') {
-        echo '<img src="img/png/Logo'.$sSsAccent.'.png">';
-      }
-      else{
-        echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
-      }
-      echo '<span class="nav_txt">'.$titre.'</span>';
-      echo '</div>';
+      echo '<div id="link_'.$sSsAccent.'" class="nav_item">
+      <img src="img/svg/Logo'.$sSsAccent.'.svg">
+      <span class="nav_txt">'.$titre.'</span>
+      </div>';
     }
     ?>
   </div>
