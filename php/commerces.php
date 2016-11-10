@@ -18,7 +18,8 @@
             <p>Le centre commercial</p>
             <span>
                 Le centre commercial de Confluence, ouvert depuis le 4 avril 2012, est situé au 112 Cours Charlemagne à Lyon 69002. <br>
-                Il comprend aujourd’hui 106 commerces de toute sorte, 12 restaurants, un restaurant, un cinéma ainsi qu’un parking de 1500 places et un hôtel <a href="http://www.novotel.com/fr/hotel-7325-novotel-lyon-confluence/index.shtml">Novotel</a> de 150 chambres.
+                Il comprend aujourd’hui 106 commerces de toutes sortes, 12 restaurants, un <a href="http://www.ugc.fr/cinema.html">cinéma UGC</a> ainsi qu’un parking de 1500 places et un hôtel <a href="http://www.novotel.com/fr/hotel-7325-novotel-lyon-confluence/index.shtml">Novotel</a> de 150 chambres.<br><br>
+                <a href="#Accessibilite">Cliquer ici pour voir les moyens de vous y rendre.</a>
             </span>
         </div>
     </div>

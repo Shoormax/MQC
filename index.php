@@ -13,7 +13,7 @@ require_once (__INCLUDE_PATH__.'header.php');
 $aPages = [
     'Accueil'       => 'accueil.php',
     'Musée'         => 'musee.php',
-    'Quais'         => 'quais.php',
+    'Architecture'  => 'architecture.php',
     'Commerces'     => 'commerces.php',
     'Accessibilité' => 'accessibilite.php',
     'Prochainement' => 'prochainement.php',
@@ -27,7 +27,12 @@ $aPages = [
     foreach ($aPages as $titre => $page) {
       $sSsAccent = ucfirst(str_replace('.php', '', $page));
       echo '<div id="link_'.$sSsAccent.'" class="nav_item">';
-      echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
+      if ($page == 'architecture.php') {
+        echo '<img src="img/png/Logo'.$sSsAccent.'.png">';
+      }
+      else{
+        echo '<img src="img/svg/Logo'.$sSsAccent.'.svg">';
+      }
       echo '<span class="nav_txt">'.$titre.'</span>';
       echo '</div>';
     }
