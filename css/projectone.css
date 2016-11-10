@@ -85,6 +85,14 @@ html, body{
     text-align: justify;
 }
 
+.sous-wrap-text a, .sous-wrap-text a:visited {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.sous-wrap-text a:hover {
+    color: var(--color-fond);
+}
 
 .article{
     width:100%;
