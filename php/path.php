@@ -17,6 +17,11 @@ elseif( file_exists("C:/Users/AifeDesPaix") ) {
 }
 elseif(file_exists("C:/Users/Shosho")) {
     define("__LOCAL_PATH__", "http://localhost/MySites/MQC");
+    //BDD
+    define('__DB_HOST__', 'localhost');
+    define('__DB_NAME__', 'mqc');
+    define('__USER__', 'root');
+    define('__PASSWORD__', '');
 }
 else {
     define("__LOCAL_PATH__", "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence");

@@ -17,7 +17,8 @@ $aPages = [
     'Commerces'     => 'commerces.php',
     'Accessibilité' => 'accessibilite.php',
     'Prochainement' => 'prochainement.php',
-    'Contact'       => 'contact.php'
+    'Contact'       => 'contact.php',
+    'Produit'       => 'produit.php'
 ];
 ?>
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
