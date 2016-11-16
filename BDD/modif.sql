@@ -99,6 +99,19 @@ CREATE TABLE IF NOT EXISTS `MQC`.`stock_mouvement` (
   ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `MQC`.`article`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MQC`.`article` (
+  `id_article` INT NOT NULL AUTO_INCREMENT,
+  `titre_article` VARCHAR(45) NOT NULL,
+  `titre_short_texte` VARCHAR(45) NOT NULL,
+  `short_texte` VARCHAR(500) NOT NULL,
+  `texte` VARCHAR(1000) NOT NULL,
+  PRIMARY KEY (`id_article`))
+  ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
