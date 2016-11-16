@@ -158,3 +158,6 @@ INSERT INTO `MQC`.`type_mouvement` (`id_type_mouvement`, `libelle`) VALUES (DEFA
 
 COMMIT;
 
+ALTER TABLE `utilisateur` ADD `date_add` DATETIME NULL AFTER `password`;
+UPDATE `mqc`.`utilisateur` SET `date_add` = '2016-11-16 21:15:26' WHERE `utilisateur`.`id_utilisateur` = 1;
+

@@ -8,5 +8,3 @@
 
 require_once 'classes/Produit.php';
 $p = Produit::rechercheParId('Produit', 1);
-$p->entreeStock(2);
-$p->update();
