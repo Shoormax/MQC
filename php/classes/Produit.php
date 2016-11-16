@@ -6,29 +6,40 @@
  * Time: 21:23
  */
 include_once 'php/include/init.php';
+require_once 'php/classes/CommunTable.php';
+require_once 'php/classes/Stock_Mouvement.php';
 
-class Produit
+class Produit extends CommunTable
 {
     /**
      * @var int
      */
     private $id_produit;
+
     /**
      * @var int
      */
     private $id_utilisateur;
+
     /**
      * @var string
      */
     private $libelle;
+
     /**
      * @var float
      */
     private $prix;
+
     /**
      * @var bool
      */
     private $active;
+
+    /**
+     * @var int
+     */
+    private $stock;
 
     /**
      * Produit constructor.
@@ -38,44 +49,55 @@ class Produit
 
     }
 
-    public function add($id_utilisateur, $libelle, $prix)
+    public function add($id_utilisateur, $libelle, $prix, $stock)
     {
         global $pdo;
-        if(!empty($libelle) && !empty($prix) && !empty($id_utilisateur)) {
-            $requete = 'INSERT INTO Produit (id_produit, libelle, prix, id_utilisateur, active) VALUES (DEFAULT, "'.$libelle.'", "'.$prix.'", "'.$id_utilisateur.'", "1")';
+        if(!empty($libelle) && !empty($prix) && !empty($id_utilisateur) && !empty($stock)) {
+            $query = 'INSERT INTO Produit (id_produit, libelle, prix, id_utilisateur, active, stock) 
+                      VALUES (DEFAULT, "'.$libelle.'", "'.$prix.'", "'.$id_utilisateur.'", "1", "'.$stock.'")';
         }
         else{
             echo('Merci de remplir tous les champs.');
             return false;
         }
 
-        $pdo->exec($requete);
-        return $this::rechercheProduitParId($pdo->lastInsertId());
+        $pdo->exec($query);
+        return $this::rechercheParId(self::class, $pdo->lastInsertId());
     }
 
-    /**
-     * MARCHE SANS PARAM DANS LE CONSTRUCT MDEIR
-     */
-    public static function rechercheProduitParId($id_produit)
+    public function update()
     {
         global $pdo;
-        $query = $pdo->prepare('SELECT * from Produit where id_produit ='.$id_produit);
-        $query->execute();
-        return $query->fetchObject(__CLASS__);
+
+        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'" WHERE id_produit ='.$this->id_produit;
+
+        $pdo->exec($query);
+        return $this::rechercheParId(self::class, $pdo->lastInsertId());
     }
 
-    public static function rechercheAllProduit()
+    public function entreeStock($quantite)
     {
-        global $pdo;
-        $query=$pdo->query('SELECT * from Produit where active = 1');
-
-        $produits = array();
-        while ($produit = $query->fetchObject(__CLASS__)) {
-            $produits[$produit->getId()] = $produit;
+        $message = 'Erreur lors de l\'entree stock, veillez à ce que la quantité entrée soit positive.';
+        if($quantite > 0) {
+            $message = 'Entrée stock effecutée avec succès.';
+            $this->stock += $quantite;
+            $t = new Stock_Mouvement();
+            $t->add($quantite, 1, $this->getId());
         }
-        return $produits;
+        echo $message;
     }
 
+    public function sortieStock($quantite)
+    {
+        $message = 'Erreur lors de la sortie de stock, la quantité maximale que vous pouvez sortir est '.$this->stock;
+        if($quantite < $this->stock) {
+            $message = 'Sortie stock effecutée avec succès.';
+            $this->stock -= $quantite;
+            $t = new Stock_Mouvement();
+            $t->add($quantite, 2, $this->getId());
+        }
+        echo $message;
+    }
     /**
      *
      * GETTERS / SETTERS
@@ -89,7 +111,6 @@ class Produit
     {
         return $this->id_produit;
     }
-
 
     /**
      * @return int
@@ -145,5 +166,29 @@ class Produit
     public function isActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param boolean $active
+     */
+    public function setActive(bool $active)
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param int $stock
+     */
+    public function setStock(int $stock)
+    {
+        $this->stock = $stock;
     }
 }

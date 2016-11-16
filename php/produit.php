@@ -7,8 +7,6 @@
  */
 
 require 'classes/Produit.php';
-
-$p = new Produit();
-$produit = $p->add(1, 'KPMZ HDIU HZ', '25.53');
-var_dump($produit->getId());
-var_dump(Produit::rechercheProduitParId($produit->getId()));
+$p = Produit::rechercheParId('Produit', 1);
+$p->entreeStock(2);
+$p->update();

@@ -7,11 +7,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema MQC
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `MQC` ;
 
 -- -----------------------------------------------------
 -- Schema MQC
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `MQC`;
 CREATE SCHEMA IF NOT EXISTS `MQC` DEFAULT CHARACTER SET utf8 ;
 USE `MQC` ;
 
@@ -53,11 +53,47 @@ CREATE TABLE IF NOT EXISTS `MQC`.`Produit` (
   `prix` FLOAT NOT NULL,
   `id_utilisateur` INT NOT NULL,
   `active` TINYINT NOT NULL,
-  PRIMARY KEY (`id_produit`, `id_utilisateur`),
+  `stock` INT NULL,
+  PRIMARY KEY (`id_produit`),
   INDEX `fk_Produit_utilisateur1_idx` (`id_utilisateur` ASC),
   CONSTRAINT `fk_Produit_utilisateur1`
   FOREIGN KEY (`id_utilisateur`)
   REFERENCES `MQC`.`utilisateur` (`id_utilisateur`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MQC`.`type_mouvement`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MQC`.`type_mouvement` (
+  `id_type_mouvement` INT NOT NULL AUTO_INCREMENT,
+  `libelle` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_type_mouvement`))
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MQC`.`stock_mouvement`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MQC`.`stock_mouvement` (
+  `id_stock_mouvement` INT NOT NULL AUTO_INCREMENT,
+  `quantite` INT NOT NULL,
+  `date_add` DATETIME NOT NULL,
+  `id_type_mouvement` INT NOT NULL,
+  `id_produit` INT NOT NULL,
+  PRIMARY KEY (`id_stock_mouvement`),
+  INDEX `fk_stock_mouvement_type_mouvement1_idx` (`id_type_mouvement` ASC),
+  INDEX `fk_stock_mouvement_Produit1_idx` (`id_produit` ASC),
+  CONSTRAINT `fk_stock_mouvement_type_mouvement1`
+  FOREIGN KEY (`id_type_mouvement`)
+  REFERENCES `MQC`.`type_mouvement` (`id_type_mouvement`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_stock_mouvement_Produit1`
+  FOREIGN KEY (`id_produit`)
+  REFERENCES `MQC`.`Produit` (`id_produit`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
   ENGINE = InnoDB;
@@ -94,7 +130,18 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `MQC`;
-INSERT INTO `MQC`.`Produit` (`id_produit`, `libelle`, `prix`, `id_utilisateur`, `active`) VALUES (DEFAULT, 'ProduitTest', 18.37, 1, 1);
+INSERT INTO `MQC`.`Produit` (`id_produit`, `libelle`, `prix`, `id_utilisateur`, `active`, `stock`) VALUES (DEFAULT, 'ProduitTest', 18.37, 1, 1, 10);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `MQC`.`type_mouvement`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `MQC`;
+INSERT INTO `MQC`.`type_mouvement` (`id_type_mouvement`, `libelle`) VALUES (DEFAULT, 'entree');
+INSERT INTO `MQC`.`type_mouvement` (`id_type_mouvement`, `libelle`) VALUES (DEFAULT, 'sortie');
 
 COMMIT;
 
