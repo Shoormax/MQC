@@ -86,7 +86,7 @@ class Utilisateur extends CommunTable
 
     /**
      * Permet de mettre à jour un utilisateur.
-     * Utilisation :    $u = Utilisateur::rechercheParId($id);
+     * Utilisation :    $u = Utilisateur::rechercheParId($classname, $id);
      *                  $u->setParam($param);
      *                  $u->update();
      *
@@ -107,7 +107,7 @@ class Utilisateur extends CommunTable
 
     /**
      * Permet de supprimer un utilisateur
-     * Utilisation :    $u = Utilisateur::rechercheParId($id);
+     * Utilisation :    $u = Utilisateur::rechercheParId($classname, $id);
      *                  $u->delete();
      *
      * @author Valentin Dérudet

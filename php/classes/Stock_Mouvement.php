@@ -44,6 +44,18 @@ class Stock_Mouvement  extends CommunTable
 
     }
 
+    /**
+     * Permet d'ajouter un stock mouvement
+     * Utilisation :    $sm = new Stock_Mouvement();
+     *                  $sm->add($quantite, $id_type_mouvement, $id_produit);
+     *
+     * @author Valentin Dérudet
+     *
+     * @param $quantite
+     * @param $id_type_mouvement
+     * @param $id_produit
+     * @return bool|object
+     */
     public function add($quantite, $id_type_mouvement, $id_produit)
     {
         global $pdo;

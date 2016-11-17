@@ -36,6 +36,4 @@ class Type_Mouvement extends CommunTable
     {
         return $this->libelle;
     }
-
-
 }

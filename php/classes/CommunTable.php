@@ -24,8 +24,14 @@ class CommunTable
     public static function rechercheParId($class, $id)
     {
         global $pdo;
-        $query = $pdo->prepare('SELECT * from '.$class.' where id_'.strtolower($class).' ='.$id);
+        if(method_exists($class, 'isActive')) {
+            $query = $pdo->prepare('SELECT * from '.$class.' where id_'.strtolower($class).' ='.$id.' AND active = 1');
+        }
+        else {
+            $query = $pdo->prepare('SELECT * from '.$class.' where id_'.strtolower($class).' ='.$id);
+        }
         $query->execute();
+
         return $query->fetchObject($class);
     }
 

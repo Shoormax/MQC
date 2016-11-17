@@ -6,9 +6,5 @@
  * Time: 20:59
  */
 
-require_once 'classes/Produit.php';
-require_once 'classes/Utilisateur.php';
-
-$a = Article::rechercheParId('Article', 2);
-$a->setShortTexte('bonjour');
-$a->update();
+$a = Article::rechercherParParam('Article', array('titre_article' => "Les commerces"), 1);
+var_dump($a);

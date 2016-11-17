@@ -167,12 +167,13 @@ ALTER TABLE `article` CHANGE `short_texte` `short_texte` MEDIUMTEXT CHARACTER SE
 ALTER TABLE `article` CHANGE `texte` `texte` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 ALTER TABLE `article` ADD `date_add` DATETIME NOT NULL AFTER `texte`;
 ALTER TABLE `article` ADD `date_upd` DATETIME NULL AFTER `date_add`;
-INSERT INTO `article` (`id_article`, `titre_article`, `titre_short_texte`, `short_texte`, `texte`, `date_add`, `date_upd`) VALUES (NULL, 'Les commerces', 'Commerces et activités', 'Le centre commercial de Confluence, ouvert depuis le 4 avril 2012, est situé au 112 Cours Charlemagne à Lyon 69002.<br>
+ALTER TABLE `article` ADD `active` INTEGER  NOT NULL AFTER `date_upd`;
+INSERT INTO `article` (`id_article`, `titre_article`, `titre_short_texte`, `short_texte`, `texte`, `date_add`, `date_upd`, `active`) VALUES (NULL, 'Les commerces', 'Commerces et activités', 'Le centre commercial de Confluence, ouvert depuis le 4 avril 2012, est situé au 112 Cours Charlemagne à Lyon 69002.<br>
                 Il comprend aujourd\'hui 106 commerces de toutes sortes, 12 restaurants, un <a href="http://www.ugc.fr/cinema.html">cinéma UGC</a> ainsi qu\'un parking de 1500 places et un hôtel <a href="http://www.novotel.com/fr/hotel-7325-novotel-lyon-confluence/index.shtml">Novotel</a> de 150 chambres.<br>
                <br>
                 Par ailleurs le centre commercial comprend le plus grand mur d\'escalade de France !<br>
                <br>
                <br>
-                <a href="#Accessibilite">Cliquer ici pour voir les moyens de vous y rendre.</a>', 'test', '2016-11-17 01:53:07', NULL );
+                <a href="#Accessibilite">Cliquer ici pour voir les moyens de vous y rendre.</a>', 'test', '2016-11-17 01:53:07', NULL, 1);
 
 

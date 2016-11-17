@@ -37,6 +37,11 @@ class Article extends CommunTable
     private $texte;
 
     /**
+     * @var bool
+     */
+    private $active;
+
+    /**
      * @author Valentin Dérudet
      *
      * Article constructor.
@@ -55,14 +60,14 @@ class Article extends CommunTable
      * @param $titre_short_texte
      * @param $short_texte
      * @param $texte
-     * @return bool|object
+     * @return bool|Article
      */
     public function add($titre_article, $titre_short_texte, $short_texte, $texte)
     {
         global $pdo;
         if(!empty($titre_article) && !empty($titre_short_texte)  && !empty($short_texte) && !empty($texte)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-            $query = "INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd) VALUES (NULL, '".$titre_article."', '".$titre_short_texte."', '".$short_texte."', '".$texte."', '".$ajd->format("Y-m-d H:i:s")."',NULL)";
+            $query = 'INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd, active) VALUES (NULL, "'.$titre_article.'", "'.$titre_short_texte.'", "'.$short_texte.'", "'.$texte.'", "'.$ajd->format("Y-m-d H:i:s").'",NULL, 1)';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -75,21 +80,36 @@ class Article extends CommunTable
 
     /**
      * Permet d'ajouter un article
-     * Utilisation :    $a = Article::rechercheParId($id)
+     * Utilisation :    $a = Article::rechercheParId($classname, $id)
      *                  $a->setParam($param);
      *                  $a->update();
      *
-     * @return object
+     * @return Article
      */
     public function update()
     {
         global $pdo;
 
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $query = 'UPDATE article SET titre_article = "'.$this->titre_article.'", titre_short_texte = "'.$this->titre_short_texte.'",short_texte = "'.$this->short_texte.'", texte = "'.$this->texte.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'" WHERE id_article = '.$this->id_article;
+        $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'", texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_article = '.$this->id_article;
 
         $pdo->exec($query);
         return $this::rechercheParId(self::class, $this->id_article);
+    }
+
+    /**
+     * Permet de supprimer un article
+     * Utilisation :    $u = Article::rechercheParId($classname, $id);
+     *                  $u->delete();
+     *
+     * @author Valentin Dérudet
+     *
+     * @return Article
+     */
+    public function delete()
+    {
+        $this->setActive(0);
+        return $this->update();
     }
 
     /**
@@ -168,5 +188,21 @@ class Article extends CommunTable
     public function setTexte($texte)
     {
         $this->texte = $texte;
+    }
+
+    /**
+     * @param $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->active;
     }
 }

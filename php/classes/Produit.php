@@ -88,7 +88,7 @@ class Produit extends CommunTable
 
     /**
      * Permet d'update un produit.
-     * Utilisation :    $p = Produit::rechercheParId();
+     * Utilisation :    $p = Produit::rechercheParId($classname, $id);
      *                  $p->setParam($param)
      *                  $p->update();
      *
@@ -108,7 +108,7 @@ class Produit extends CommunTable
 
     /**
      * Permet de supprimer un produit
-     * Utilisation :    $p = Produit::rechercheParId($id);
+     * Utilisation :    $p = Produit::rechercheParId($classname, $id);
      *                  $p->delete();
      *
      * @author Valentin Dérudet
@@ -123,7 +123,7 @@ class Produit extends CommunTable
 
     /**
      * Permet d'entree du stock pour un produit.
-     * Utilisation :    $p = Produit::rechercheParId($id)
+     * Utilisation :    $p = Produit::rechercheParId($classname, $id)
      *                  $p->entreeStock($quantite);
      *                  $p->update();
      *
@@ -145,7 +145,7 @@ class Produit extends CommunTable
 
     /**
      * Permet de sortir de stock pour un produit.
-     * Utilisation :    $p = Produit::rechercheParId($id)
+     * Utilisation :    $p = Produit::rechercheParId($classname, $id)
      *                  $p->sortieStock($quantite);
      *                  $p->update();
      *
