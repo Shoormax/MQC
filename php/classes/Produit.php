@@ -43,12 +43,33 @@ class Produit extends CommunTable
 
     /**
      * Produit constructor.
+     *
+     * @author Valentin Dérudet
      */
     public function __construct()
     {
 
     }
 
+    /**
+     *
+     * PUBLIC METHODS
+     *
+     */
+
+    /**
+     * Permet d'ajouter un produit.
+     * Utilisation :    $p = new Product();
+     *                  $p->add($id_utilisateur, $libelle, $prix, $stock);
+     *
+     * @author Valentin Dérudet
+     *
+     * @param $id_utilisateur
+     * @param $libelle
+     * @param $prix
+     * @param $stock
+     * @return bool|self
+     */
     public function add($id_utilisateur, $libelle, $prix, $stock)
     {
         global $pdo;
@@ -65,6 +86,16 @@ class Produit extends CommunTable
         return $this::rechercheParId(self::class, $pdo->lastInsertId());
     }
 
+    /**
+     * Permet d'update un produit.
+     * Utilisation :    $p = Produit::rechercheParId();
+     *                  $p->setParam($param)
+     *                  $p->update();
+     *
+     * @author Valentin Dérudet
+     *
+     * @return self
+     */
     public function update()
     {
         global $pdo;
@@ -72,9 +103,34 @@ class Produit extends CommunTable
         $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'" WHERE id_produit ='.$this->id_produit;
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $pdo->lastInsertId());
+        return $this::rechercheParId(self::class, $this->id_produit);
     }
 
+    /**
+     * Permet de supprimer un produit
+     * Utilisation :    $p = Produit::rechercheParId($id);
+     *                  $p->delete();
+     *
+     * @author Valentin Dérudet
+     *
+     * @return Produit
+     */
+    public function delete()
+    {
+        $this->setActive(0);
+        return $this->update();
+    }
+
+    /**
+     * Permet d'entree du stock pour un produit.
+     * Utilisation :    $p = Produit::rechercheParId($id)
+     *                  $p->entreeStock($quantite);
+     *                  $p->update();
+     *
+     * @author Valentin Dérudet
+     *
+     * @param int $quantite
+     */
     public function entreeStock($quantite)
     {
         $message = 'Erreur lors de l\'entree stock, veillez à ce que la quantité entrée soit positive.';
@@ -87,9 +143,19 @@ class Produit extends CommunTable
         echo $message;
     }
 
+    /**
+     * Permet de sortir de stock pour un produit.
+     * Utilisation :    $p = Produit::rechercheParId($id)
+     *                  $p->sortieStock($quantite);
+     *                  $p->update();
+     *
+     * @author Valentin Dérudet
+     *
+     * @param int $quantite
+     */
     public function sortieStock($quantite)
     {
-        $message = 'Erreur lors de la sortie de stock, la quantité maximale que vous pouvez sortir est '.$this->stock;
+        $message = 'Erreur lors de la sortie de stock, la quantité maximale que vous pouvez sortir est '.$this->stock.'.';
         if($quantite < $this->stock) {
             $message = 'Sortie stock effecutée avec succès.';
             $this->stock -= $quantite;

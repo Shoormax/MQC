@@ -7,4 +7,8 @@
  */
 
 require_once 'classes/Produit.php';
-$p = Produit::rechercheParId('Produit', 1);
+require_once 'classes/Utilisateur.php';
+
+$a = Article::rechercheParId('Article', 2);
+$a->setShortTexte('bonjour');
+$a->update();
