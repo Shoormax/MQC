@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `mqc`.`article` (
   `texte` LONGTEXT NOT NULL,
   `date_add` DATETIME NOT NULL,
   `date_upd` DATETIME NULL DEFAULT NULL,
-  `active` INT(11) NOT NULL,
+  `active` TINYINT(4) NOT NULL,
   `id_langue` INT NOT NULL,
   PRIMARY KEY (`id_article`),
   INDEX `fk_article_langue1_idx` (`id_langue` ASC),
