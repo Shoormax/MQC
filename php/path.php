@@ -36,3 +36,4 @@ define("__INCLUDE_PATH__", __LOCAL_PATH__."/php/include/");
 define("__CSS_PATH__",  __LOCAL_PATH__."/css/");
 define("__JS_PATH__",  __LOCAL_PATH__."/js/");
 define("__IMG_PATH__",  __LOCAL_PATH__."/img/");
+define("__ADDRESS_CLASSES__",  "php/classes/");

@@ -60,6 +60,23 @@ class Utilisateur extends CommunTable
 
     /**
      *
+     * MAGIC METHODS
+     *
+     */
+
+    /**
+     * Retourne le nom et le prénom de l'utilisateur.
+     * Utilisation :    (string)$utilisateur
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->nom.' '.$this->prenom;
+    }
+
+    /**
+     *
      * PUBLIC METHODS
      *
      */
@@ -112,7 +129,7 @@ class Utilisateur extends CommunTable
         $query = 'UPDATE Utilisateur SET id_droit = "'.$this->id_droit.'", nom = "'.$this->nom.'", prenom = "'.$this->prenom.'", email = "'.$this->email.'",password = "'.$this->password.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_utilisateur = '.$this->id_utilisateur;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_utilisateur);
+        return $this;
     }
 
     /**

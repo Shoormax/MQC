@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `mqc`.`article` (
   `date_add` DATETIME NOT NULL,
   `date_upd` DATETIME NULL DEFAULT NULL,
   `active` TINYINT(4) NOT NULL,
-  `id_langue` INT(11) NOT NULL,
+  `id_langue` INT(11) NULL,
+  `image` MEDIUMTEXT NOT NULL,
   PRIMARY KEY (`id_article`),
   INDEX `fk_article_langue1_idx` (`id_langue` ASC),
   CONSTRAINT `fk_article_langue1`
@@ -99,7 +100,8 @@ CREATE TABLE IF NOT EXISTS `mqc`.`produit` (
   `prix` FLOAT NOT NULL,
   `id_utilisateur` INT(11) NOT NULL,
   `active` TINYINT(4) NOT NULL,
-  `stock` INT(11) NULL DEFAULT NULL,
+  `stock` INT(11) NULL DEFAULT 0,
+  `image` MEDIUMTEXT NULL,
   PRIMARY KEY (`id_produit`),
   INDEX `fk_Produit_utilisateur1_idx` (`id_utilisateur` ASC),
   CONSTRAINT `fk_Produit_utilisateur1`

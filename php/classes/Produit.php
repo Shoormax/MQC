@@ -5,8 +5,6 @@
  * Date: 15/11/2016
  * Time: 21:23
  */
-require_once 'php/classes/CommunTable.php';
-require_once 'php/classes/StockMouvement.php';
 
 class Produit extends CommunTable
 {
@@ -45,6 +43,8 @@ class Produit extends CommunTable
      */
     private $stock;
 
+    private $image;
+
     /**
      * Produit constructor.
      *
@@ -75,12 +75,12 @@ class Produit extends CommunTable
      * @param $stock
      * @return bool|Produit
      */
-    public function add($id_utilisateur, $libelle, $prix, $stock, $libelle_anglais = null)
+    public function add($id_utilisateur, $libelle, $prix, $stock, $libelle_anglais = null,  $image = null)
     {
         global $pdo;
         if(!empty($libelle) && !empty($prix) && !empty($id_utilisateur) && !empty($stock)) {
-            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, prix, id_utilisateur, active, stock) 
-                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'", "'.$prix.'", "'.$id_utilisateur.'", "1", "'.$stock.'")';
+            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, prix, id_utilisateur, active, stock, image) 
+                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'", "'.$prix.'", "'.$id_utilisateur.'", "1", "'.$stock.'", "'.$image.'")';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -105,10 +105,10 @@ class Produit extends CommunTable
     {
         global $pdo;
 
-        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'" WHERE id_produit ='.$this->id_produit;
+        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'", image = "'.$this->image.'" WHERE id_produit ='.$this->id_produit;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_produit);
+        return $this;
     }
 
     /**
@@ -294,6 +294,24 @@ class Produit extends CommunTable
     public function setStock(int $stock)
     {
         $this->stock = $stock;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     * @return Produit
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
         return $this;
     }
 }

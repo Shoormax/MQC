@@ -7,8 +7,7 @@
  * Time: 17:25
  */
 
-
-$a = Article::rechercherParParam('Article', array('titre_article' => "Les commerces"), 1);
+$a = Article::rechercherParParam(array('titre_article' => "Les commerces"), 1);
 if($a instanceof Article) {
     echo
         "<div class='article' id='articleCommerci'>
@@ -16,7 +15,7 @@ if($a instanceof Article) {
                 <div class='wrap-titre-sous-container tcenter'>
                     <span class='titre-sous-container'>".$a->getTitreArticle()."</span>
                 </div>
-                <img class='imgArticle' src='img/min/musee.jpg'>
+                <img class='imgArticle' src='".$a->getImage()."'>
             </div>
             <div class='wrap-textuel'>
                 <div class='sous-wrap-text tcenter'>
