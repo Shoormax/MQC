@@ -56,7 +56,7 @@ class Panier extends CommunTable
     {
         global $pdo;
         if(!empty($id_utilisateur)) {
-            $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+            $ajd = new DateTime();
 
             $query = 'INSERT INTO Panier (id_panier, id_utilisateur, total, date_add, date_upd) 
                       VALUES (DEFAULT, "'.$id_utilisateur.'", DEFAULT,  "'.$ajd->format("Y-m-d H:i:s").'", DEFAULT)';
@@ -156,8 +156,8 @@ class Panier extends CommunTable
     public function getProduits()
     {
         global $pdo;
-        $test = 'SELECT id_produit FROM panier_has_produit WHERE id_panier ='.$this->id_panier;
-        $query = $pdo->query($test);
+        $req = 'SELECT id_produit FROM panier_has_produit WHERE id_panier ='.$this->id_panier;
+        $query = $pdo->query($req);
         return $query->fetchAll();
     }
 
@@ -172,8 +172,8 @@ class Panier extends CommunTable
     public function getQuantiteProduit($id_product)
     {
         global $pdo;
-        $test = 'SELECT quantite FROM panier_has_produit WHERE id_panier ='.$this->id_panier.' AND id_produit ='.$id_product;
-        $query = $pdo->query($test);
+        $req = 'SELECT quantite FROM panier_has_produit WHERE id_panier ='.$this->id_panier.' AND id_produit ='.$id_product;
+        $query = $pdo->query($req);
         return $query->fetch()[0];
     }
 

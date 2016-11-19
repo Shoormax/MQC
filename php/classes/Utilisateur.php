@@ -148,6 +148,27 @@ class Utilisateur extends CommunTable
     }
 
     /**
+     * Récupère les paniers de cet utilisateur.
+     *
+     * @return Panier[]
+     */
+    public function getPaniersUtilisateur()
+    {
+        return Panier::rechercherParParam(array('id_utilisateur' => $this->id_utilisateur));
+    }
+
+    /**
+     * @return array
+     */
+    public function getBoutique()
+    {
+        global $pdo;
+        $req = 'SELECT id_boutique FROM boutique_has_utilisateur WHERE id_utilisateur ='.$this->id_utilisateur;
+        $query = $pdo->query($req);
+        return $query->fetchAll();
+    }
+
+    /**
      *
      * GETTERS / SETTERS
      *

@@ -11,8 +11,6 @@
 include_once('php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 require_once 'php/include/init.php';
-require_once 'php/classes/CommunTable.php';
-require_once 'php/classes/Article.php';
 $aPages = [
   'Accueil'       => 'accueil.php',
   'Musée'         => 'musee.php',
@@ -23,6 +21,7 @@ $aPages = [
   'Contact'       => 'contact.php',
   'Produit'       => 'produit.php'
 ];
+
 ?>
   <link rel="icon" type="image/png" href="img/min/Musee.png" />
   <body>
