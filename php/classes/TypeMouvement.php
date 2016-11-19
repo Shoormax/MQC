@@ -6,8 +6,6 @@
  * Date: 16/11/2016
  * Time: 01:28
  */
-include_once 'php/include/init.php';
-require_once 'php/classes/CommunTable.php';
 
 class TypeMouvement extends CommunTable
 {

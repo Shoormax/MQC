@@ -5,7 +5,6 @@
  * Date: 15/11/2016
  * Time: 21:23
  */
-include_once 'php/include/init.php';
 require_once 'php/classes/CommunTable.php';
 require_once 'php/classes/StockMouvement.php';
 

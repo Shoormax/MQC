@@ -6,7 +6,6 @@
  * Date: 16/11/2016
  * Time: 00:33
  */
-include_once 'php/include/init.php';
 
 class CommunTable
 {

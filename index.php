@@ -11,6 +11,7 @@
 include_once('php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 require_once 'php/include/init.php';
+require_once 'php/classes/CommunTable.php';
 require_once 'php/classes/Article.php';
 $aPages = [
     'Accueil'       => 'accueil.php',

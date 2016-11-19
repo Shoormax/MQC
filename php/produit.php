@@ -18,9 +18,9 @@ $id_user = 2;
 //$panier->ajoutProduit($produit->getId(), 2);
 
 //Modif
-//$p = Panier::rechercheParId(2);
+var_dump($p = Panier::rechercheParId(1));
 //$p->ajoutProduit(3,4);
 
 //Suppr
-$p = Panier::rechercheParId(1);
-$p->suppressionProduit(2);
+//$p = Panier::rechercheParId(1);
+//$p->suppressionProduit(2);

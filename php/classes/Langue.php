@@ -6,8 +6,6 @@
  * Date: 19/11/2016
  * Time: 10:41
  */
-include_once 'php/include/init.php';
-require_once 'php/classes/CommunTable.php';
 
 class Langue extends CommunTable
 {

@@ -6,8 +6,6 @@
  * Date: 19/11/2016
  * Time: 12:18
  */
-include_once 'php/include/init.php';
-require_once 'php/classes/CommunTable.php';
 require_once 'php/classes/Produit.php';
 
 class Panier extends CommunTable
