@@ -244,3 +244,5 @@ INSERT INTO `mqc`.`type_mouvement` (`id_type_mouvement`, `libelle`) VALUES (2, '
 
 COMMIT;
 
+ALTER TABLE article ADD COLUMN titre_navbar VARCHAR(45) NOT NULL;
+ALTER TABLE article ADD COLUMN image_navbar VARCHAR(250) NOT NULL;

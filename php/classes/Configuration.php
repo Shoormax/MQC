@@ -13,11 +13,15 @@ abstract class Configuration
     }
 
     final private static function autoload($className) {
-        $className = str_replace('\\', '/', $className);
-        if (!class_exists($className, false) && file_exists(__ADDRESS_CLASSES__.$className.'.php')) {
-            include __ADDRESS_CLASSES__.$className.'.php';
-            return true;
-        }
-        return false;
+      $className = str_replace('\\', '/', $className);
+      if (
+          (!class_exists($className, false) && file_exists($url = __ADDRESS_CLASSES__.$className.'.php'))
+      ||  (!class_exists($className, false) && file_exists($url = __ADDRESS_CLASSES__.'Pages/'.$className.'.php'))
+
+      ) {
+        include $url;
+        return true;
+      }
+      return false;
     }
 }

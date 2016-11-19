@@ -1,0 +1,29 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    background-color: #003E5B;
+}
+
+header div.compte {
+    color: #fff;
+}
+
+header input {
+    text-align: center;
+    height: 50px;
+    margin-top: 3px;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 1.2em;
+}
