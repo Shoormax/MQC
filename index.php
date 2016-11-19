@@ -30,11 +30,8 @@ $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
     </div>
 
     <div id="container">
-        <div id="divAccueil">
-            <div id="panorama" >
-                <div class="p_flou"></div>
-                <p>Confluence</p>
-            </div>
+        <div id="panorama" >
+            <img src="img/AccueilConfluence25.png">
         </div>
         <?php
         foreach ($articles as $a) {
