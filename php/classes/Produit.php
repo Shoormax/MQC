@@ -248,7 +248,7 @@ class Produit extends CommunTable
      */
     public function getPrix()
     {
-        return $this->prix;
+        return round($this->prix,2);
     }
 
     /**
@@ -257,7 +257,7 @@ class Produit extends CommunTable
      */
     public function setPrix($prix)
     {
-        $this->prix = $prix;
+        $this->prix = round($prix, 2);
         return $this;
     }
 

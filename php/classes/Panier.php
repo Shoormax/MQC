@@ -251,7 +251,7 @@ class Panier extends CommunTable
      */
     public function getTotal()
     {
-        return $this->total;
+        return round($this->total, 2);
     }
 
     /**
@@ -260,7 +260,7 @@ class Panier extends CommunTable
      */
     public function setTotal($total)
     {
-        $this->total = $total;
+        $this->total = round($total,2);
         return $this;
     }
 }
