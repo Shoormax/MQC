@@ -9,7 +9,7 @@
 include_once 'php/include/init.php';
 require_once 'php/classes/CommunTable.php';
 
-class Type_Mouvement extends CommunTable
+class TypeMouvement extends CommunTable
 {
     /**
      * @var int

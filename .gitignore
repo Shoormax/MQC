@@ -5,4 +5,14 @@ misc.xml
 copyright/profiles_settings.xml
 .idea/
 README.md
+_windows
+inspection
+debugger.xml
+diff.xml
+github_settings.xml
+ide.general.xml
+ignore.xml
+IntelliLang.xml
+watcherDefaultTasks.xml
+web-browsers.xml
 fonts/LICENSE.txt

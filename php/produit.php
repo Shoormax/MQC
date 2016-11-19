@@ -5,6 +5,22 @@
  * Date: 15/11/2016
  * Time: 20:59
  */
+include_once('php/classes/Panier.php');
+include_once('php/classes/Produit.php');
 
-$a = Article::rechercherParParam('Article', array('titre_article' => "Les commerces"), 1);
-var_dump($a);
+$id_user = 2;
+
+//Ajout
+//$p = new Panier();
+//$panier = $p->add($id_user);
+//$pro = new Produit();
+//$produit = $pro->add($id_user, 'ProduiApo', 18.08, 10);
+//$panier->ajoutProduit($produit->getId(), 2);
+
+//Modif
+//$p = Panier::rechercheParId(2);
+//$p->ajoutProduit(3,4);
+
+//Suppr
+$p = Panier::rechercheParId(1);
+$p->suppressionProduit(2);

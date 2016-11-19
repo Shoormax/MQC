@@ -42,6 +42,11 @@ class Article extends CommunTable
     private $active;
 
     /**
+     * @var int
+     */
+    private $id_langue;
+
+    /**
      * @author Valentin Dérudet
      *
      * Article constructor.
@@ -62,7 +67,7 @@ class Article extends CommunTable
      * @param $texte
      * @return bool|Article
      */
-    public function add($titre_article, $titre_short_texte, $short_texte, $texte)
+    public function add($titre_article, $titre_short_texte, $short_texte, $texte, $id_langue)
     {
         global $pdo;
         if(!empty($titre_article) && !empty($titre_short_texte)  && !empty($short_texte) && !empty($texte)) {
@@ -75,12 +80,12 @@ class Article extends CommunTable
         }
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $pdo->lastInsertId());
+        return $this::rechercheParId($pdo->lastInsertId());
     }
 
     /**
      * Permet d'ajouter un article
-     * Utilisation :    $a = Article::rechercheParId($classname, $id)
+     * Utilisation :    $a = Article::rechercheParId($id)
      *                  $a->setParam($param);
      *                  $a->update();
      *
@@ -94,12 +99,12 @@ class Article extends CommunTable
         $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'", texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_article = '.$this->id_article;
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $this->id_article);
+        return $this::rechercheParId($this->id_article);
     }
 
     /**
      * Permet de supprimer un article
-     * Utilisation :    $u = Article::rechercheParId($classname, $id);
+     * Utilisation :    $u = Article::rechercheParId($id);
      *                  $u->delete();
      *
      * @author Valentin Dérudet
@@ -136,10 +141,12 @@ class Article extends CommunTable
 
     /**
      * @param string $titre_article
+     * @return Article
      */
     public function setTitreArticle($titre_article)
     {
         $this->titre_article = $titre_article;
+        return $this;
     }
 
     /**
@@ -152,10 +159,12 @@ class Article extends CommunTable
 
     /**
      * @param string $titre_short_texte
+     * @return Article
      */
     public function setTitreShort($titre_short_texte)
     {
         $this->titre_short_texte = $titre_short_texte;
+        return $this;
     }
 
     /**
@@ -168,10 +177,12 @@ class Article extends CommunTable
 
     /**
      * @param string $short_texte
+     * @return Article
      */
     public function setShortTexte($short_texte)
     {
         $this->short_texte = $short_texte;
+        return $this;
     }
 
     /**
@@ -184,18 +195,22 @@ class Article extends CommunTable
 
     /**
      * @param string $texte
+     * @return Article
      */
     public function setTexte($texte)
     {
         $this->texte = $texte;
+        return $this;
     }
 
     /**
      * @param $active
+     * @return Article
      */
     public function setActive($active)
     {
         $this->active = $active;
+        return $this;
     }
 
     /**
@@ -204,5 +219,23 @@ class Article extends CommunTable
     public function isActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdLangue()
+    {
+        return $this->id_langue;
+    }
+
+    /**
+     * @param int $id_langue
+     * @return Article
+     */
+    public function setIdLangue($id_langue)
+    {
+        $this->id_langue = $id_langue;
+        return $this;
     }
 }

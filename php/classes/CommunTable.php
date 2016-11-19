@@ -16,15 +16,16 @@ class CommunTable
      *
      * @author Valentin Dérudet
      *
-     * @param string $class classe de l'objet
      * @param int $id       id de l'objet
      *
      * @return object
      */
-    public static function rechercheParId($class, $id)
+    public static function rechercheParId($id)
     {
         global $pdo;
-        if(method_exists($class, 'isActive')) {
+        $class = get_called_class();
+
+        if(method_exists(get_called_class(), 'isActive')) {
             $query = $pdo->prepare('SELECT * from '.$class.' where id_'.strtolower($class).' ='.$id.' AND active = 1');
         }
         else {
@@ -41,15 +42,14 @@ class CommunTable
      *
      * @author Valentin Dérudet
      *
-     * @param string $class classe de l'objet
-     *
      * @return object[]
      */
-    public static function rechercheAll($class)
+    public static function rechercheAll()
     {
         global $pdo;
+        $class = get_called_class();
 
-        if(method_exists($class, 'isActive')) {
+        if(method_exists(get_called_class(), 'isActive')) {
             $query = $pdo->query('SELECT * from '.$class.' where active = 1');
         }
         else {
@@ -71,21 +71,22 @@ class CommunTable
      *
      * @author Valentin Dérudet
      *
-     * @param string $class classe de l'objet
-     * @param array $params paramètres à rechercher
+     * @param array $params Paramètres à rechercher
+     * @param int $limit (optionnal) (default=null)  Permet de spécifier le nombre de résultats que l'on veut récupérer
      *
      * @return object|object[]|bool
      */
-    public static function rechercherParParam($class, $params, $limit = null)
+    public static function rechercherParParam($params, $limit = null)
     {
         global $pdo;
+        $class = get_called_class();
 
         if(!is_array($params)) {
             echo 'Erreur lors de la recherche des '.strtolower($class).'s.';
             return false;
         }
 
-        if(method_exists($class, 'isActive')) {
+        if(method_exists(get_called_class(), 'isActive')) {
             $requete = 'SELECT * from '.$class.' where active = 1';
         }
         else {
@@ -94,9 +95,9 @@ class CommunTable
 
         //$param = nomColonne
         //$key = valeur
-        foreach ($params as $param => $key)
+        foreach ($params as $key => $param)
         {
-            $requete .= ' AND '.$param.'="'.$key.'"';
+            $requete .= ' AND '.$key.'="'.$param.'"';
         }
 
         if($limit !== null) {

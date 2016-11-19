@@ -7,7 +7,7 @@
  */
 include_once 'php/include/init.php';
 require_once 'php/classes/CommunTable.php';
-require_once 'php/classes/Stock_Mouvement.php';
+require_once 'php/classes/StockMouvement.php';
 
 class Produit extends CommunTable
 {
@@ -25,6 +25,11 @@ class Produit extends CommunTable
      * @var string
      */
     private $libelle;
+
+    /**
+     * @var string
+     */
+    private $libelle_anglais;
 
     /**
      * @var float
@@ -66,16 +71,17 @@ class Produit extends CommunTable
      *
      * @param $id_utilisateur
      * @param $libelle
+     * @param $libelle_anglais (optionnal) (default=null)
      * @param $prix
      * @param $stock
-     * @return bool|self
+     * @return bool|Produit
      */
-    public function add($id_utilisateur, $libelle, $prix, $stock)
+    public function add($id_utilisateur, $libelle, $prix, $stock, $libelle_anglais = null)
     {
         global $pdo;
         if(!empty($libelle) && !empty($prix) && !empty($id_utilisateur) && !empty($stock)) {
-            $query = 'INSERT INTO Produit (id_produit, libelle, prix, id_utilisateur, active, stock) 
-                      VALUES (DEFAULT, "'.$libelle.'", "'.$prix.'", "'.$id_utilisateur.'", "1", "'.$stock.'")';
+            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, prix, id_utilisateur, active, stock) 
+                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'", "'.$prix.'", "'.$id_utilisateur.'", "1", "'.$stock.'")';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -83,32 +89,32 @@ class Produit extends CommunTable
         }
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $pdo->lastInsertId());
+        return $this::rechercheParId($pdo->lastInsertId());
     }
 
     /**
      * Permet d'update un produit.
-     * Utilisation :    $p = Produit::rechercheParId($classname, $id);
+     * Utilisation :    $p = Produit::rechercheParId($id);
      *                  $p->setParam($param)
      *                  $p->update();
      *
      * @author Valentin Dérudet
      *
-     * @return self
+     * @return Produit
      */
     public function update()
     {
         global $pdo;
 
-        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'" WHERE id_produit ='.$this->id_produit;
+        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'" WHERE id_produit ='.$this->id_produit;
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $this->id_produit);
+        return $this::rechercheParId($this->id_produit);
     }
 
     /**
      * Permet de supprimer un produit
-     * Utilisation :    $p = Produit::rechercheParId($classname, $id);
+     * Utilisation :    $p = Produit::rechercheParId($id);
      *                  $p->delete();
      *
      * @author Valentin Dérudet
@@ -123,46 +129,52 @@ class Produit extends CommunTable
 
     /**
      * Permet d'entree du stock pour un produit.
-     * Utilisation :    $p = Produit::rechercheParId($classname, $id)
+     * Utilisation :    $p = Produit::rechercheParId($id)
      *                  $p->entreeStock($quantite);
      *                  $p->update();
      *
      * @author Valentin Dérudet
      *
      * @param int $quantite
+     *
+     * @return Produit
      */
-    public function entreeStock($quantite)
+    public function entreeStock($quantite, $id_panier)
     {
         $message = 'Erreur lors de l\'entree stock, veillez à ce que la quantité entrée soit positive.';
         if($quantite > 0) {
             $message = 'Entrée stock effecutée avec succès.';
             $this->stock += $quantite;
-            $t = new Stock_Mouvement();
-            $t->add($quantite, 1, $this->getId());
+            $t = new StockMouvement();
+            $t->add($quantite, 1, $this->getId(), $id_panier);
         }
         echo $message;
+        return $this->update();
     }
 
     /**
      * Permet de sortir de stock pour un produit.
-     * Utilisation :    $p = Produit::rechercheParId($classname, $id)
+     * Utilisation :    $p = Produit::rechercheParId($id)
      *                  $p->sortieStock($quantite);
      *                  $p->update();
      *
      * @author Valentin Dérudet
      *
      * @param int $quantite
+     *
+     * @return Produit
      */
-    public function sortieStock($quantite)
+    public function sortieStock($quantite, $id_panier)
     {
         $message = 'Erreur lors de la sortie de stock, la quantité maximale que vous pouvez sortir est '.$this->stock.'.';
-        if($quantite < $this->stock) {
+        if($quantite <= $this->stock && $this->stock !== 0) {
             $message = 'Sortie stock effecutée avec succès.';
             $this->stock -= $quantite;
-            $t = new Stock_Mouvement();
-            $t->add($quantite, 2, $this->getId());
+            $t = new StockMouvement();
+            $t->add($quantite, 2, $this->getId(), $id_panier);
         }
         echo $message;
+        return $this->update();
     }
     /**
      *
@@ -188,10 +200,12 @@ class Produit extends CommunTable
 
     /**
      * @param int $id_utilisateur
+     * @return Produit
      */
     public function setIdUtilisateur($id_utilisateur)
     {
         $this->id_utilisateur = $id_utilisateur;
+        return $this;
     }
 
     /**
@@ -204,10 +218,30 @@ class Produit extends CommunTable
 
     /**
      * @param string $libelle
+     * @return Produit
      */
     public function setLibelle($libelle)
     {
         $this->libelle = $libelle;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLibelleAnglais()
+    {
+        return $this->libelle_anglais;
+    }
+
+    /**
+     * @param string $libelle_anglais
+     * @return Produit
+     */
+    public function setLibelleAnglais($libelle_anglais)
+    {
+        $this->libelle_anglais = $libelle_anglais;
+        return $this;
     }
 
     /**
@@ -220,10 +254,12 @@ class Produit extends CommunTable
 
     /**
      * @param float $prix
+     * @return Produit
      */
     public function setPrix($prix)
     {
         $this->prix = $prix;
+        return $this;
     }
 
     /**
@@ -236,10 +272,12 @@ class Produit extends CommunTable
 
     /**
      * @param boolean $active
+     * @return Produit
      */
     public function setActive(bool $active)
     {
         $this->active = $active;
+        return $this;
     }
 
     /**
@@ -252,9 +290,11 @@ class Produit extends CommunTable
 
     /**
      * @param int $stock
+     * @return Produit
      */
     public function setStock(int $stock)
     {
         $this->stock = $stock;
+        return $this;
     }
 }

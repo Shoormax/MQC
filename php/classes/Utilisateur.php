@@ -24,6 +24,16 @@ class Utilisateur extends CommunTable
     /**
      * @var string
      */
+    private $nom;
+
+    /**
+     * @var string
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     */
     private $email;
 
     /**
@@ -64,16 +74,18 @@ class Utilisateur extends CommunTable
      * @author Valentin Dérudet
      *
      * @param $id_droit
+     * @param $nom
+     * @param $prenom
      * @param $email
      * @param $password
-     * @return bool|self
+     * @return bool|Utilisateur
      */
-    public function add($id_droit, $email, $password)
+    public function add($id_droit, $nom, $prenom, $email, $password)
     {
         global $pdo;
         if(!empty($id_droit) && !empty($email) && !empty($password)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-            $query = 'INSERT INTO utilisateur (id_utilisateur, id_droit, email, password, date_add, date_upd, active) VALUES (NULL, "'.$id_droit.'", "'.$email.'", "'.$password.'", "'.$ajd->format("Y-m-d H:i:s").'", NULL,"1")';
+            $query = 'INSERT INTO utilisateur (id_utilisateur, id_droit, nom, prenom, email, password, date_add, date_upd, active) VALUES (NULL, "'.$id_droit.'", "'.$nom.'", "'.$prenom.'", "'.$email.'", "'.$password.'", "'.$ajd->format("Y-m-d H:i:s").'", NULL,"1")';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -81,33 +93,33 @@ class Utilisateur extends CommunTable
         }
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $pdo->lastInsertId());
+        return $this::rechercheParId($pdo->lastInsertId());
     }
 
     /**
      * Permet de mettre à jour un utilisateur.
-     * Utilisation :    $u = Utilisateur::rechercheParId($classname, $id);
+     * Utilisation :    $u = Utilisateur::rechercheParId($id);
      *                  $u->setParam($param);
      *                  $u->update();
      *
      * @author Valentin Dérudet
      *
-     * @return self
+     * @return Utilisateur
      */
     public function update()
     {
         global $pdo;
 
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $query = 'UPDATE Utilisateur SET id_droit = "'.$this->id_droit.'", email = "'.$this->email.'",password = "'.$this->password.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_utilisateur = '.$this->id_utilisateur;
+        $query = 'UPDATE Utilisateur SET id_droit = "'.$this->id_droit.'", nom = "'.$this->nom.'", prenom = "'.$this->prenom.'", email = "'.$this->email.'",password = "'.$this->password.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_utilisateur = '.$this->id_utilisateur;
 
         $pdo->exec($query);
-        return $this::rechercheParId(self::class, $this->id_utilisateur);
+        return $this::rechercheParId($this->id_utilisateur);
     }
 
     /**
      * Permet de supprimer un utilisateur
-     * Utilisation :    $u = Utilisateur::rechercheParId($classname, $id);
+     * Utilisation :    $u = Utilisateur::rechercheParId($id);
      *                  $u->delete();
      *
      * @author Valentin Dérudet
@@ -128,7 +140,7 @@ class Utilisateur extends CommunTable
      */
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -136,7 +148,7 @@ class Utilisateur extends CommunTable
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getIdDroit()
     {
@@ -144,15 +156,53 @@ class Utilisateur extends CommunTable
     }
 
     /**
-     * @param mixed $id_droit
+     * @param int $id_droit
+     * @return Utilisateur
      */
     public function setIdDroit($id_droit)
     {
         $this->id_droit = $id_droit;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     * @return Utilisateur
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     * @return Utilisateur
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+
+    /**
+     * @return string
      */
     public function getEmail()
     {
@@ -160,15 +210,17 @@ class Utilisateur extends CommunTable
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
+     * @return Utilisateur
      */
     public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPassword()
     {
@@ -176,11 +228,13 @@ class Utilisateur extends CommunTable
     }
 
     /**
-     * @param mixed $password
+     * @param string $password
+     * @return Utilisateur
      */
     public function setPassword($password)
     {
         $this->password = $password;
+        return $this;
     }
 
     /**
@@ -193,14 +247,16 @@ class Utilisateur extends CommunTable
 
     /**
      * @param mixed $date_add
+     * @return Utilisateur
      */
     public function setDateAdd($date_add)
     {
         $this->date_add = $date_add;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function isActive()
     {
@@ -208,10 +264,12 @@ class Utilisateur extends CommunTable
     }
 
     /**
-     * @param mixed $active
+     * @param bool $active
+     * @return Utilisateur
      */
     public function setActive($active)
     {
         $this->active = $active;
+        return $this;
     }
 }
