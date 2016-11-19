@@ -26,7 +26,7 @@ $aPages = [
 ?>
   <link rel="icon" type="image/png" href="img/min/Musee.png" />
   <body>
-  <div id="btnConnexion">Connexion</div>
+  <div id="btnConnexion"><a href="php/admin.php">Connexion</a></div>
   <div id="menu_haut">
     <?php
     foreach ($aPages as $titre => $page) {
