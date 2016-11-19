@@ -6,7 +6,6 @@
  * Date: 19/11/2016
  * Time: 10:51
  */
-require_once 'php/classes/CommunTable.php';
 
 class Droit extends CommunTable
 {

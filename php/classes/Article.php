@@ -6,7 +6,6 @@
  * Date: 17/11/2016
  * Time: 00:39
  */
-require_once 'php/classes/CommunTable.php';
 
 class Article extends CommunTable
 {
@@ -46,6 +45,11 @@ class Article extends CommunTable
     private $id_langue;
 
     /**
+     * @var string
+     */
+    private $image;
+
+    /**
      * @author Valentin Dérudet
      *
      * Article constructor.
@@ -66,12 +70,12 @@ class Article extends CommunTable
      * @param $texte
      * @return bool|Article
      */
-    public function add($titre_article, $titre_short_texte, $short_texte, $texte, $id_langue)
+    public function add($titre_article, $titre_short_texte, $short_texte, $texte, $id_langue, $image)
     {
         global $pdo;
         if(!empty($titre_article) && !empty($titre_short_texte)  && !empty($short_texte) && !empty($texte)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-            $query = 'INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd, active) VALUES (NULL, "'.$titre_article.'", "'.$titre_short_texte.'", "'.$short_texte.'", "'.$texte.'", "'.$ajd->format("Y-m-d H:i:s").'",NULL, 1)';
+            $query = 'INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd, active, id_langue, image) VALUES (NULL, "'.$titre_article.'", "'.$titre_short_texte.'", "'.$short_texte.'", "'.$texte.'", "'.$ajd->format("Y-m-d H:i:s").'",NULL, 1, "'.$id_langue.'", "'.$image.'")';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -95,10 +99,10 @@ class Article extends CommunTable
         global $pdo;
 
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'", texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_article = '.$this->id_article;
+        $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'", texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'", id_langue = "'.$this->id_langue.'", image = "'.$this->image.'" WHERE id_article = '.$this->id_article;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_article);
+        return $this;
     }
 
     /**
@@ -153,7 +157,7 @@ class Article extends CommunTable
      */
     public function getTitreShortTexte()
     {
-        return utf8_encode($this->titre_short_texte);
+        return $this->titre_short_texte;
     }
 
     /**
@@ -171,7 +175,7 @@ class Article extends CommunTable
      */
     public function getShortTexte()
     {
-        return utf8_encode($this->short_texte);
+        return $this->short_texte;
     }
 
     /**
@@ -236,5 +240,23 @@ class Article extends CommunTable
     {
         $this->id_langue = $id_langue;
         return $this;
+    }
+
+    /**
+     * @param string $image
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -5,9 +5,6 @@
  * Date: 15/11/2016
  * Time: 20:59
  */
-include_once('php/classes/Panier.php');
-include_once('php/classes/Produit.php');
-
 $id_user = 2;
 
 //Ajout
@@ -24,3 +21,6 @@ $id_user = 2;
 //Suppr
 //$p = Panier::rechercheParId(1);
 //$p->suppressionProduit(2);
+
+//$a = new Article();
+//$a->add('Les commerces', 'Commerces et activités', "Confluence c'est la vie refré @ € ô'ï é è", 't', 1, 'img/min/musee.jpg');

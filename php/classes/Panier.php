@@ -6,7 +6,6 @@
  * Date: 19/11/2016
  * Time: 12:18
  */
-require_once 'php/classes/Produit.php';
 
 class Panier extends CommunTable
 {
@@ -73,7 +72,6 @@ class Panier extends CommunTable
 
     /**
      * Permet d'update le panier.
-     * Utilisation : @todo
      *
      * @author Valentin Dérudet
      *
@@ -86,12 +84,13 @@ class Panier extends CommunTable
         $query = 'UPDATE Panier SET id_utilisateur = "'.$this->id_utilisateur.'", total = "'.$this->total.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'" WHERE id_panier = '.$this->id_panier;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_panier);
+        return $this;
     }
 
     /**
-     * Permet d'ajouter un produit au panier.
-     * Utilisation : @todo
+     * Permet d'ajouter ou de modifier un produit dans le panier.
+     * Utilisation :    $p = Panier::rechercheParId($id_panier)
+     *                  $p->ajoutProduit($id_product, $quantite)
      *
      * @author Valentin Dérudet
      *
