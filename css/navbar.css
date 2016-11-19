@@ -27,7 +27,7 @@
 
 .nav_item {
     display: block;
-    width: calc(100% / 7);
+    width: calc(100% / 8);
 }
 
 .nav_item img, .nav_item .nav_txt {
@@ -61,3 +61,12 @@
     text-decoration: none;
 }
 /* FIN NAVBAR */
+
+
+#btnConnexion {
+    background-color: #fff;
+    color: #000;
+    position: absolute;
+    top: 60px;
+    right: 0;
+}

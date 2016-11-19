@@ -22,5 +22,5 @@ $id_user = 2;
 //$p->ajoutProduit(2,4);
 
 //Suppr
-$p = Panier::rechercheParId(1);
-$p->suppressionProduit(2);
+//$p = Panier::rechercheParId(1);
+//$p->suppressionProduit(2);
