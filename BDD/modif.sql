@@ -303,3 +303,30 @@ INSERT INTO `mqc`.`Boutique_has_utilisateur` (`id_boutique`, `id_utilisateur`) V
 
 COMMIT;
 ALTER TABLE `boutique_has_utilisateur` ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `id_utilisateur`;
+ALTER TABLE `article` CHANGE `active` `active` TINYINT(4) NOT NULL DEFAULT '1';
+INSERT INTO
+  `article`(
+    `id_article`,
+    `titre_article`,
+    `titre_short_texte`,
+    `short_texte`,
+    `texte`,
+    `date_add`,
+    `date_upd`,
+    `active`,
+    `id_langue`,
+    `image`,
+    `titre_navbar`,
+    `image_navbar`
+  )
+VALUES
+  (1,'Bonjour','Bonjour','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Bonjour','img/min/musee.jpg'),
+  (2,'Clapette','Clapette','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Clapette','img/min/musee.jpg'),
+  (3,'On boit','On boit','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','On boit','img/min/musee.jpg'),
+  (4,'Une bière','Une bière','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Une bière','img/min/musee.jpg'),
+  (5,'Ou pas ?','Ou pas ?','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Ou pas ?','img/min/musee.jpg'),
+  (6,'Lol','Lol','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Lol','img/min/musee.jpg'),
+  (7,'Aller','Aller','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Aller','img/min/musee.jpg'),
+  (8,'Bisous','Bisous','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Bisous','img/min/musee.jpg'),
+  (9,'Refré','Refré','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','Refré','img/min/musee.jpg'),
+  (10,'A toute','A toute','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,NULL,'','A toute','img/min/musee.jpg')
