@@ -155,7 +155,7 @@ class Article extends CommunTable
      */
     public function getTitreArticle()
     {
-        return utf8_encode($this->titre_article);
+        return $this->titre_article;
     }
 
     /**

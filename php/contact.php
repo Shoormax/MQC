@@ -6,18 +6,20 @@
  * Time: 13:46
  */
 ?>
-    <div class="article" id="articleContact">
-        <form method="post" action="#Contact">
-            <div class="moitie fleft" id="contactInfos">
-                <input type="text" name="nom" placeholder="Nom">
-                <input type="text" name="prenom" placeholder="Prénom">
-                <input id="mail_contact" type="mail" name="email" placeholder="E-m@il">
-            </div>
-            <div class="moitie fleft">
-                <textarea id="messageContact" name="messageContact" placeholder="Entrez votre message ici."></textarea>
-            </div>
-            <input class="button" type="submit" value="Envoyer"">
-        </form>
+    <div id="'.$a->getTitreNavbar().'" class="sous-container">
+        <div class="article" id="articleContact">
+            <form method="post" action="#Contact">
+                <div class="moitie fleft" id="contactInfos">
+                    <input type="text" name="nom" placeholder="Nom">
+                    <input type="text" name="prenom" placeholder="Prénom">
+                    <input id="mail_contact" type="mail" name="email" placeholder="E-m@il">
+                </div>
+                <div class="moitie fleft">
+                    <textarea id="messageContact" name="messageContact" placeholder="Entrez votre message ici."></textarea>
+                </div>
+                <input class="button" type="submit" value="Envoyer"">
+            </form>
+        </div>
     </div>
 
 <?php
