@@ -29,5 +29,5 @@ $id_user = 1;
 //$panier->setTotal(18.07);
 //$panier->update();
 
-$u = Utilisateur::rechercheParId(1);
-var_dump($u->getPaniersUtilisateur());
+//$u = Utilisateur::rechercheParId(1);
+//var_dump($u->getPaniersUtilisateur());
