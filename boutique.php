@@ -3,6 +3,10 @@
 include_once('php/path.php');
 include_once ('php/include/init.php');
 
+if(isset($_POST['connexion'])) {
+  include('php/traitement/connexion.php');
+}
+
 $articles = Article::rechercherParParam(array('active' => 1), 10);
 
 ?>
@@ -16,10 +20,17 @@ $articles = Article::rechercherParParam(array('active' => 1), 10);
   <link rel="stylesheet" href="css/boutique.css">
 </head>
 <body>
+
+<div id="formulaireConnexion" class="blurFullScreen">
+  <div class="content">
+    <?php include("php/views/connexion.php"); ?>
+  </div>
+</div>
+
 <header>
-  <div>Logo</div>
+  <div class="extremite">Logo</div>
   <div><input type="text" placeholder="Rechercher"></div>
-  <div class="compte">
+  <div class="compte extremite">
     <?php include('php/views/navbar_compte.php'); ?>
   </div>
 </header>
@@ -38,5 +49,6 @@ $articles = Article::rechercherParParam(array('active' => 1), 10);
     ?>
   </div>
 </div>
+<script src="js/boutique.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

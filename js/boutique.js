@@ -1,3 +1,26 @@
-/**
- * Created by AifeDesPaix on 19/11/2016.
- */
+
+document.getElementById("btnConnexion").addEventListener("click", function () {
+  gestionConnection();
+});
+
+var afficherConnecter = false;
+
+function gestionConnection() {
+  afficherConnecter = !afficherConnecter;
+  if(afficherConnecter) {
+    document.getElementById("formulaireConnexion").style.display = "block";
+  } else {
+    document.getElementById("formulaireConnexion").style.display = "none";
+  }
+
+}
+
+function gestionConnection() {
+  afficherConnecter = !afficherConnecter;
+  if(afficherConnecter) {
+    document.getElementById("formulaireConnexion").style.display = "block";
+  } else {
+    document.getElementById("formulaireConnexion").style.display = "none";
+  }
+
+}
