@@ -60,6 +60,22 @@ class Produit extends CommunTable
 
     /**
      *
+     * MAGIC METHODS
+     *
+     */
+
+    /**
+     * Permet de retourner le libelle et la quantite ce produit.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->libelle.' ('.$this->stock.')';
+    }
+
+    /**
+     *
      * PUBLIC METHODS
      *
      */
@@ -180,6 +196,26 @@ class Produit extends CommunTable
         echo $message;
         return $this->update();
     }
+
+    /**
+     * Permet de remplir le champ de recherche des produits.
+     *
+     * @author Valentin Dérudet
+     *
+     * @param $text
+     *
+     * @return Produit[]
+     */
+    public function autocomplementationProduit($text)
+    {
+        global $pdo;
+
+        $req = "SELECT libelle FROM produit WHERE libelle LIKE %'".$text."' AND active = 1";
+        $query = $pdo->query($req);
+
+        return $query->fetchAll();
+    }
+
     /**
      *
      * GETTERS / SETTERS
