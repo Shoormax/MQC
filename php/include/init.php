@@ -5,7 +5,7 @@
  * Date: 15/11/2016
  * Time: 21:00
  */
-if(__LOCAL_PATH__ !== "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence") {
+if(__LOCAL_PATH__ == "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence") {
     ini_set('display_errors', 1);
 }
 include_once __ADDRESS_CLASSES__.'Configuration.php';
