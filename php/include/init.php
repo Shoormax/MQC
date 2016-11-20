@@ -8,7 +8,10 @@
 if(__LOCAL_PATH__ == "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence") {
     ini_set('display_errors', 1);
 }
+
 include_once __ADDRESS_CLASSES__.'Configuration.php';
+
+
 try {
     $pdo = new PDO('mysql:host='.__DB_HOST__.';dbname='.__DB_NAME__, __USER__, __PASSWORD__, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 }
