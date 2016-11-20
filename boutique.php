@@ -7,8 +7,7 @@ if(isset($_POST['connexion'])) {
   include('php/traitement/connexion.php');
 }
 
-$articles = Article::rechercherParParam(array('active' => 1), 10);
-
+$produits = Produit::rechercherParParam(array('active' => 1), 10);
 ?>
 
 <!DOCTYPE html>
@@ -37,15 +36,15 @@ $articles = Article::rechercherParParam(array('active' => 1), 10);
 <div id="content">
   <nav>
     <?php
-    // todo
+    //@todo
     ?>
   </nav>
   <div id="boutique">
     <?php
-    if(is_array($articles))
-      foreach ($articles as $article )  {
-        var_dump($article);
+      foreach ($produits as $produit) {
+        include 'php/views/affichage_produits.php';
       }
+    echo '<div id="detailProduit" class="hide"></div>';
     ?>
   </div>
 </div>

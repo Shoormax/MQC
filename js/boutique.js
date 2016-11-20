@@ -24,3 +24,9 @@ function gestionConnection() {
   }
 
 }
+
+function apercuProduit(id_produit) {
+  var div = document.getElementById("detailProduit");
+  div.style.display = "block";
+  div.innerHTML = id_produit;
+}

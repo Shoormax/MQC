@@ -49,6 +49,16 @@ class Produit extends CommunTable
     private $image;
 
     /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $description_anglais;
+
+    /**
      * Produit constructor.
      *
      * @author Valentin Dérudet
@@ -94,12 +104,12 @@ class Produit extends CommunTable
      * @param $stock
      * @return bool|Produit
      */
-    public function add($libelle, $prix, $stock = 0, $id_boutique, $libelle_anglais = null,  $image = null)
+    public function add($libelle, $prix, $stock = 0, $id_boutique, $libelle_anglais = null, $description = null, $description_anglais = null,  $image = null)
     {
         global $pdo;
         if(!empty($libelle) && !empty($prix) && !empty($stock) && !empty($id_boutique)) {
-            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, prix, active, stock, image, id_boutique) 
-                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'", '.$prix.', "1", "'.$stock.'", "'.$image.'", "'.$id_boutique.'")';
+            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, description, description_anglais, prix, active, stock, image, id_boutique) 
+                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'",  "'.$description.'",  "'.$description_anglais.'",'.$prix.', "1", "'.$stock.'", "'.$image.'", "'.$id_boutique.'")';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -126,7 +136,8 @@ class Produit extends CommunTable
 
         $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", 
                     prix = "'.$this->prix.'", active = "'.$this->active.'", stock = "'.$this->stock.'", image = "'.$this->image.'",
-                    id_boutique = "'.$this->id_boutique.'" WHERE id_produit ='.$this->id_produit;
+                    id_boutique = "'.$this->id_boutique.'", description = "'.$this->description.'", 
+                    description_anglais = "'.$this->description_anglais.'" WHERE id_produit ='.$this->id_produit;
 
         $pdo->exec($query);
         return $this;
@@ -353,6 +364,58 @@ class Produit extends CommunTable
     public function setIdBoutique($id_boutique)
     {
         $this->id_boutique = $id_boutique;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->id_produit;
+    }
+
+    /**
+     * @param int $id_produit
+     */
+    public function setIdProduit(int $id_produit)
+    {
+        $this->id_produit = $id_produit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionAnglais()
+    {
+        return $this->description_anglais;
+    }
+
+    /**
+     * @param string $description_anglais
+     * @return Produit
+     */
+    public function setDescriptionAnglais($description_anglais)
+    {
+        $this->description_anglais = $description_anglais;
         return $this;
     }
 }

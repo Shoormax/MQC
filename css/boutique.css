@@ -92,3 +92,12 @@ header input {
     border: 0 solid black;
     border-radius: 5px;
 }
+
+
+.hide{
+    display: none;
+}
+
+.show{
+    display:block;
+}

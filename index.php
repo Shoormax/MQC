@@ -18,6 +18,7 @@ $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
 ?>
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <body>
+    <div id="btnConnexion"><a href="boutique.php">Boutique</a></div>
     <div id="menu_haut">
         <?php
         foreach ($articles as $a) {

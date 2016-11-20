@@ -46,6 +46,43 @@ class Boutique extends CommunTable
     }
 
     /**
+     *
+     * MAGIC METHODS
+     *
+     */
+
+    /**
+     * Retourne le nom de la boutique
+     *
+     * @author Valentin Dérudet
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     *
+     * PUBLIC METHODS
+     *
+     */
+
+    /**
+     * Retourne l'adresse complète de la boutique
+     *
+     * @author Valentin Dérudet
+     * @param string $seprateur
+     *
+     * @return string
+     */
+    public function getAdresseComplete($seprateur = ' ')
+    {
+        return $this->adresse.$seprateur.$this->ville.' '.$this->code_postal;
+    }
+
+    /**
      * Permet de créer une boutique
      *
      * @author Valentin Dérudet
