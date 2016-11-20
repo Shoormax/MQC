@@ -36,23 +36,7 @@ $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
         </div>
         <?php
         foreach ($articles as $a) {
-            echo '<div id="'.$a->getTitreNavbar().'" class="sous-container">';
-            echo "<div class='article' id=''>
-            <div class='wrap-visuel'>
-                <div class='wrap-titre-sous-container tcenter'>
-                    <span class='titre-sous-container'>".$a->getTitreArticle()."</span>
-                </div>
-                <img class='imgArticle' src='".$a->getImage()."'>
-            </div>
-            <div class='wrap-textuel'>
-                <div class='sous-wrap-text tcenter'>
-                    <p>".$a->getTitreShortTexte()."</p>
-                    <span>".$a->getShortTexte()."</span>
-                </div>
-            </div>
-            <div class='clearfix'></div>
-        </div>
-        </div>";
+            include 'php/article.php';
         }
         include 'php/contact.php';
         ?>

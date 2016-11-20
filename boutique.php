@@ -29,7 +29,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
 
 <header>
   <div class="extremite"><a href="index.php">Logo</a></div>
-  <div><input type="text" placeholder="Rechercher"></div>
+  <div><input type="text" placeholder="Rechercher un produit..."></div>
   <div class="compte extremite">
     <?php include('php/views/boutique/navbar_compte.php'); ?>
   </div>

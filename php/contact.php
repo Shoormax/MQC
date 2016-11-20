@@ -12,7 +12,7 @@
                 <div class="moitie fleft" id="contactInfos">
                     <input type="text" name="nom" placeholder="Nom">
                     <input type="text" name="prenom" placeholder="Prénom">
-                    <input id="mail_contact" type="mail" name="email" placeholder="E-m@il">
+                    <input id="mail_contact" type="mail" name="email" placeholder="E-mail">
                 </div>
                 <div class="moitie fleft">
                     <textarea id="messageContact" name="messageContact" placeholder="Entrez votre message ici."></textarea>

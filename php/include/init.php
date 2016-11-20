@@ -9,6 +9,10 @@ if(__LOCAL_PATH__ !== "http://monquartierconfluence.labo-g4.fr/MonQuartierConflu
     ini_set('display_errors', 1);
 }
 
+if (strpos($_SERVER["SCRIPT_NAME"], "administration.php")) {
+    define("__ADDRESS_CLASSES__",  "../php/classes/");
+}
+
 if(file_exists(__ADDRESS_CLASSES__.'Configuration.php')) {
     include_once __ADDRESS_CLASSES__.'Configuration.php';
     Configuration::chargementClasses();
