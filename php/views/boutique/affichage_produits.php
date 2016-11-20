@@ -25,6 +25,6 @@ echo '<a href="php/views/boutique/affichage_produits.php?detail=true&produit='.$
     echo'<br>';
     echo'<br>';
     echo '</a>';
-    echo '<input type="button" class="button" onclick="modificationQuantite(\'-\','.$produit->getId().')" value="-"><input class="nombreProduit" id="nombreProduit'.$produit->getId().'" type="text"><input type="button" class="button" value="+" onclick="modificationQuantite(\'+\','.$produit->getId().')">';
+    echo '<input type="button" class="button" onclick="modificationQuantite(\'-\','.$produit->getId().')" value="-"><input class="nombreProduit" id="nombreProduit'.$produit->getId().'" type="text" value="0"><input type="button" class="button" value="+" onclick="modificationQuantite(\'+\','.$produit->getId().','.$produit->getStock().')">';
     echo '</div>';
 }

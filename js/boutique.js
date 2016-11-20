@@ -33,14 +33,14 @@ function gestionConnection() {
  * @param operator Si c'est un ajout ou une suppression
  * @param id_produit
  */
-function modificationQuantite(operator, id_produit) {
+function modificationQuantite(operator, id_produit, quantite_stock) {
   var input = document.getElementById("nombreProduit"+id_produit),
       quantite = input.value;
 
-  if(operator == '+') {
+  if(operator == '+' && quantite < quantite_stock) {
     input.value = quantite - (-1);
   }
-  else if (operator == '-') {
+  else if (operator == '-' && quantite > 0) {
     input.value = quantite - 1;
   }
 }
