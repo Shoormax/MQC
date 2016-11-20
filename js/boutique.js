@@ -30,8 +30,9 @@ function gestionConnection() {
  *
  * @auhtor Valentin Dérudet
  *
- * @param operator Si c'est un ajout ou une suppression
+ * @param operator        Si c'est un ajout ou une suppression
  * @param id_produit
+ * @param quantite_stock  La quantite a ne pas dépasser
  */
 function modificationQuantite(operator, id_produit, quantite_stock) {
   var input = document.getElementById("nombreProduit"+id_produit),
