@@ -9,6 +9,18 @@
  * Gestion des articles côté admin.
  *
  */
+function redir($url)
+{
+    echo "<script language=\"javascript\">";
+    echo "window.location='$url';";
+    echo "</script>";
+}
+
+if(!isset($_GET['co'])) {
+    redir('index.php');
+}
+
+
 include_once('../php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 require_once '../php/include/init.php';
