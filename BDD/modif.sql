@@ -334,3 +334,11 @@ VALUES
 
 ALTER TABLE `produit` ADD `description` VARCHAR(200) NULL AFTER `libelle_anglais`,
 ADD `description_anglais` VARCHAR(200) NULL AFTER `description`;
+
+
+INSERT INTO `produit` (`id_produit`, `libelle`, `libelle_anglais`, `description`, `description_anglais`, `prix`, `active`, `stock`, `image`, `id_boutique`) VALUES
+(2, 'test0', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+(3, 'test1', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+(4, 'test2', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+(5, 'test3', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+(6, 'test4', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1);
