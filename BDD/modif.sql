@@ -305,32 +305,18 @@ COMMIT;
 ALTER TABLE `boutique_has_utilisateur` ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `id_utilisateur`;
 ALTER TABLE `article` CHANGE `active` `active` TINYINT(4) NOT NULL DEFAULT '1';
 ALTER TABLE `article` CHANGE `id_langue` `id_langue` INT(11) NULL DEFAULT '1';
-INSERT INTO
-  `article`(
-    `id_article`,
-    `titre_article`,
-    `titre_short_texte`,
-    `short_texte`,
-    `texte`,
-    `date_add`,
-    `date_upd`,
-    `active`,
-    `id_langue`,
-    `image`,
-    `titre_navbar`,
-    `image_navbar`
-  )
-VALUES
-  (1,'Accessibilité','Bonjour','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Bonjour',''),
-  (2,'Accueil','Clapette','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Clapette',''),
-  (3,'Musée','On boit','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','On boit',''),
-  (4,'Architecture','Une bière','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Une bière',''),
-  (5,'Commerces','Ou pas ?','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Ou pas ?',''),
-  (6,'Quais','Lol','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Lol',''),
-  (7,'Aller','Aller','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Aller',''),
-  (8,'Bisous','Bisous','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Bisous',''),
-  (9,'Refré','Refré','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Refré',''),
-  (10,'A toute','A toute','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','A toute','');
+
+INSERT INTO `article` (`id_article`, `titre_article`, `titre_short_texte`, `short_texte`, `texte`, `date_add`, `date_upd`, `active`, `id_langue`, `image`, `titre_navbar`, `image_navbar`) VALUES
+  (1, 'Accessibilité', 'Bonjour', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Bonjour', ''),
+  (2, 'Accueil', 'Clapette', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Clapette', ''),
+  (3, 'Musée', 'On boit', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'On boit', ''),
+  (4, 'Architecture', 'Une bière', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Une bière', ''),
+  (5, 'Commerces', 'Ou pas ?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Ou pas ?', ''),
+  (6, 'Quais', 'Lol', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Lol', ''),
+  (7, 'Aller', 'Aller', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Aller', ''),
+  (8, 'Bisous', 'Bisous', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Bisous', ''),
+  (9, 'Refré', 'Refré', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Refré', ''),
+  (10, 'A toute', 'A toute', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'A toute', '');
 
 ALTER TABLE `produit` ADD `description` VARCHAR(200) NULL AFTER `libelle_anglais`,
 ADD `description_anglais` VARCHAR(200) NULL AFTER `description`;
@@ -342,3 +328,5 @@ INSERT INTO `produit` (`id_produit`, `libelle`, `libelle_anglais`, `description`
 (4, 'test2', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
 (5, 'test3', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
 (6, 'test4', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1);
+
+ALTER TABLE Boutique ADD COLUMN active TINYINT(4) DEFAULT 1 NOT NULL;
