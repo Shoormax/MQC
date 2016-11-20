@@ -19,13 +19,3 @@ function findPos(obj) {
         return [curtop];
     }
 }
-
-
-function emailvalidation(){
-    if(/^[^@]+@[^@]+$/.test(document.getElementById("mail_contact").value))
-    {
-        return true;
-    }
-    alert("Adresse mail invalide.");
-    return false;
-}

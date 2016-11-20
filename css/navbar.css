@@ -4,20 +4,25 @@
 
 /* NAVBAR */
 #menu_haut {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--police-texte);
     z-index: 9999999;
     position: fixed;
     width: inherit;
-    height: 13%;
-    color: #fff;
-    background-color: rgb(129, 205, 209);
+    height: 8%;
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
     margin: 0;
     padding: 0;
-    font-size: 1.3em;
+    top: 0;
+    box-shadow: 0 1vh 0.5vh 0 rgba(0,0,0,0.3)
+}
+
+#menu_haut span {
+    font-size: 3vh;
+    color: #008bcd;
 }
 
 .nav_item {
@@ -30,15 +35,25 @@
     display: block;
     text-align: center;
     margin: auto;
-    height: 50%;
+    height: 30%;
+    line-height: 50%;
     overflow: hidden;
-    font-size: 0.8em;
-    padding-top: 4%;
+    font-size: 2vw;
+}
+.nav_item img {
+    padding-top: 1%;
+    height: 50%;
+}
+
+.nav_item .nav_txt {
+    padding-top: 3%;
+    height: 30%;
+
 }
 
 .nav_item:link, .nav_item:visited {
     text-decoration: none;
-    color : white;
+    color : #AEC8DA;
 }
 
 .nav_item:hover{

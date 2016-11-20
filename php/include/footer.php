@@ -12,11 +12,18 @@
  * des fichiers JS
  */
 include_once('../path.php');
-echo'
-    <footer>
-        <script type="text/javascript" src="'.__JS_PATH__.'index.js"></script>
-        <script type="text/javascript" src="'.__JS_PATH__.'scroll.js"></script>
-        <script type="text/javascript" src="'.__JS_PATH__.'event.js"></script>
-        <script type="text/javascript" src="'.__JS_PATH__.'deploiement.js"></script>
-    </footer>
+
+$aCss = [
+    'index',
+    'scroll',
+    'event',
+    'deploiement',
+    'panorama'
+];
+
+echo'<footer>';
+    foreach ($aCss as $sNomFicher) {
+       echo' <script type="text/javascript" src="'.__JS_PATH__.$sNomFicher.'.js"></script>';
+    }
+echo'</footer>
 </HTML>';

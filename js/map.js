@@ -282,6 +282,7 @@ function initMap() {
     var buttons = [buttonCulture, buttonFamily, buttonSport];
 
     //On termine la fonction par l'appel des fonctions qui vont initialiser les marqueurs et l'itinéraire de l'onglet Famille
+    // Peut être déplacé pour être appelé lorsqu'on clique sur l'onglet accessibilité !
     constructOnglet(markerFamille, carte);
     itineraireFamille = traceItineraire(itineraireFamille, pointsItineraireFamille, carte);
 }

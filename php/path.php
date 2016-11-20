@@ -5,14 +5,39 @@
  * Date: 21/09/2016
  * Time: 09:16
  */
+
 if(file_exists("C:/Users/Valentin")){
-    define("__LOCAL_PATH__", "http://localhost/ProjectOne");
-} else if(file_exists("C:/Users/quentin")){
+    define("__LOCAL_PATH__", "http://localhost/MQC");
+    //BDD
+    define('__DB_HOST__', 'localhost');
+    define('__DB_NAME__', 'mqc');
+    define('__USER__', 'root');
+    define('__PASSWORD__', '');
+}
+elseif(file_exists("C:/Users/quentin")){
     define("__LOCAL_PATH__", "http://localhost:8001/ProjectOne");
-} elseif( file_exists("C:/Users/AifeDesPaix") ) {
-    define("__LOCAL_PATH__", "http://localhost/ProjectOne");
-} elseif (file_exists("C:/Users/Ben")) {
-    define("__LOCAL_PATH__", "http://localhost/MQC/");
+}
+elseif( file_exists("C:/Users/AifeDesPaix") ) {
+    define("__LOCAL_PATH__", "http://localhost/connardedeconfluence/MQC");
+}
+elseif( file_exists("C:/Users/Ben") ) {
+    define("__LOCAL_PATH__", "http://localhost/MQC");
+    //BDD
+    define('__DB_HOST__', 'localhost');
+    define('__DB_NAME__', 'mqc');
+    define('__USER__', 'root');
+    define('__PASSWORD__', '');
+}
+elseif(file_exists("C:/Users/Shosho")) {
+    define("__LOCAL_PATH__", "http://localhost/MySites/MQC");
+    //BDD
+    define('__DB_HOST__', 'localhost');
+    define('__DB_NAME__', 'mqc');
+    define('__USER__', 'root');
+    define('__PASSWORD__', '');
+}
+else {
+    define("__LOCAL_PATH__", "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence");
 }
 
 define("__INCLUDE_PATH__", __LOCAL_PATH__."/php/include/");
