@@ -61,6 +61,7 @@ html, body{
 }
 
 .wrap-visuel{
+    color: black;
     width: 50%;
     float: left;
 }
