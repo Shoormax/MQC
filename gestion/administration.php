@@ -5,6 +5,10 @@
  * Date: 20/11/2016
  * Time: 15:59
  */
+/**
+ * Gestion des articles côté admin.
+ *
+ */
 include_once('../php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 require_once '../php/include/init.php';
