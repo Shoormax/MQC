@@ -1,3 +1,8 @@
+:root {
+    --police-titre: "Proza Libre script=all rev=2", "Adobe Blank", sans-serif;
+    --police-texte: "Segoe UI", sans-serif;
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -101,3 +106,41 @@ header input {
 .show{
     display:block;
 }
+
+#boutique {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#boutique a, a:visited, a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.apercuProduit {
+    text-align: center;
+    border: 1.1vw solid white;
+    background: tomato;
+    padding: 1%;
+    font-family: var(--police-texte);
+}
+
+.button {
+    margin: auto;
+    background-color: #008BCD;
+    color: #fff;
+    padding: 5px;
+    height: 6%;
+    border: none;
+}
+
+.nombreProduit {
+    width: 15%;
+    height: 6%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    border: none;
+    background-color: white;
+}
+

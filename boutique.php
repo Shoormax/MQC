@@ -14,6 +14,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="img/min/Musee.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Boutique - Mon Quartier Confluence</title>
   <link rel="stylesheet" href="css/boutique.css">
@@ -22,7 +23,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
 
 <div id="formulaireConnexion" class="blurFullScreen">
   <div class="content">
-    <?php include("php/views/connexion.php"); ?>
+    <?php include("php/views/boutique/connexion.php"); ?>
   </div>
 </div>
 
@@ -30,7 +31,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   <div class="extremite">Logo</div>
   <div><input type="text" placeholder="Rechercher"></div>
   <div class="compte extremite">
-    <?php include('php/views/navbar_compte.php'); ?>
+    <?php include('php/views/boutique/navbar_compte.php'); ?>
   </div>
 </header>
 <div id="content">
@@ -42,9 +43,8 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   <div id="boutique">
     <?php
       foreach ($produits as $produit) {
-        include 'php/views/affichage_produits.php';
+        include 'php/views/boutique/affichage_produits.php';
       }
-    echo '<div id="detailProduit" class="hide"></div>';
     ?>
   </div>
 </div>

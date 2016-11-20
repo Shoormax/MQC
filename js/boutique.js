@@ -25,8 +25,22 @@ function gestionConnection() {
 
 }
 
-function apercuProduit(id_produit) {
-  var div = document.getElementById("detailProduit");
-  div.style.display = "block";
-  div.innerHTML = id_produit;
+/**
+ * Permet de modifier la quantite sélectionnée pour les produits
+ *
+ * @auhtor Valentin Dérudet
+ *
+ * @param operator Si c'est un ajout ou une suppression
+ * @param id_produit
+ */
+function modificationQuantite(operator, id_produit) {
+  var input = document.getElementById("nombreProduit"+id_produit),
+      quantite = input.value;
+
+  if(operator == '+') {
+    input.value = quantite - (-1);
+  }
+  else if (operator == '-') {
+    input.value = quantite - 1;
+  }
 }
