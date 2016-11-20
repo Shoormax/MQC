@@ -333,12 +333,17 @@ VALUES
   (10,'A toute','A toute','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','A toute','');
 
 ALTER TABLE `produit` ADD `description` VARCHAR(200) NULL AFTER `libelle_anglais`,
-ADD `description_anglais` VARCHAR(200) NULL AFTER `description`;
+  ADD `description_anglais` VARCHAR(200) NULL AFTER `description`;
 
+UPDATE article set image_navbar = titre_article;
+UPDATE article set image_navbar = 'Accessibilite' where image_navbar='Accessibilité';
+UPDATE article set image_navbar = 'Musee' where image_navbar='Musée';
 
 INSERT INTO `produit` (`id_produit`, `libelle`, `libelle_anglais`, `description`, `description_anglais`, `prix`, `active`, `stock`, `image`, `id_boutique`) VALUES
-(2, 'test0', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
-(3, 'test1', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
-(4, 'test2', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
-(5, 'test3', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
-(6, 'test4', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1);
+  (1, 'test0', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+  (2, 'test1', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+  (3, 'test2', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+  (4, 'test3', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1),
+  (5, 'test4', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1);
+
+ALTER TABLE Boutique ADD COLUMN active TINYINT(4) NOT NULL DEFAULT 1;
