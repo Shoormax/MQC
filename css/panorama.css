@@ -8,25 +8,11 @@
     height: 100%;
     background-color: red;
     background-image: url("../img/Panorama.jpg");
-    -webkit-background-size: auto;
-    background-size: auto 100%;
+    -webkit-background-size: auto 100%;
     display: flex;
-    justify-content: space-between;
 }
 
-#panorama p {
-    font-size: 3.5em;
-    letter-spacing: 0.5vw;
-    text-align: center;
-    color: rgba(0, 111, 164, 1);
+#panorama img {
     width: 100%;
-    font-family: var(--police-titre);
-}
-
-.p_flou {
-    position: absolute;
-    width: 67%;
-    height: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
-    z-index: 1;
+    height: 100%;
 }

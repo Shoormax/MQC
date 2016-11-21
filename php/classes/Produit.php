@@ -5,8 +5,6 @@
  * Date: 15/11/2016
  * Time: 21:23
  */
-require_once 'php/classes/CommunTable.php';
-require_once 'php/classes/StockMouvement.php';
 
 class Produit extends CommunTable
 {
@@ -18,7 +16,7 @@ class Produit extends CommunTable
     /**
      * @var int
      */
-    private $id_utilisateur;
+    private $id_boutique;
 
     /**
      * @var string
@@ -46,6 +44,21 @@ class Produit extends CommunTable
     private $stock;
 
     /**
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $description_anglais;
+
+    /**
      * Produit constructor.
      *
      * @author Valentin Dérudet
@@ -53,6 +66,22 @@ class Produit extends CommunTable
     public function __construct()
     {
 
+    }
+
+    /**
+     *
+     * MAGIC METHODS
+     *
+     */
+
+    /**
+     * Permet de retourner le libelle et la quantite ce produit.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->libelle.' ('.$this->stock.')';
     }
 
     /**
@@ -68,19 +97,19 @@ class Produit extends CommunTable
      *
      * @author Valentin Dérudet
      *
-     * @param $id_utilisateur
+     * @param $id_boutique
      * @param $libelle
      * @param $libelle_anglais (optionnal) (default=null)
      * @param $prix
      * @param $stock
      * @return bool|Produit
      */
-    public function add($id_utilisateur, $libelle, $prix, $stock, $libelle_anglais = null)
+    public function add($libelle, $prix, $stock = 0, $id_boutique, $libelle_anglais = null, $description = null, $description_anglais = null,  $image = null)
     {
         global $pdo;
-        if(!empty($libelle) && !empty($prix) && !empty($id_utilisateur) && !empty($stock)) {
-            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, prix, id_utilisateur, active, stock) 
-                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'", "'.$prix.'", "'.$id_utilisateur.'", "1", "'.$stock.'")';
+        if(!empty($libelle) && !empty($prix) && !empty($stock) && !empty($id_boutique)) {
+            $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, description, description_anglais, prix, active, stock, image, id_boutique) 
+                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'",  "'.$description.'",  "'.$description_anglais.'",'.$prix.', "1", "'.$stock.'", "'.$image.'", "'.$id_boutique.'")';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -105,10 +134,13 @@ class Produit extends CommunTable
     {
         global $pdo;
 
-        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", prix = "'.$this->prix.'", id_utilisateur = "'.$this->id_utilisateur.'", active = "'.$this->active.'", stock = "'.$this->stock.'" WHERE id_produit ='.$this->id_produit;
+        $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", 
+                    prix = "'.$this->prix.'", active = "'.$this->active.'", stock = "'.$this->stock.'", image = "'.$this->image.'",
+                    id_boutique = "'.$this->id_boutique.'", description = "'.$this->description.'", 
+                    description_anglais = "'.$this->description_anglais.'" WHERE id_produit ='.$this->id_produit;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_produit);
+        return $this;
     }
 
     /**
@@ -175,6 +207,26 @@ class Produit extends CommunTable
         echo $message;
         return $this->update();
     }
+
+    /**
+     * Permet de remplir le champ de recherche des produits.
+     *
+     * @author Valentin Dérudet
+     *
+     * @param $text
+     *
+     * @return Produit[]
+     */
+    public function autocomplementationProduit($text)
+    {
+        global $pdo;
+
+        $req = "SELECT libelle FROM produit WHERE libelle LIKE %'".$text."' AND active = 1";
+        $query = $pdo->query($req);
+
+        return $query->fetchAll();
+    }
+
     /**
      *
      * GETTERS / SETTERS
@@ -187,24 +239,6 @@ class Produit extends CommunTable
     public function getId()
     {
         return $this->id_produit;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdUtilisateur()
-    {
-        return $this->id_utilisateur;
-    }
-
-    /**
-     * @param int $id_utilisateur
-     * @return Produit
-     */
-    public function setIdUtilisateur($id_utilisateur)
-    {
-        $this->id_utilisateur = $id_utilisateur;
-        return $this;
     }
 
     /**
@@ -294,6 +328,94 @@ class Produit extends CommunTable
     public function setStock(int $stock)
     {
         $this->stock = $stock;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     * @return Produit
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdBoutique()
+    {
+        return $this->id_boutique;
+    }
+
+    /**
+     * @param int $id_boutique
+     * @return Produit
+     */
+    public function setIdBoutique($id_boutique)
+    {
+        $this->id_boutique = $id_boutique;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->id_produit;
+    }
+
+    /**
+     * @param int $id_produit
+     */
+    public function setIdProduit(int $id_produit)
+    {
+        $this->id_produit = $id_produit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionAnglais()
+    {
+        return $this->description_anglais;
+    }
+
+    /**
+     * @param string $description_anglais
+     * @return Produit
+     */
+    public function setDescriptionAnglais($description_anglais)
+    {
+        $this->description_anglais = $description_anglais;
         return $this;
     }
 }

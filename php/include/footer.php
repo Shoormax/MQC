@@ -23,7 +23,8 @@ $aCss = [
 
 echo'<footer>';
     foreach ($aCss as $sNomFicher) {
-       echo' <script type="text/javascript" src="'.__JS_PATH__.$sNomFicher.'.js"></script>';
+      var_dump(__JS_PATH__.$sNomFicher.'.js');
+      echo' <script type="text/javascript" src="'.__JS_PATH__.$sNomFicher.'.js"></script>';
     }
 echo'</footer>
 </HTML>';

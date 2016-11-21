@@ -60,6 +60,23 @@ class Utilisateur extends CommunTable
 
     /**
      *
+     * MAGIC METHODS
+     *
+     */
+
+    /**
+     * Retourne le nom et le prénom de l'utilisateur.
+     * Utilisation :    (string)$utilisateur
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->nom.' '.$this->prenom;
+    }
+
+    /**
+     *
      * PUBLIC METHODS
      *
      */
@@ -86,7 +103,7 @@ class Utilisateur extends CommunTable
             $query = 'INSERT INTO utilisateur (id_utilisateur, id_droit, nom, prenom, email, password, date_add, date_upd, active) VALUES (NULL, "'.$id_droit.'", "'.$nom.'", "'.$prenom.'", "'.$email.'", "'.$password.'", "'.$ajd->format("Y-m-d H:i:s").'", NULL,"1")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
+//            echo('Merci de remplir tous les champs.');
             return false;
         }
 
@@ -112,7 +129,7 @@ class Utilisateur extends CommunTable
         $query = 'UPDATE Utilisateur SET id_droit = "'.$this->id_droit.'", nom = "'.$this->nom.'", prenom = "'.$this->prenom.'", email = "'.$this->email.'",password = "'.$this->password.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_utilisateur = '.$this->id_utilisateur;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_utilisateur);
+        return $this;
     }
 
     /**
@@ -128,6 +145,27 @@ class Utilisateur extends CommunTable
     {
         $this->setActive(0);
         return $this->update();
+    }
+
+    /**
+     * Récupère les paniers de cet utilisateur.
+     *
+     * @return Panier[]
+     */
+    public function getPaniersUtilisateur()
+    {
+        return Panier::rechercherParParam(array('id_utilisateur' => $this->id_utilisateur));
+    }
+
+    /**
+     * @return array
+     */
+    public function getBoutique()
+    {
+        global $pdo;
+        $req = 'SELECT id_boutique FROM boutique_has_utilisateur WHERE id_utilisateur ='.$this->id_utilisateur;
+        $query = $pdo->query($req);
+        return $query->fetchAll();
     }
 
     /**

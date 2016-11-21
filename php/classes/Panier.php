@@ -6,7 +6,6 @@
  * Date: 19/11/2016
  * Time: 12:18
  */
-require_once 'php/classes/Produit.php';
 
 class Panier extends CommunTable
 {
@@ -57,7 +56,7 @@ class Panier extends CommunTable
     {
         global $pdo;
         if(!empty($id_utilisateur)) {
-            $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+            $ajd = new DateTime();
 
             $query = 'INSERT INTO Panier (id_panier, id_utilisateur, total, date_add, date_upd) 
                       VALUES (DEFAULT, "'.$id_utilisateur.'", DEFAULT,  "'.$ajd->format("Y-m-d H:i:s").'", DEFAULT)';
@@ -73,7 +72,6 @@ class Panier extends CommunTable
 
     /**
      * Permet d'update le panier.
-     * Utilisation : @todo
      *
      * @author Valentin Dérudet
      *
@@ -86,12 +84,13 @@ class Panier extends CommunTable
         $query = 'UPDATE Panier SET id_utilisateur = "'.$this->id_utilisateur.'", total = "'.$this->total.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'" WHERE id_panier = '.$this->id_panier;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_panier);
+        return $this;
     }
 
     /**
-     * Permet d'ajouter un produit au panier.
-     * Utilisation : @todo
+     * Permet d'ajouter ou de modifier un produit dans le panier.
+     * Utilisation :    $p = Panier::rechercheParId($id_panier)
+     *                  $p->ajoutProduit($id_product, $quantite)
      *
      * @author Valentin Dérudet
      *
@@ -157,8 +156,8 @@ class Panier extends CommunTable
     public function getProduits()
     {
         global $pdo;
-        $test = 'SELECT id_produit FROM panier_has_produit WHERE id_panier ='.$this->id_panier;
-        $query = $pdo->query($test);
+        $req = 'SELECT id_produit FROM panier_has_produit WHERE id_panier ='.$this->id_panier;
+        $query = $pdo->query($req);
         return $query->fetchAll();
     }
 
@@ -173,8 +172,8 @@ class Panier extends CommunTable
     public function getQuantiteProduit($id_product)
     {
         global $pdo;
-        $test = 'SELECT quantite FROM panier_has_produit WHERE id_panier ='.$this->id_panier.' AND id_produit ='.$id_product;
-        $query = $pdo->query($test);
+        $req = 'SELECT quantite FROM panier_has_produit WHERE id_panier ='.$this->id_panier.' AND id_produit ='.$id_product;
+        $query = $pdo->query($req);
         return $query->fetch()[0];
     }
 

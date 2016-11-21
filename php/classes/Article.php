@@ -6,7 +6,6 @@
  * Date: 17/11/2016
  * Time: 00:39
  */
-require_once 'php/classes/CommunTable.php';
 
 class Article extends CommunTable
 {
@@ -46,13 +45,25 @@ class Article extends CommunTable
     private $id_langue;
 
     /**
-     * @author Valentin Dérudet
-     *
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var string
+     */
+    private $titre_navbar;
+
+    /**
+     * @var string
+     */
+    private $image_navbar;
+
+    /**
      * Article constructor.
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -60,21 +71,26 @@ class Article extends CommunTable
      * Utilisation :    $a = new Article()
      *                  $a->add($titre_article, $titre_short_texte, $short_texte, $texte);
      *
+     * @author Valentin Dérudet
+     *
      * @param $titre_article
      * @param $titre_short_texte
      * @param $short_texte
      * @param $texte
+     *
      * @return bool|Article
      */
-    public function add($titre_article, $titre_short_texte, $short_texte, $texte, $id_langue)
+    public function add($titre_article, $titre_short_texte, $short_texte, $texte, $id_langue, $image, $titre_navbar, $image_navbar)
     {
         global $pdo;
-        if(!empty($titre_article) && !empty($titre_short_texte)  && !empty($short_texte) && !empty($texte)) {
+        if(!empty($titre_article) && !empty($titre_short_texte)  && !empty($short_texte) && !empty($texte) && !empty($titre_navbar) && !empty($image_navbar)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-            $query = 'INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd, active) VALUES (NULL, "'.$titre_article.'", "'.$titre_short_texte.'", "'.$short_texte.'", "'.$texte.'", "'.$ajd->format("Y-m-d H:i:s").'",NULL, 1)';
+            $query = 'INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd, active, id_langue, image, titre_navbar, image_navbar) 
+                      VALUES (NULL, "'.$titre_article.'", "'.$titre_short_texte.'", "'.$short_texte.'", "'.$texte.'", "'.$ajd->format("Y-m-d H:i:s").'",
+                      NULL, 1, "'.$id_langue.'", "'.$image.'", "'.$titre_navbar.'", "'.$image_navbar.'")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
+//            echo('Merci de remplir tous les champs.');
             return false;
         }
 
@@ -88,6 +104,8 @@ class Article extends CommunTable
      *                  $a->setParam($param);
      *                  $a->update();
      *
+     * @author Valentin Dérudet
+     *
      * @return Article
      */
     public function update()
@@ -95,10 +113,12 @@ class Article extends CommunTable
         global $pdo;
 
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'", texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_article = '.$this->id_article;
+        $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'",
+                    texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'", id_langue = "'.$this->id_langue.'", 
+                    image = "'.$this->image.'", titre_navbar = "'.$this->titre_navbar.'", image_navbar = "'.$this->image_navbar.'" WHERE id_article = '.$this->id_article;
 
         $pdo->exec($query);
-        return $this::rechercheParId($this->id_article);
+        return $this;
     }
 
     /**
@@ -135,7 +155,7 @@ class Article extends CommunTable
      */
     public function getTitreArticle()
     {
-        return utf8_encode($this->titre_article);
+        return $this->titre_article;
     }
 
     /**
@@ -153,7 +173,7 @@ class Article extends CommunTable
      */
     public function getTitreShortTexte()
     {
-        return utf8_encode($this->titre_short_texte);
+        return $this->titre_short_texte;
     }
 
     /**
@@ -171,7 +191,7 @@ class Article extends CommunTable
      */
     public function getShortTexte()
     {
-        return utf8_encode($this->short_texte);
+        return $this->short_texte;
     }
 
     /**
@@ -236,5 +256,59 @@ class Article extends CommunTable
     {
         $this->id_langue = $id_langue;
         return $this;
+    }
+
+    /**
+     * @param string $image
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image_navbar
+     * @return Article
+     */
+    public function setImageNavbar($image_navbar)
+    {
+        $this->image_navbar = $image_navbar;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageNavbar()
+    {
+        return $this->image_navbar;
+    }
+
+    /**
+     * @param string $titre_navbar
+     * @return Article
+     */
+    public function setTitreNavbar($titre_navbar)
+    {
+        $this->titre_navbar = $titre_navbar;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitreNavbar()
+    {
+        return $this->titre_navbar;
     }
 }
