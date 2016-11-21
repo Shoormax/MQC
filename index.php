@@ -10,6 +10,7 @@
  */
 include_once('php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
+
 require_once 'php/include/init.php';
 
 //@todo gérer la langue avec des cookies

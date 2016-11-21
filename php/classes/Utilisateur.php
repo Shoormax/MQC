@@ -103,7 +103,7 @@ class Utilisateur extends CommunTable
             $query = 'INSERT INTO utilisateur (id_utilisateur, id_droit, nom, prenom, email, password, date_add, date_upd, active) VALUES (NULL, "'.$id_droit.'", "'.$nom.'", "'.$prenom.'", "'.$email.'", "'.$password.'", "'.$ajd->format("Y-m-d H:i:s").'", NULL,"1")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
+//            echo('Merci de remplir tous les champs.');
             return false;
         }
 

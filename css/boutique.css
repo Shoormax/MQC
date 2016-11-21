@@ -5,6 +5,11 @@ html, body {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #999;
+}
+
 * {
     font-family: arial;
 }
@@ -38,13 +43,6 @@ header input {
     font-size: 1.2em;
 }
 
-.blurFullScreen {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-}
 
 #btnConnexion {
     float: right;
@@ -54,45 +52,9 @@ header input {
     line-height: 60px;
     vertical-align: middle;
     padding-right: 10px;
+    color: #fff;
+    text-decoration: none;
 }
-
-#formulaireConnexion .content {
-    position: fixed;
-    width: 80%;
-    left: 10%;
-    top: 10%;
-    background-color: #fff;
-    display: flex;
-}
-
-#formulaireConnexion .content form {
-    width: 50%;
-    display: block;
-    padding: 20px;
-    color: #000;
-}
-
-#formulaireConnexion .content form legend {
-    font-size: 2.5em;
-    text-align: center;
-}
-
-
-#formulaireConnexion .content form input {
-
-}
-
-#formulaireConnexion .content form input {
-    width: 80%;
-    display: block;
-    margin: auto;
-    padding: 10px;
-    font-size: 1.6em;
-    margin-top: 20px;
-    border: 0 solid black;
-    border-radius: 5px;
-}
-
 
 .hide{
     display: none;
@@ -100,4 +62,20 @@ header input {
 
 .show{
     display:block;
+}
+
+#boutique {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.apercuProduit {
+    display: block;
+    width: 300px;
+    margin: 20px;
+}
+
+.apercuProduit img {
+    width: 200px;
+    padding: 10px;
 }

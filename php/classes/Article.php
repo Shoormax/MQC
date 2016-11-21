@@ -90,7 +90,7 @@ class Article extends CommunTable
                       NULL, 1, "'.$id_langue.'", "'.$image.'", "'.$titre_navbar.'", "'.$image_navbar.'")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
+//            echo('Merci de remplir tous les champs.');
             return false;
         }
 
