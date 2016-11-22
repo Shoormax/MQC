@@ -28,7 +28,8 @@ echo '<link rel="stylesheet" href="../css/admin.css" type="text/css">';
 //@todo gérer la langue avec des cookies
 $id_langue = 1;
 $param = array('id_langue' => $id_langue);
-$limit = 1;
+//@todo gérer le nombre d'article a afficher + ajouter/supprimer des des articles
+$limit = 6;
 $articles = Article::rechercherParParam($param, $limit);
 ?>
     <link rel="icon" type="image/png" href="../img/min/Musee.png" />

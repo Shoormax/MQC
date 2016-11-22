@@ -54,4 +54,4 @@ foreach ($articles as $article)
 
 }
 echo '<h2>'.$erreur.'</h2>';
-echo '<a href="../administration.php">Retour administration</a><br><a href="../../index.php">Retour site</a>';
+echo '<a href="../administration.php?co=true">Retour administration</a><br><a href="../../index.php">Retour site</a>';
