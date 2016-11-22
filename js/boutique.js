@@ -1,4 +1,3 @@
-
 document.getElementById("btnConnexion").addEventListener("click", function () {
   gestionConnection();
 });
@@ -15,14 +14,10 @@ function gestionConnection() {
 
 }
 
-function gestionConnection() {
-  afficherConnecter = !afficherConnecter;
-  if(afficherConnecter) {
-    document.getElementById("formulaireConnexion").style.display = "block";
-  } else {
-    document.getElementById("formulaireConnexion").style.display = "none";
-  }
-
+function apercuProduit(id_produit) {
+  var div = document.getElementById("detailProduit");
+  div.style.display = "block";
+  div.innerHTML = id_produit;
 }
 
 /**
@@ -35,13 +30,13 @@ function gestionConnection() {
  * @param quantite_stock  La quantite a ne pas dépasser
  */
 function modificationQuantite(operator, id_produit, quantite_stock) {
-  var input = document.getElementById("nombreProduit"+id_produit),
-      quantite = input.value;
+    var input = document.getElementById("nombreProduit"+id_produit),
+        quantite = input.value;
 
-  if(operator == '+' && quantite < quantite_stock) {
-    input.value = quantite - (-1);
-  }
-  else if (operator == '-' && quantite > 0) {
-    input.value = quantite - 1;
-  }
+    if(operator == '+' && quantite < quantite_stock) {
+        input.value = quantite - (-1);
+    }
+    else if (operator == '-' && quantite > 0) {
+        input.value = quantite - 1;
+    }
 }

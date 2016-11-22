@@ -14,9 +14,9 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="icon" type="image/png" href="img/min/Musee.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Boutique - Mon Quartier Confluence</title>
+  <link rel="icon" type="image/png" href="img/min/Musee.png" />
   <link rel="stylesheet" href="css/boutique.css">
 </head>
 <body>
@@ -32,6 +32,14 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   <div><input type="text" placeholder="Rechercher un produit..."></div>
   <div class="compte extremite">
     <?php include('php/views/boutique/navbar_compte.php'); ?>
+    <?php
+    if(isset($_SESSION['user'])) {
+      echo '<div>Bonjour tu es connecté gg</div>';
+      echo '<a href="./deconnexion.php">Déconnexion</a>';
+    } else {
+      echo '<a href="./connexion.php" id="btnConnexion">Connexion</a>';
+    }
+    ?>
   </div>
 </header>
 <div id="content">
