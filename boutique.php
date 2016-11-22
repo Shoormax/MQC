@@ -31,13 +31,12 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   <div class="extremite"><a href="index.php">Logo</a></div>
   <div><input type="text" placeholder="Rechercher un produit..."></div>
   <div class="compte extremite">
-    <?php include('php/views/boutique/navbar_compte.php'); ?>
     <?php
     if(isset($_SESSION['user'])) {
       echo '<div>Bonjour tu es connecté gg</div>';
       echo '<a href="./deconnexion.php">Déconnexion</a>';
     } else {
-      echo '<a href="./connexion.php" id="btnConnexion">Connexion</a>';
+      echo '<a href="./connexion.php" id="btnConnexion">Connejxion</a>';
     }
     ?>
   </div>
