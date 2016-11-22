@@ -33,10 +33,13 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   <div class="compte extremite">
     <?php
     if(isset($_SESSION['user'])) {
-      echo '<div>Bonjour tu es connecté gg</div>';
+      foreach ($_SESSION['user'] as $i => $u) {
+        $u = Utilisateur::rechercheParId(50);
+      }
+      echo '<div>Bonjour '.(string)$u.'</div>';
       echo '<a href="./deconnexion.php">Déconnexion</a>';
     } else {
-      echo '<a href="./connexion.php" id="btnConnexion">Connejxion</a>';
+      echo '<a href="./connexion.php" id="btnConnexion">Connexion</a>';
     }
     ?>
   </div>
