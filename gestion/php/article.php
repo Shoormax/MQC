@@ -8,7 +8,7 @@
 $template = "<div id='".$a->getTitreNavbar()."' class='sous-container'><div class='article'>
         <div class='wrap-visuel'>
             <div class='wrap-titre-sous-container tcenter'>
-                <textarea name='tireTexte".$a->getid()."'>".$a->getTitreArticle()."</textarea>
+                <input type='text' name='tireTexte".$a->getid()."' value='".$a->getTitreArticle()."'>
             </div>
             <label for='titreNavBar' style='color:black;font-size:0.5em'>Titre navbar</label>
             <input type='text' name='titreNavBar".$a->getid()."' value='".$a->getTitreNavbar()."'>";
@@ -19,7 +19,7 @@ $template.= $a->getTitreArticle() == 'Accessibilité' ? "" : "<img class='imgArt
 $template .= " </div>
         <div class='wrap-textuel'>
             <div class='sous-wrap-text tcenter'>
-                <p><textarea name='titreShort".$a->getid()."'>".$a->getTitreShortTexte()."</textarea></p>
+                <p><input type='text' class='titreShort' name='titreShort".$a->getid()."' value='".$a->getTitreShortTexte()."'/></p>
                 <span><textarea name='articleShort".$a->getid()."' class='articleShortText'>".$a->getShortTexte()."</textarea></span>
             </div>
         </div>
