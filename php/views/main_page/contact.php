@@ -6,7 +6,7 @@
  * Time: 13:46
  */
 ?>
-    <div id="'.$a->getTitreNavbar().'" class="sous-container">
+    <div id="Contact" class="sous-container">
         <div class="article" id="articleContact">
             <form method="post" action="#Contact">
                 <div class="moitie fleft" id="contactInfos">
@@ -42,7 +42,7 @@ if(!empty($_POST)) {
         echo '<div id="errorMail">Veuillez entrer un message.</div>';
     }
     else{
-        require_once ('mail.php');
+        require_once('mail.php');
         echo '<div id="errorMail">'.$tabRetour['message'].'</div>';
     }
 }

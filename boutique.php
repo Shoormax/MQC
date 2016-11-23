@@ -52,9 +52,9 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   </nav>
   <div id="boutique">
     <?php
-      foreach ($produits as $produit) {
-        include 'php/views/boutique/affichage_produits.php';
-      }
+    foreach ($produits as $produit) {
+      include 'php/views/boutique/affichage_produits.php';
+    }
     ?>
   </div>
 </div>

@@ -21,14 +21,23 @@ $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
     <body>
     <div id="btnConnexion"><a href="boutique.php">Boutique</a></div>
     <div id="menu_haut">
+        <div id="link_container" class="nav_item">
+            <img src="img/svg/LogoAccueil.svg">
+            <span class="nav_txt">Accueil</span>
+        </div>
+
         <?php
         foreach ($articles as $a) {
             echo '<div id="link_'.$a->getTitreNavbar().'" class="nav_item">
-                  <img src="img/svg/Logo'.$a->getImageNavbar().'.svg">
-                  <span class="nav_txt">'.$a->getTitreNavbar().'</span>
+                      <img src="img/svg/Logo'.$a->getImageNavbar().'.svg">
+                      <span class="nav_txt">'.$a->getTitreNavbar().'</span>
                   </div>';
         }
         ?>
+        <div id="link_Contact" class="nav_item">
+            <img src="img/svg/LogoContact.svg">
+            <span class="nav_txt">Contact</span>
+        </div>
     </div>
 
     <div id="container">
@@ -37,12 +46,12 @@ $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
         </div>
         <?php
         foreach ($articles as $a) {
-            include 'php/article.php';
+            include 'php/views/main_page/article.php';
         }
-        include 'php/contact.php';
+        include 'php/views/main_page/contact.php';
         ?>
 
-        <a id="mentions_legales" href="php/mentions_legales.php">Mentions légales</a>
+        <a id="mentions_legales" href="php/views/main_page/mentions_legales.php">Mentions légales</a>
     </div>
     </body>
 

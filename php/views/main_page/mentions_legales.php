@@ -20,6 +20,6 @@ require_once (__INCLUDE_PATH__.'header.php');
         <br>- Jeremy CLAPETTE
         <br>- Thibault MOREY
         <br>- Benjamin BERNARD-BOUISSIERES
-        <a id="retour_site" href="../index.php">Retour à l'accueil</a>
+        <a id="retour_site" href="../../../index.php">Retour à l'accueil</a>
     </p>
 </div>
