@@ -18,12 +18,14 @@ $aCss = [
     'scroll',
     'event',
     'deploiement',
-    'panorama'
+    'panorama',
+    'map'
 ];
 
 echo'<footer>';
     foreach ($aCss as $sNomFicher) {
       echo' <script type="text/javascript" src="'.__JS_PATH__.$sNomFicher.'.js"></script>';
     }
-echo'</footer>
+echo'<script async defer type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBz_GvUUBtEyXLNt9kLekQ6pYc7LQJMAWc&callback=initMap"></script>
+    </footer>
 </HTML>';

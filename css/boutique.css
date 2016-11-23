@@ -100,7 +100,7 @@ header input {
     border: 1.1vw solid white;
     background: tomato;
     padding: 1%;
-    font-family: var(--police-texte);
+    font-family: "Segoe UI", sans-serif;
 }
 
 .button {

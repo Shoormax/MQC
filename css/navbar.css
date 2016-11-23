@@ -4,7 +4,7 @@
 
 /* NAVBAR */
 #menu_haut {
-    font-family: var(--police-texte);
+    font-family: "Segoe UI", sans-serif;
     z-index: 9999999;
     position: fixed;
     width: inherit;

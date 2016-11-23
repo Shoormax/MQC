@@ -28,10 +28,6 @@ $aCss = [
   <!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et
 		qu'elle ne peut pas être redimensionnée par l'utilisateur -->
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <!-- Inclusion de l'API Google MAPS -->
-  <!-- Le paramètre "callback" indique la fonction qui sera appelé lors du chargement d ela page -->
-  <script async defer type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBz_GvUUBtEyXLNt9kLekQ6pYc7LQJMAWc&callback=initMap"></script>
-  <script src="<?php echo __LOCAL_PATH__ ?>/js/map.js" type="text/javascript"></script>
   <title>Mon Quartier Confluence</title>
   <?php
   foreach ($aCss as $sNomFicher) {
