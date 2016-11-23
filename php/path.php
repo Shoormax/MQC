@@ -8,7 +8,6 @@
 
 if(file_exists("C:/Users/Valentin")){
   define("__LOCAL_PATH__", "http://localhost/MQC");
-  //BDD
   define('__DB_HOST__', 'localhost');
   define('__DB_NAME__', 'mqc');
   define('__USER__', 'root');
@@ -18,7 +17,6 @@ elseif(file_exists("C:/Users/quentin")){
   define("__LOCAL_PATH__", "http://localhost:8001/ProjectOne");
 }
 elseif( file_exists("C:/Users/AifeDesPaix") ) {
-//  define("__LOCAL_PATH__", "http://localhost/MQC");
   define("__LOCAL_PATH__", "http://localhost/MQC");
   define('__DB_HOST__', 'localhost');
   define('__DB_NAME__', 'mqc');
@@ -27,11 +25,17 @@ elseif( file_exists("C:/Users/AifeDesPaix") ) {
 }
 elseif(file_exists("C:/Users/Shosho")) {
   define("__LOCAL_PATH__", "http://localhost/MySites/MQC");
-  //BDD
   define('__DB_HOST__', 'localhost');
   define('__DB_NAME__', 'mqc');
   define('__USER__', 'root');
   define('__PASSWORD__', '');
+}
+elseif( file_exists("C:/Users/Ben") ) {
+    define("__LOCAL_PATH__", "http://localhost/MQC");
+    define('__DB_HOST__', 'localhost');
+    define('__DB_NAME__', 'mqc');
+    define('__USER__', 'root');
+    define('__PASSWORD__', '');
 }
 else {
   define("__LOCAL_PATH__", "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence");
