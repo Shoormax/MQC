@@ -23,7 +23,7 @@ if(isset($_POST['connexion'])) {
 <body>
 
 <div id="content">
-  <?php include (__VIEW_PATH__.'connexion.php'); ?>
+  <?php include (__VIEW_PATH__.'boutique/connexion.php'); ?>
 </nav>
 </div>
 <script src="js/boutique.js" type="text/javascript" charset="utf-8" async defer></script>

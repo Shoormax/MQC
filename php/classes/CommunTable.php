@@ -101,15 +101,11 @@ class CommunTable
 
         if($limit !== null) {
             $requete .= ' LIMIT '.$limit;
-            $query = $pdo->query($requete);
-
-            $objs = array();
-
-            while ($obj = $query->fetchObject($class)) {
-                $objs[$obj->getId()] = $obj;
+            if($limit == 1) {
+                $query = $pdo->prepare($requete);
+                $query->execute();
+                return $query->fetchObject($class);
             }
-
-            return $objs;
         }
 
         $query = $pdo->query($requete);

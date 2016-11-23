@@ -6,7 +6,6 @@ include_once ('php/include/init.php');
 if(isset($_POST['connexion'])) {
   include('php/traitement/connexion.php');
 }
-
 $produits = Produit::rechercherParParam(array('active' => 1), 10);
 ?>
 
@@ -33,10 +32,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
   <div class="compte extremite">
     <?php
     if(isset($_SESSION['user'])) {
-      foreach ($_SESSION['user'] as $i => $u) {
-        $u = Utilisateur::rechercheParId(50);
-      }
-      echo '<div>Bonjour '.(string)$u.'</div>';
+      echo '<div>Bonjour '.(string)$_SESSION['user'].'</div>';
       echo '<a href="./deconnexion.php">Déconnexion</a>';
     } else {
       echo '<a href="./connexion.php" id="btnConnexion">Connexion</a>';

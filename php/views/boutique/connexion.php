@@ -1,5 +1,5 @@
 
-<form action="connexion.php" method="POST">
+<form action="php/traitement/connexion.php" method="POST">
   <input type="hidden" name="connexion" value="connexion">
   <legend>Connexion</legend>
   <input type="mail" name="email" id="email" placeholder="Email">
@@ -9,7 +9,7 @@
   <?php
   if(isset($GLOBALS['sMessageErreurConnexion'])) echo '<span class="red">'.$GLOBALS['sMessageErreurConnexion'].'</span>' ?>
 </form>
-<form action="connexion.php" method="POST">
+<form action="php/traitement/connexion.php" method="POST">
   <input type="hidden" name="connexion" value="inscription">
   <legend>Inscription</legend>
   <input type="email" name="email" id="email" placeholder="Adresse Mail">
