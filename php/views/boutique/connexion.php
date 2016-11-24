@@ -1,4 +1,3 @@
-
 <form action="php/traitement/connexion.php" method="POST">
   <input type="hidden" name="connexion" value="connexion">
   <legend>Connexion</legend>

@@ -40,3 +40,24 @@ function modificationQuantite(operator, id_produit, quantite_stock) {
         input.value = quantite - 1;
     }
 }
+
+function rechercheProduit(){
+    var texte = $('#autoComplementationProduit').val();
+    if(texte.length <= 0) {
+        $("#tableauRecherche").html('').hide();
+    }
+    else if(texte.length > 2) {
+        $.ajax({
+            url: 'php/autocomplementationProduit.php',
+            type: 'POST',
+            data : 'recherche=' + texte,
+            dataType: "text",
+            success: function(retour) {
+                $("#tableauRecherche").show().html(retour);
+            },
+            error: function() {
+                alert("Erreur lors de la récupération");
+            }
+        });
+    }
+}

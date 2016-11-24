@@ -162,10 +162,25 @@ class Utilisateur extends CommunTable
      */
     public function getBoutique()
     {
-        global $pdo;
-        $req = 'SELECT id_boutique FROM boutique_has_utilisateur WHERE id_utilisateur ='.$this->id_utilisateur;
-        $query = $pdo->query($req);
-        return $query->fetchAll();
+        if(in_array($this->id_droit, array(1, 2))) {
+            global $pdo;
+            $req = 'SELECT id_boutique FROM boutique_has_utilisateur WHERE id_utilisateur ='.$this->id_utilisateur;
+            $query = $pdo->query($req);
+            return $query->fetchAll();
+        }
+        return null;
+    }
+
+    /**
+     * Vérifie si l'utilisateur est administrateur
+     *
+     * @author Valentin Dérudet
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->id_droit == 1;
     }
 
     /**

@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS `mqc`.`langue` (
   `libelle` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_langue`))
   ENGINE = InnoDB
-  AUTO_INCREMENT = 3
   DEFAULT CHARACTER SET = utf8;
 
 
@@ -51,7 +50,6 @@ CREATE TABLE IF NOT EXISTS `mqc`.`article` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
   ENGINE = InnoDB
-  AUTO_INCREMENT = 2
   DEFAULT CHARACTER SET = utf8;
 
 
@@ -63,7 +61,6 @@ CREATE TABLE IF NOT EXISTS `mqc`.`droit` (
   `libelle` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_droit`))
   ENGINE = InnoDB
-  AUTO_INCREMENT = 4
   DEFAULT CHARACTER SET = utf8;
 
 
@@ -88,7 +85,6 @@ CREATE TABLE IF NOT EXISTS `mqc`.`utilisateur` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
   ENGINE = InnoDB
-  AUTO_INCREMENT = 3
   DEFAULT CHARACTER SET = utf8;
 
 
@@ -145,7 +141,6 @@ CREATE TABLE IF NOT EXISTS `mqc`.`produit` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
   ENGINE = InnoDB
-  AUTO_INCREMENT = 2
   DEFAULT CHARACTER SET = utf8;
 
 
@@ -183,7 +178,6 @@ CREATE TABLE IF NOT EXISTS `mqc`.`type_mouvement` (
   `libelle` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_type_mouvement`))
   ENGINE = InnoDB
-  AUTO_INCREMENT = 3
   DEFAULT CHARACTER SET = utf8;
 
 
@@ -321,11 +315,16 @@ INSERT INTO
     `image_navbar`
   )
 VALUES
-  (1,'Commerces','Bonjour','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Bonjour',''),
-  (2,'Musée','On boit','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','On boit',''),
-  (3,'Architecture','Une bière','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Une bière',''),
-  (4,'Quais','Ou pas ?','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Ou pas ?',''),
-  (5,'Accessibilité','Lol','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.','','2016-11-19 21:02:32',NULL,DEFAULT,DEFAULT,'img/min/musee.jpg','Lol','');
+  (1, 'Commerces', 'Bonjour', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Bonjour', 'Commerces'),
+  (2, 'Musée', 'On boit', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'On boit', 'Musee'),
+  (3, 'Architecture', 'Une bière', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Une bière', 'Architecture'),
+  (4, 'Quais', 'Ou pas ?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Ou pas ?', 'Quais'),
+  (5, 'Accessibilité', 'Lol', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', NULL, 1, 1, 'img/min/musee.jpg', 'Lol', 'Accessibilite'),
+  (6, 'Shops', 'Bonjour', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', '2016-11-24 00:06:58', 1, 2, 'img/min/musee.jpg', 'Bonjour', 'Commerces'),
+  (7, 'Museum', 'On boit', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', '2016-11-24 00:06:58', 1, 2, 'img/min/musee.jpg', 'On boit', 'Musee'),
+  (8, 'Architecture', 'Une bière', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', '2016-11-24 00:06:58', 1, 2, 'img/min/musee.jpg', 'Une bière', 'Architecture'),
+  (9, 'Docks', 'Ou pas ?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', '2016-11-24 00:06:58', 1, 2, 'img/min/musee.jpg', 'Ou pas ?', 'Quais'),
+  (10, 'Accessibility', 'Lol', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis orci eget semper ornare. Etiam sed porttitor nisl. Nunc pretium semper dolor, vitae dapibus diam condimentum sed. Suspendisse tincidunt aliquet mauris, at auctor ante sagittis vel. Pellentesque vitae nisl nulla. Donec vitae accumsan orci.', '', '2016-11-19 21:02:32', '2016-11-24 00:06:58', 1, 2, 'img/min/musee.jpg', 'Lol', 'Accessibilite');
 
 ALTER TABLE `produit` ADD `description` VARCHAR(200) NULL AFTER `libelle_anglais`,
   ADD `description_anglais` VARCHAR(200) NULL AFTER `description`;
@@ -342,3 +341,8 @@ INSERT INTO `produit` (`id_produit`, `libelle`, `libelle_anglais`, `description`
   (5, 'test4', 'BONJOUR JE SUIS LA DESCRIPTION', 'BONJOUR JE SUIS LA DESCRIPTION', '', 18, 1, 10, 'img/min/musee.jpg', 1);
 
 ALTER TABLE Boutique ADD COLUMN active TINYINT(4) NOT NULL DEFAULT 1;
+UPDATE `article` SET `image_navbar` = 'Commerces' WHERE `article`.`id_article` = 6;
+UPDATE `article` SET `image_navbar` = 'Musee' WHERE `article`.`id_article` = 7;
+UPDATE `article` SET `image_navbar` = 'Quais' WHERE `article`.`id_article` = 9;
+UPDATE `article` SET `image_navbar` = 'Accessibilite' WHERE `article`.`id_article` = 10;
+

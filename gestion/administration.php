@@ -9,32 +9,34 @@
  * Gestion des articles côté admin.
  *
  */
-function redir($url)
-{
-    echo "<script language=\"javascript\">";
-    echo "window.location='$url';";
-    echo "</script>";
-}
-
-if(!isset($_GET['co'])) {
-    redir('index.php');
-}
-
-
 include_once('../php/path.php');
 require_once (__INCLUDE_PATH__.'header.php');
 require_once '../php/include/init.php';
 echo '<link rel="stylesheet" href="../css/admin.css" type="text/css">';
 //@todo gérer la langue avec des cookies
-$id_langue = 1;
+
+if(isset($_GET['language'])) {
+    $id_langue = $_GET['language'] == '1' ?  2 : 1;
+}
+else {
+    $id_langue = 1;
+}
+
 $param = array('id_langue' => $id_langue);
-//@todo gérer le nombre d'article a afficher + ajouter/supprimer des des articles
+
 $limit = 6;
 $articles = Article::rechercherParParam($param, $limit);
+
 ?>
+
+<a style="top: 8%;
+    width: 5%;
+    position: absolute;
+    left: 1%;" href="administration.php?co=true&language=<?php echo $id_langue?>">Langue</a>
     <link rel="icon" type="image/png" href="../img/min/Musee.png" />
     <body>
     <div id="btnConnexion"><a href="boutique.php">Boutique</a></div>
+    <div id="btnDeconnexion"><a href="../deconnexion.php?retour=index">Déconnexion</a></div>
     <div id="menu_haut">
         <?php
         foreach ($articles as $a) {

@@ -9,7 +9,8 @@ function connexion($email, $mdp) {
     $user = Utilisateur::rechercherParParam(array("email"=>$email, "password"=>$mdp), 1);
 
     if($user instanceof Utilisateur) {
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = $user->getId();
+
         if (isset($_POST['pagePrecedente'])) {
             header('Location: ' . __LOCAL_PATH__ . '/' . $_POST['pagePrecedente']);
         } else {

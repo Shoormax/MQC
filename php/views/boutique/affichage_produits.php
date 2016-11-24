@@ -13,7 +13,6 @@ if(isset($_GET['detail'])) {
 }else {
     $boutique = Boutique::rechercheParId($produit->getIdBoutique());
 
-
 echo '<a href="php/views/boutique/affichage_produits.php?detail=true&produit='.$produit->getId().'">
         <div class="apercuProduit" id="apercuProduit'.$produit->getId().'">';
     echo 'ID : '.$produit->getId().'<br>';

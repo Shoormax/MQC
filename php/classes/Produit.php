@@ -217,14 +217,20 @@ class Produit extends CommunTable
      *
      * @return Produit[]
      */
-    public function autocomplementationProduit($text)
+    public static function autocomplementationProduit($text)
     {
         global $pdo;
+        $texte = '%'.$text.'%';
+        $req = "SELECT * FROM produit WHERE libelle LIKE '".$texte."' AND active = 1";
 
-        $req = "SELECT libelle FROM produit WHERE libelle LIKE %'".$text."' AND active = 1";
         $query = $pdo->query($req);
+        $objs = array();
 
-        return $query->fetchAll();
+        while ($obj = $query->fetchObject(__CLASS__)) {
+            $objs[] = $obj->getId();
+        }
+
+        return $objs;
     }
 
     /**

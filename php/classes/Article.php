@@ -137,6 +137,18 @@ class Article extends CommunTable
     }
 
     /**
+     * Permet de vérifier si cet article est une rubrique "Accessibilité" et qui n'a donc pas d'image associée.
+     *
+     * @author Valentin Dérudet
+     *
+     * @return bool
+     */
+    public function isAccessibilite()
+    {
+        return in_array($this->id_article, array(5, 10));
+    }
+
+    /**
      *
      * GETTERS / SETTERS
      *

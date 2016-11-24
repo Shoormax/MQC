@@ -29,20 +29,19 @@ header {
     flex-wrap: wrap;
 }
 
-header div.compte {
-    color: #fff;
-    height: 100%;
+.extremite {
+    padding: 1%;
 }
 
-.extremite {
-    width: 200px;
+#rechercheProduit {
+    width: 50%;
 }
 
 header input {
     text-align: center;
-    height: 50px;
-    margin-top: 3px;
-    width: 350px;
+    height: 60%;
+    margin-top: 1vh;
+    width: 100%;
     border: 1px solid black;
     border-radius: 3px;
     font-size: 1.2em;
@@ -122,3 +121,21 @@ header input {
     background-color: white;
 }
 
+#tableauRecherche {
+    position: absolute;
+    text-align: center;
+    left: 24%;
+    width: 50%;
+    border-right: 2px solid #00334d;
+    border-left: 2px solid #00334d;
+    border-bottom: 2px solid #00334d;
+    background-color: #003E5B;
+}
+
+#tableauRecherche td {
+    color: #fff;
+    font-family: "Proza Libre script=all rev=2", "Adobe Blank", sans-serif;
+    background-color: #004b6a;
+    padding: 1vh;
+    border-bottom: 1px solid #00334d;
+}

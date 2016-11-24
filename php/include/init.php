@@ -12,12 +12,16 @@ if(__LOCAL_PATH__ !== "http://monquartierconfluence.labo-g4.fr/MonQuartierConflu
     ini_set('display_errors', 1);
 }
 
-if (strpos($_SERVER["SCRIPT_NAME"], "administration.php")) {
+if (strpos($_SERVER["SCRIPT_NAME"], "administration.php") || strpos($_SERVER["SCRIPT_NAME"], "gestion/index.php")) {
     define("__ADDRESS_CLASSES__",  "../php/classes/");
 }
 else if(strpos($_SERVER["SCRIPT_NAME"], "connexion.php")) {
     define("__ADDRESS_CLASSES__",  "../classes/");
 }
+else if(strpos($_SERVER["SCRIPT_NAME"], "autocomplementationProduit.php")) {
+    define("__ADDRESS_CLASSES__",  "classes/");
+}
+
 
 if(file_exists(__ADDRESS_CLASSES__.'Configuration.php')) {
     include_once __ADDRESS_CLASSES__.'Configuration.php';

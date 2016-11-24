@@ -12,7 +12,7 @@ $template = "<div id='".$a->getTitreNavbar()."' class='sous-container'><div clas
             </div>
             <label for='titreNavBar' style='color:black;font-size:0.5em'>Titre navbar</label>
             <input type='text' name='titreNavBar".$a->getid()."' value='".$a->getTitreNavbar()."'>";
-$template.= $a->getTitreArticle() == 'Accessibilité' ? "" : "<img class='imgArticle' src='../".$a->getImage()."'>
+$template.= $a->isAccessibilite() ? "" : "<img class='imgArticle' src='../".$a->getImage()."'>
             <input name='imageArticle".$a->getid()."' type='text' value='".$a->getImage()."'>
             <input type='hidden' name='MAX_FILE_SIZE' value='1048576' />
             <input type='file' style='color:black' name='fichierimgArticle".$a->getid()."'/><br />";
