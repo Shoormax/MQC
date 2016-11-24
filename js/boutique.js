@@ -61,3 +61,13 @@ function rechercheProduit(){
         });
     }
 }
+
+function hide(idInput)
+{
+    $("#"+idInput).hide();
+}
+
+function show(idInput)
+{
+    $("#"+idInput).show();
+}

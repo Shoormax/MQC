@@ -13,7 +13,7 @@ $produits = Produit::autocomplementationProduit($texte);
 $tabRetour = '';
 foreach ($produits as $p) {
     $produit = Produit::rechercheParId($p);
-    $tabRetour .= '<tr><td>'.ucfirst((string)$produit);
+    $tabRetour .= '<tr><td>'.ucfirst($produit->getLibelle()). ' '.round($produit->getPrix(), 2).' € ('.$produit->getStock().')';
 }
 
 echo $tabRetour;

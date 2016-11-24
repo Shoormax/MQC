@@ -27,7 +27,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
 <body>
 <header>
   <div class="extremite"><a href="deconnexion.php?retour=index">Logo</a></div>
-  <div id="rechercheProduit"><input id="autoComplementationProduit" type="text" placeholder="Rechercher un produit..." onkeyup="rechercheProduit()"></div>
+  <div id="rechercheProduit"><input id="autoComplementationProduit" type="text" placeholder="Rechercher un produit..." onkeyup="rechercheProduit()" onblur="hide('tableauRecherche')" onfocus="show('tableauRecherche')"></div>
   <div class="extremite">
     <?php
     if(Auth::user() instanceof Utilisateur) {
