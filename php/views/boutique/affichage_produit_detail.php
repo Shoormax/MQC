@@ -7,22 +7,25 @@
  */
 include_once('../../path.php');
 include_once ('../../include/init.php');
+include_once ('../../classes/Auth.php');
 include_once ('../../classes/CommunTable.php');
+include_once ('../../classes/Utilisateur.php');
 include_once ('../../classes/Produit.php');
 include_once ('../../classes/Boutique.php');
 
-$produit = Produit::rechercheParId($_GET['produit']);
+$produit = Produit::rechercheParId($_POST['id_produit']);
 $boutique = Boutique::rechercheParId($produit->getIdBoutique());
+
+$tabRetour = array();
+$tabRetour['html'] = 'Erreur lors de l\'affichage de la page';
+
 if($produit instanceof Produit) {
-    echo 'ID : '.$produit->getId().'<br>';
-    echo (string)$produit;echo'<br>';
-    echo $produit->getPrix();echo'<br>';
-    echo '<img src="../../../'.$produit->getImage().'" alt=""photoarticlemdeir style="width:300px"/>';echo'<br>';
-    echo (string)$boutique;echo'<br>';
-    echo $boutique->getAdresseComplete('<br>');
-    echo'<br>';
-    echo'<br>';
-    echo '
-<a href="../../../boutique.php">Retour</a>';
+    $tabRetour['html'] = 'ID : '.$produit->getId().'<br>'.(string)$produit.'<br>
+                '.$produit->getPrix().'<br><img src="'.$produit->getImage().'" alt=""photoarticlemdeir style="width:300px"/><br>
+                '.(string)$boutique.'<br>
+                '. $boutique->getAdresseComplete('<br>').
+                '<br><br>';
 }
+
+echo json_encode($tabRetour);
 

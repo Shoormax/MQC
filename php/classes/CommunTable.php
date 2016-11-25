@@ -73,7 +73,7 @@ class CommunTable
      * @param array $params Paramètres à rechercher
      * @param int $limit (optionnal) (default=null)  Permet de spécifier le nombre de résultats que l'on veut récupérer
      *
-     * @return object|object[]|bool
+     * @return object|object[]|bool|null
      */
     public static function rechercherParParam($params, $limit = null)
     {
@@ -92,8 +92,6 @@ class CommunTable
             $requete = 'SELECT * from '.$class.' where 1';
         }
 
-        //$param = nomColonne
-        //$key = valeur
         foreach ($params as $key => $param)
         {
             $requete .= ' AND '.$key.'="'.$param.'"';
@@ -104,7 +102,10 @@ class CommunTable
             if($limit == 1) {
                 $query = $pdo->prepare($requete);
                 $query->execute();
-                return $query->fetchObject($class);
+                if(!is_bool($query)) {
+                    return $query->fetchObject($class);
+                }
+                return null;
             }
         }
 

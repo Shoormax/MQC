@@ -10,13 +10,9 @@ html, body {
     padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: #999;
-}
 
 * {
-    font-family: arial;
+    font-family: "Segoe UI", sans-serif;;
 }
 
 header {
@@ -31,6 +27,7 @@ header {
 
 .extremite {
     padding: 1%;
+    color: #fff;
 }
 
 #rechercheProduit {
@@ -74,14 +71,14 @@ header input {
 }
 
 .apercuProduit {
+    color: #fff;
     display: block;
     width: 300px;
     margin: 20px;
 }
 
 .apercuProduit img {
-    width: 200px;
-    padding: 10px;
+    margin: auto;
 }
 
 #boutique {
@@ -89,7 +86,7 @@ header input {
     flex-flow: row wrap;
 }
 
-#boutique a, a:visited, a:hover {
+.extremite a, .extremite a:visited, .extremite a:hover, .apercuProduit a:visited, .apercuProduit a:hover {
     text-decoration: none;
     color: white;
 }
@@ -100,6 +97,7 @@ header input {
     background: tomato;
     padding: 1%;
     font-family: "Segoe UI", sans-serif;
+    order: 9999;
 }
 
 .button {
@@ -121,21 +119,75 @@ header input {
     background-color: white;
 }
 
-#tableauRecherche {
-    position: absolute;
-    text-align: center;
-    left: 24%;
-    width: 50%;
-    border-right: 2px solid #00334d;
-    border-left: 2px solid #00334d;
-    border-bottom: 2px solid #00334d;
-    background-color: #003E5B;
+.produitRecherche {
+    order : 1;
 }
 
-#tableauRecherche td {
+.apercuProduit a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.fa-cart-plus {
+    font-size: 4vh;
+    padding: 3%;
+}
+
+#affichageErreur {
+    position: fixed;
+    width: 45%;
+    height: 45%;
+    left: 27.5% ;
+    z-index: 2000;
+    top: 27.5%;
+}
+
+#messageErreur {
+    text-align: center;
+    line-height: 40vh;
+    background-color: #003E5B;
     color: #fff;
-    font-family: "Proza Libre script=all rev=2", "Adobe Blank", sans-serif;
-    background-color: #004b6a;
-    padding: 1vh;
-    border-bottom: 1px solid #00334d;
+    font-family: "Segoe UI", sans-serif;
+}
+
+#codeErreur {
+    position: absolute;
+    bottom: 7vh;
+    right: 1vw;
+    background-color: #003E5B;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+}
+
+#affichageOk {
+    position: fixed;
+    width: 45%;
+    height: 45%;
+    left: 27.5% ;
+    z-index: 2000;
+    top: 27.5%;
+}
+
+#messageOk {
+    text-align: center;
+    background-color: #003E5B;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;;
+}
+
+#affichageErreur a:hover,
+#affichageOk a:hover{
+    cursor: pointer;
+}
+
+#grayBack
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1999;
+    opacity: 0.5;
 }

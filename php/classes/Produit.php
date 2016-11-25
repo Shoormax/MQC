@@ -172,14 +172,11 @@ class Produit extends CommunTable
      */
     public function entreeStock($quantite, $id_panier)
     {
-        $message = 'Erreur lors de l\'entree stock, veillez à ce que la quantité entrée soit positive.';
         if($quantite > 0) {
-            $message = 'Entrée stock effecutée avec succès.';
             $this->stock += $quantite;
             $t = new StockMouvement();
             $t->add($quantite, 1, $this->getId(), $id_panier);
         }
-        echo $message;
         return $this->update();
     }
 
@@ -197,14 +194,11 @@ class Produit extends CommunTable
      */
     public function sortieStock($quantite, $id_panier)
     {
-        $message = 'Erreur lors de la sortie de stock, la quantité maximale que vous pouvez sortir est '.$this->stock.'.';
         if($quantite <= $this->stock && $this->stock !== 0) {
-            $message = 'Sortie stock effecutée avec succès.';
             $this->stock -= $quantite;
             $t = new StockMouvement();
             $t->add($quantite, 2, $this->getId(), $id_panier);
         }
-        echo $message;
         return $this->update();
     }
 

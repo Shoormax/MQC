@@ -346,3 +346,4 @@ UPDATE `article` SET `image_navbar` = 'Musee' WHERE `article`.`id_article` = 7;
 UPDATE `article` SET `image_navbar` = 'Quais' WHERE `article`.`id_article` = 9;
 UPDATE `article` SET `image_navbar` = 'Accessibilite' WHERE `article`.`id_article` = 10;
 
+ALTER TABLE `panier` ADD `validation` TINYINT NOT NULL DEFAULT '0' AFTER `date_upd`;

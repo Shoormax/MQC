@@ -35,6 +35,11 @@ class Panier extends CommunTable
     private $date_upd;
 
     /**
+     * @var bool
+     */
+    private $validation;
+
+    /**
      * Panier constructor.
      */
     public function __construct()
@@ -58,8 +63,8 @@ class Panier extends CommunTable
         if(!empty($id_utilisateur)) {
             $ajd = new DateTime();
 
-            $query = 'INSERT INTO Panier (id_panier, id_utilisateur, total, date_add, date_upd) 
-                      VALUES (DEFAULT, "'.$id_utilisateur.'", DEFAULT,  "'.$ajd->format("Y-m-d H:i:s").'", DEFAULT)';
+            $query = 'INSERT INTO Panier (id_panier, id_utilisateur, total, date_add, date_upd, validation) 
+                      VALUES (DEFAULT, "'.$id_utilisateur.'", DEFAULT,  "'.$ajd->format("Y-m-d H:i:s").'", DEFAULT, DEFAULT)';
         }
         else{
             echo('Merci de remplir tous les champs.');
@@ -81,7 +86,7 @@ class Panier extends CommunTable
     {
         global $pdo;
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $query = 'UPDATE Panier SET id_utilisateur = "'.$this->id_utilisateur.'", total = "'.$this->total.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'" WHERE id_panier = '.$this->id_panier;
+        $query = 'UPDATE Panier SET id_utilisateur = "'.$this->id_utilisateur.'", total = "'.$this->total.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", validation = "'.$this->validation.'" WHERE id_panier = '.$this->id_panier;
 
         $pdo->exec($query);
         return $this;
@@ -260,6 +265,24 @@ class Panier extends CommunTable
     public function setTotal($total)
     {
         $this->total = round($total,2);
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValidation()
+    {
+        return $this->validation;
+    }
+
+    /**
+     * @param bool $validation
+     * @return Panier
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
         return $this;
     }
 }
