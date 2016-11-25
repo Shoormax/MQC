@@ -46,10 +46,10 @@ class Langue extends CommunTable
     {
         global $pdo;
         if(!empty($libelle)) {
+            $this->libelle = $libelle;
             $query = 'INSERT INTO langue (id_langue, libelle) VALUES (NULL, "'.$libelle.'")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
             return false;
         }
 

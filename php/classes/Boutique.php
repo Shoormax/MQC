@@ -99,10 +99,15 @@ class Boutique extends CommunTable
         global $pdo;
 
         if(!empty($libelle)) {
+            $this->libelle = $libelle;
+            $this->adresse = $adresse;
+            $this->code_postal = $code_postal;
+            $this->ville = $ville;
+            $this->active = 1;
+
             $query = "INSERT INTO boutique (id_boutique, libelle, adresse, code_postal, ville, active) VALUES (DEFAULT, '".$libelle."', '".$adresse."', '".$code_postal."', '".$ville."', DEFAULT)";
         }
         else{
-            echo('Merci de remplir tous les champs.');
             return false;
         }
 

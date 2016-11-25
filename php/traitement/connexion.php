@@ -17,7 +17,7 @@ function connexion($email, $mdp) {
             header('Location: ' . __LOCAL_PATH__ . '/boutique.php');
         }
     } else {
-        header('Location: ' . __LOCAL_PATH__ . '/boutique.php');
+        header('Location: ' . __LOCAL_PATH__ . '/connexion.php?error="true"');
         return false;
     }
 }

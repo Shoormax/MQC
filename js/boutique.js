@@ -168,6 +168,7 @@ function ajoutPanier(id_utilisateur, id_produit) {
         data : {id_utilisateur:id_utilisateur, id_produit:id_produit, quantite:quantite},
         dataType: "json",
         success: function(retour) {
+            console.log(retour);
             if(retour['status'] != 1) {
                 affichageErreur(retour['html'], retour['status']);
             }

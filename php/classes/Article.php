@@ -60,6 +60,16 @@ class Article extends CommunTable
     private $image_navbar;
 
     /**
+     * @var date
+     */
+    private $date_upd;
+
+    /**
+     * @var date
+     */
+    private $date_add;
+
+    /**
      * Article constructor.
      */
     public function __construct()
@@ -85,12 +95,22 @@ class Article extends CommunTable
         global $pdo;
         if(!empty($titre_article) && !empty($titre_short_texte)  && !empty($short_texte) && !empty($texte) && !empty($titre_navbar) && !empty($image_navbar)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+            $this->titre_article = $titre_article;
+            $this->titre_short_texte = $titre_short_texte;
+            $this->short_texte = $short_texte;
+            $this->texte = $texte;
+            $this->id_langue = $id_langue;
+            $this->image = $image;
+            $this->titre_navbar = $titre_navbar;
+            $this->image_navbar = $image_navbar;
+            $this->date_add = $ajd->format("Y-m-d H:i:s");
+            $this->active = 1;
+
             $query = 'INSERT INTO article (id_article, titre_article, titre_short_texte, short_texte, texte, date_add, date_upd, active, id_langue, image, titre_navbar, image_navbar) 
                       VALUES (NULL, "'.$titre_article.'", "'.$titre_short_texte.'", "'.$short_texte.'", "'.$texte.'", "'.$ajd->format("Y-m-d H:i:s").'",
                       NULL, 1, "'.$id_langue.'", "'.$image.'", "'.$titre_navbar.'", "'.$image_navbar.'")';
         }
         else{
-//            echo('Merci de remplir tous les champs.');
             return false;
         }
 
@@ -113,6 +133,8 @@ class Article extends CommunTable
         global $pdo;
 
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $this->date_upd = $ajd->format("Y-m-d H:i:s");
+
         $query = 'UPDATE article SET titre_article = "'.$this->getTitreArticle().'", titre_short_texte = "'.$this->getTitreShortTexte().'",short_texte = "'.$this->getShortTexte().'",
                     texte = "'.$this->getTexte().'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'", id_langue = "'.$this->id_langue.'", 
                     image = "'.$this->image.'", titre_navbar = "'.$this->titre_navbar.'", image_navbar = "'.$this->image_navbar.'" WHERE id_article = '.$this->id_article;
@@ -322,5 +344,41 @@ class Article extends CommunTable
     public function getTitreNavbar()
     {
         return $this->titre_navbar;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateAdd()
+    {
+        return $this->date_add;
+    }
+
+    /**
+     * @param $date_add
+     * @return Article
+     */
+    public function setDateAdd($date_add)
+    {
+        $this->date_add = $date_add;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateUpd()
+    {
+        return $this->date_upd;
+    }
+
+    /**
+     * @param  $date_upd
+     * @return Article
+     */
+    public function setDateUpd($date_upd)
+    {
+        $this->date_upd = $date_upd;
+        return $this;
     }
 }

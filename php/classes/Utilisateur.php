@@ -45,6 +45,11 @@ class Utilisateur extends CommunTable
     private $date_add;
 
     /**
+     * @var
+     */
+    private $date_upd;
+
+    /**
      * @var bool
      */
     private $active;
@@ -100,10 +105,17 @@ class Utilisateur extends CommunTable
         global $pdo;
         if(!empty($id_droit) && !empty($email) && !empty($password)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+            $this->id_droit = $id_droit;
+            $this->nom = $nom;
+            $this->prenom = $prenom;
+            $this->email = $email;
+            $this->password = $password;
+            $this->date_add = $ajd->format("Y-m-d H:i:s");
+            $this->active = 1;
+
             $query = 'INSERT INTO utilisateur (id_utilisateur, id_droit, nom, prenom, email, password, date_add, date_upd, active) VALUES (NULL, "'.$id_droit.'", "'.$nom.'", "'.$prenom.'", "'.$email.'", "'.$password.'", "'.$ajd->format("Y-m-d H:i:s").'", NULL,"1")';
         }
         else{
-//            echo('Merci de remplir tous les champs.');
             return false;
         }
 
@@ -126,6 +138,8 @@ class Utilisateur extends CommunTable
         global $pdo;
 
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $this->date_upd = $ajd->format("Y-m-d H:i:s");
+
         $query = 'UPDATE Utilisateur SET id_droit = "'.$this->id_droit.'", nom = "'.$this->nom.'", prenom = "'.$this->prenom.'", email = "'.$this->email.'",password = "'.$this->password.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", active = "'.$this->active.'" WHERE id_utilisateur = '.$this->id_utilisateur;
 
         $pdo->exec($query);
@@ -303,6 +317,24 @@ class Utilisateur extends CommunTable
     public function setDateAdd($date_add)
     {
         $this->date_add = $date_add;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateUpd()
+    {
+        return $this->date_upd;
+    }
+
+    /**
+     * @param mixed $date_upd
+     * @return Utilisateur
+     */
+    public function setDateUpd($date_upd)
+    {
+        $this->date_upd = $date_upd;
         return $this;
     }
 

@@ -42,7 +42,7 @@ else {
                 $panier = Panier::rechercherParParam(array('id_utilisateur' => Auth::user()->getId(), 'validation' => 0), 1);
                 if(!$panier instanceof Panier) {
                     $pa = new Panier();
-                    $panier = $pa->add(Auth::user()->getId());
+                    $panier = $pa->add($_POST['id_utilisateur']);
                 }
                 try{
                     $panier->ajoutProduit($produit->getId(), $quantite);
@@ -58,5 +58,5 @@ else {
         }
     }
 }
-
+$tabRetour['user']=$panier->getIdUtilisateur();
 echo json_encode($tabRetour);

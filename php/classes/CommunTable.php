@@ -81,7 +81,6 @@ class CommunTable
         $class = get_called_class();
 
         if(!is_array($params)) {
-            echo 'Erreur lors de la recherche des '.strtolower($class).'s.';
             return false;
         }
 

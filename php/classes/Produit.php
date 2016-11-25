@@ -108,11 +108,20 @@ class Produit extends CommunTable
     {
         global $pdo;
         if(!empty($libelle) && !empty($prix) && !empty($stock) && !empty($id_boutique)) {
+            $this->libelle = $libelle;
+            $this->libelle_anglais = $libelle_anglais;
+            $this->description = $description;
+            $this->description_anglais = $description_anglais;
+            $this->prix = $prix;
+            $this->active = 1;
+            $this->stock = $libelle;
+            $this->image = $image;
+            $this->id_boutique = $id_boutique;
+
             $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, description, description_anglais, prix, active, stock, image, id_boutique) 
                       VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'",  "'.$description.'",  "'.$description_anglais.'",'.$prix.', "1", "'.$stock.'", "'.$image.'", "'.$id_boutique.'")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
             return false;
         }
 

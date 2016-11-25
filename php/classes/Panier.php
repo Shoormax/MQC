@@ -62,12 +62,14 @@ class Panier extends CommunTable
         global $pdo;
         if(!empty($id_utilisateur)) {
             $ajd = new DateTime();
-
+            $this->id_utilisateur = $id_utilisateur;
+            $this->date_add = $ajd->format("Y-m-d H:i:s");
+            $this->validation = 0;
+            $this->total = 0;
             $query = 'INSERT INTO Panier (id_panier, id_utilisateur, total, date_add, date_upd, validation) 
                       VALUES (DEFAULT, "'.$id_utilisateur.'", DEFAULT,  "'.$ajd->format("Y-m-d H:i:s").'", DEFAULT, DEFAULT)';
         }
         else{
-            echo('Merci de remplir tous les champs.');
             return false;
         }
 
@@ -86,6 +88,7 @@ class Panier extends CommunTable
     {
         global $pdo;
         $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $this->date_upd = $ajd->format("Y-m-d H:i:s");
         $query = 'UPDATE Panier SET id_utilisateur = "'.$this->id_utilisateur.'", total = "'.$this->total.'", date_upd = "'.$ajd->format("Y-m-d H:i:s").'", validation = "'.$this->validation.'" WHERE id_panier = '.$this->id_panier;
 
         $pdo->exec($query);

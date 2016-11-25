@@ -6,7 +6,10 @@
   <input type="submit" name="subConnexion" value="Connexion">
 
   <?php
-  if(isset($GLOBALS['sMessageErreurConnexion'])) echo '<span class="red">'.$GLOBALS['sMessageErreurConnexion'].'</span>' ?>
+  if(isset($_GET['error']) && $_GET['error']) {
+    echo 'Couple login/mot de passe incorrect.';
+  }
+  ?>
 </form>
 <form action="php/traitement/connexion.php" method="POST">
   <input type="hidden" name="connexion" value="inscription">
@@ -21,3 +24,4 @@
     echo '<span class="red">'.$GLOBALS['sMessageErreurInscription'].'</span>';
   ?>
 </form>
+

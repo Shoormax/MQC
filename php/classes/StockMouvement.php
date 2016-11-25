@@ -64,12 +64,15 @@ class StockMouvement  extends CommunTable
 
         if(!empty($quantite) && !empty($id_type_mouvement) && !empty($id_produit) && !empty($id_panier)) {
             $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+            $this->quantite = $quantite;
+            $this->id_type_mouvement = $id_type_mouvement;
+            $this->id_produit = $id_produit;
+            $this->id_panier = $id_panier;
 
             $query = 'INSERT INTO Stock_Mouvement (id_stock_mouvement, quantite, date_add, id_type_mouvement, id_produit, id_panier) 
                       VALUES (DEFAULT, "'.$quantite.'", "'.$ajd->format('Y-m-d H:i:s').'", "'.$id_type_mouvement.'", "'.$id_produit.'",  "'.$id_panier.'")';
         }
         else{
-            echo('Merci de remplir tous les champs.');
             return false;
         }
 
