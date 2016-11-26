@@ -60,13 +60,6 @@ header input {
     display:block;
 }
 
-.apercuProduit {
-    color: #fff;
-    display: block;
-    width: 300px;
-    margin: 20px;
-}
-
 .apercuProduit img {
     margin: auto;
 }
@@ -82,8 +75,9 @@ header input {
 }
 
 .apercuProduit {
+    color: #fff;
+    margin: 1vw;
     text-align: center;
-    border: 1.1vw solid white;
     background: tomato;
     padding: 1%;
     font-family: "Segoe UI", sans-serif;
@@ -172,6 +166,7 @@ header input {
 }
 
 #messageOk {
+    min-height: 30%;
     text-align: center;
     background-color: #003E5B;
     color: #fff;
@@ -181,18 +176,6 @@ header input {
 #affichageErreur a:hover,
 #affichageOk a:hover{
     cursor: pointer;
-}
-
-#grayBack
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 1999;
-    opacity: 0.5;
 }
 
 .panier {

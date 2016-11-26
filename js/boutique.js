@@ -188,10 +188,24 @@ function ajoutPanier(id_utilisateur, id_produit) {
     });
 }
 
+/**
+ * Permet de fermer l'affichage d'erreurs ou de message de validation
+ *
+ * @author Valentin Dérudet
+ *
+ * @param div
+ */
 function fermerErreur(div) {
     $('#'+div).hide();
 }
 
+/**
+ * Permet d'actualiser l'affichage du panier. Appelé au lancement de la page pour récupéré un panier potentiellement existant.
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_utilisateur
+ */
 function refreshAffichagePanier(id_utilisateur) {
     $.ajax({
         url: 'php/traitement/panier.php',
@@ -199,7 +213,7 @@ function refreshAffichagePanier(id_utilisateur) {
         data : {id_utilisateur:id_utilisateur},
         dataType: "json",
         success: function (retour) {
-            $('#tablePanier').html(retour['html']);
+            $('#contenuPanier').html(retour['html']);
         },
         error: function(retour) {
             console.log(retour);
@@ -208,6 +222,11 @@ function refreshAffichagePanier(id_utilisateur) {
     });
 }
 
+/**
+ * Permet d'afficher/fermer le panier au clique.
+ *
+ * @author Valentin Dérudet
+ */
 function affichagePanier() {
     if ($('#contenuPanier').is(':visible')) {
         $('#contenuPanier').hide();
@@ -219,6 +238,15 @@ function affichagePanier() {
     }
 }
 
+/**
+ * Permet de modifier le panier en ajoutant/supprimant des produits
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_produit
+ * @param id_panier
+ * @param input
+ */
 function modificationPanier(id_produit, id_panier, input) {
     var method = 'ajout';
 
@@ -236,6 +264,42 @@ function modificationPanier(id_produit, id_panier, input) {
         },
         error: function(retour) {
             affichageErreur(retour['html']);
+        }
+    });
+}
+
+/**
+ * Permet de valider le panier actuellement actif
+ *
+ * @auhtor Valentin Dérudet
+ *
+ * @param id_panier
+ */
+function validationPanier(id_panier) {
+    $('#validationPanier'+id_panier).hide();
+    $('#validationPanierLoader'+id_panier).show();
+    if(id_panier <= 0) {
+        affichageErreur('Ce panier est introuvable.','000005');
+        return false;
+    }
+    $.ajax({
+        url: 'php/traitement/validation_panier.php',
+        type: 'POST',
+        data : {id_panier:id_panier},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                affichageOk(retour['html']);
+                refreshAffichagePanier(retour['id_utilisateur']);
+            }
+            $('#validationPanierLoader'+id_panier).hide();
+            $('#validationPanier'+id_panier).show();
+        },
+        error: function(retour) {
+            affichageErreur(retour['html'], retour['status']);
         }
     });
 }
