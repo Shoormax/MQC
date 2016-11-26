@@ -1,8 +1,3 @@
-:root {
-    --police-titre: "Proza Libre script=all rev=2", "Adobe Blank", sans-serif;
-    --police-texte: "Segoe UI", sans-serif;
-}
-
 html, body {
     width: 100%;
     height: 100%;
