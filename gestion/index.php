@@ -20,6 +20,7 @@ require_once '../php/include/init.php';
 if(isset($_POST) && !empty($_POST)) {
     $user = Utilisateur::rechercherParParam(array("email"=>$_POST['email'], "password"=>$_POST['passwd']), 1);
     if($user instanceof Utilisateur && $user->isAdmin()) {
+        $_SESSION['user'] = $user->getId();
         header('Location: administration.php');
     }
     echo 'Couple login/mot de passe incorrect.';

@@ -214,10 +214,6 @@ header input {
     text-shadow: 1px 1px black;;
 }
 
-#tablePanier {
-    border: 1px solid black;
-}
-
 #tablePanier td{
     border: 1px solid black;
     text-align: center;
