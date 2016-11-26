@@ -145,20 +145,23 @@ class Panier extends CommunTable
         global $pdo;
         $produit = Produit::rechercheParId($id_product);
         $quantity = $quantite;
-        if(is_integer($quantity) && $quantity > 0)
-        {
-            $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
-            $query = 'UPDATE panier_has_produit SET date_upd = "'.$ajd->format('Y-m-d H:i:s').'", quantite = panier_has_produit.quantite-'.$quantity.' WHERE id_produit = '.$id_product.' AND id_panier= '.$this->id_panier;
+        if($this->getTotal() > 0) {
+            if($quantity > 0)
+            {
+                $ajd = new DateTime('now', new DateTimeZone('Europe/Paris'));
+                $query = 'UPDATE panier_has_produit SET date_upd = "'.$ajd->format('Y-m-d H:i:s').'", quantite = panier_has_produit.quantite-'.$quantity.' WHERE id_produit = '.$id_product.' AND id_panier= '.$this->id_panier;
+            }
+            else{
+                $query = 'DELETE FROM panier_has_produit WHERE id_produit = '.$id_product.' AND id_panier= '.$this->id_panier;
+                $quantity = $this->getQuantiteProduit($id_product);
+            }
+            $pdo->exec($query);
+            $produit->entreeStock($quantity, $this->id_panier);
+            $this->setTotal($this->total - $produit->getPrix()*$quantity);
+            $panier = $this->update();
+            return $panier;
         }
-        else{
-            $query = 'DELETE FROM panier_has_produit WHERE id_produit = '.$id_product.' AND id_panier= '.$this->id_panier;
-            $quantity = $this->getQuantiteProduit($id_product);
-        }
-        $pdo->exec($query);
-        $produit->entreeStock($quantity, $this->id_panier);
-        $this->setTotal($this->total - $produit->getPrix()*$quantity);
-        $panier = $this->update();
-        return $panier;
+        return false;
     }
 
     /**

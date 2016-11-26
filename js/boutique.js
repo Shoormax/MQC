@@ -235,7 +235,7 @@ function modificationPanier(id_produit, id_panier, input) {
             refreshAffichagePanier(retour['id_utilisateur']);
         },
         error: function(retour) {
-            affichageErreur(retour['html'], retour['status']);
+            affichageErreur(retour['html']);
         }
     });
 }

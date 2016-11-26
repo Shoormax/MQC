@@ -221,7 +221,9 @@ header input {
 #tablePanier td{
     border: 1px solid black;
     text-align: center;
+    padding: 2%;
 }
+
 /************************************************/
 /****************** ANIMATIONS ******************/
 /************************************************/
