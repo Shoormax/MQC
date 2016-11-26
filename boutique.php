@@ -26,7 +26,7 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <link rel="stylesheet" href="css/boutique.css">
 </head>
-<body>
+<body <?php echo isset($_SESSION['user']) ? 'onload="refreshAffichagePanier('.$user->getId().')"' : '' ?>>
 <header>
     <div class="extremite"><a href="deconnexion.php?retour=index">Logo</a></div>
     <div id="rechercheProduit">
@@ -56,6 +56,11 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
         }
         ?>
     </div>
+    <?php
+    if(isset($_SESSION['user'])) {
+        include 'php/views/boutique/panier.php';
+    }
+    ?>
 </div>
 <?php
 include 'php/views/boutique/affichageErreur.php';

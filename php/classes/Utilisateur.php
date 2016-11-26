@@ -168,7 +168,19 @@ class Utilisateur extends CommunTable
      */
     public function getPaniersUtilisateur()
     {
-        return Panier::rechercherParParam(array('id_utilisateur' => $this->id_utilisateur));
+        return Panier::rechercherParParam(array('id_utilisateur' => $this->id_utilisateur, 'validation' => 1));
+    }
+
+    /**
+     * Permet de retourner le panier en cours de création.
+     *
+     * @author Valentin Dérudet
+     *
+     * @return bool|null|object|object[]
+     */
+    public function getPanierNonValide()
+    {
+        return Panier::rechercherParParam(array('id_utilisateur' => $this->id_utilisateur, 'validation' => 0), 1);
     }
 
     /**

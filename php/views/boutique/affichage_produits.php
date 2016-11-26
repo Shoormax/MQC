@@ -20,6 +20,6 @@ ID : '.$produit->getId().'<br>
 <br>
 <br>
 <input type="button" class="button" onclick="modificationQuantite(\'-\','.$produit->getId().')" value="-"><input class="nombreProduit" id="nombreProduit'.$produit->getId().'" type="text" value="0" '.($produit->getStock() == 0 ? 'readonly' : '' ).'><input type="button" class="button" value="+" onclick="modificationQuantite(\'+\','.$produit->getId().','.$produit->getStock().')"><br>
-<a class="addToCart" onclick="ajoutPanier('.(Auth::user() instanceof Utilisateur ? Auth::user()->getId() : 0).','.$produit->getId().')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a><br>
+<a class="addToCart" onclick="ajoutPanier('.(Auth::user() instanceof Utilisateur ? Auth::user()->getId() : 0).','.$produit->getId().')"><i class="fa fa-spinner hide" aria-hidden="true" id="inputAjoutPanierLoader'.$produit->getId().'"></i><i id="inputAjoutPanier'.$produit->getId().'" class="fa fa-cart-plus" aria-hidden="true"></i></a><br>
 <a class="redirectDetail" onclick="redirectProduitDetaille('.$produit->getId().')">Voir la fiche détaillée</a>
 </div>';

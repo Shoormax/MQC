@@ -68,7 +68,6 @@ function rechercheProduit(){
 
             },
             error: function() {
-                console.log('a');
                 alert("Erreur lors de la récupération");
             }
         });
@@ -152,6 +151,8 @@ function redirectProduitDetaille(id_produit) {
  * @returns {boolean}
  */
 function ajoutPanier(id_utilisateur, id_produit) {
+    $('#inputAjoutPanier'+id_produit).hide();
+    $('#inputAjoutPanierLoader'+id_produit).show();
     if(id_utilisateur <= 0) {
         affichageErreur('Veuillez vous connecter pour ajouter ce produit à votre panier.');
         return false;
@@ -161,6 +162,7 @@ function ajoutPanier(id_utilisateur, id_produit) {
         return false;
     }
     var quantite = $('#nombreProduit'+id_produit).val();
+    $('#nombreProduit'+id_produit).val(0);
 
     $.ajax({
         url: 'php/views/boutique/ajoutPanier.php',
@@ -168,13 +170,36 @@ function ajoutPanier(id_utilisateur, id_produit) {
         data : {id_utilisateur:id_utilisateur, id_produit:id_produit, quantite:quantite},
         dataType: "json",
         success: function(retour) {
-            console.log(retour);
             if(retour['status'] != 1) {
                 affichageErreur(retour['html'], retour['status']);
             }
             else {
                 affichageOk(retour['html']);
+                refreshAffichagePanier(id_utilisateur);
             }
+            $('#inputAjoutPanierLoader'+id_produit).hide();
+            $('#inputAjoutPanier'+id_produit).show();
+        },
+        error: function(retour) {
+            affichageErreur(retour['html'], retour['status']);
+            $('#inputAjoutPanierLoader'+id_produit).hide();
+            $('#inputAjoutPanier'+id_produit).show();
+        }
+    });
+}
+
+function fermerErreur(div) {
+    $('#'+div).hide();
+}
+
+function refreshAffichagePanier(id_utilisateur) {
+    $.ajax({
+        url: 'php/traitement/panier.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur},
+        dataType: "json",
+        success: function (retour) {
+            $('#tablePanier').html(retour['html']);
         },
         error: function(retour) {
             console.log(retour);
@@ -183,6 +208,34 @@ function ajoutPanier(id_utilisateur, id_produit) {
     });
 }
 
-function fermerErreur(div) {
-    $('#'+div).hide();
+function affichagePanier() {
+    if ($('#contenuPanier').is(':visible')) {
+        $('#contenuPanier').hide();
+        $('.fa-cart-arrow-down').show()
+    }
+    else  {
+        $('.fa-cart-arrow-down').hide();
+        $('#contenuPanier').show();
+    }
+}
+
+function modificationPanier(id_produit, id_panier, input) {
+    var method = 'ajout';
+
+    if(input.className == 'fa fa-minus-circle') {
+        method = 'suppression';
+    }
+
+    $.ajax({
+        url: 'php/traitement/modification_panier.php',
+        type: 'POST',
+        data : {id_produit:id_produit, id_panier:id_panier, method:method},
+        dataType: "json",
+        success: function (retour) {
+            refreshAffichagePanier(retour['id_utilisateur']);
+        },
+        error: function(retour) {
+            affichageErreur(retour['html'], retour['status']);
+        }
+    });
 }

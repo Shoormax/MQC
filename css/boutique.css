@@ -16,8 +16,8 @@ html, body {
 }
 
 header {
+    height: 8%;
     width: 100%;
-    min-height: 60px;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
@@ -109,6 +109,10 @@ header input {
     border: none;
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
 .nombreProduit {
     width: 15%;
     height: 6%;
@@ -128,9 +132,18 @@ header input {
     text-decoration: underline;
 }
 
-.fa-cart-plus {
+.fa-cart-plus, .fa-spinner {
     font-size: 4vh;
     padding: 3%;
+}
+
+.fa-spinner {
+    animation: rotate 2s infinite;
+    -webkit-animation: rotate 2s infinite;
+}
+
+.fa-cart-plus:hover {
+    text-shadow: 1px 1px black;
 }
 
 #affichageErreur {
@@ -191,3 +204,47 @@ header input {
     z-index: 1999;
     opacity: 0.5;
 }
+
+.panier {
+    background-color: green;
+    position: absolute;
+    right: 1%;
+    top: 8%;
+    color: #fff;
+}
+
+.fa-cart-arrow-down{
+    font-size: 4vh;
+    padding: 10%;
+    float: right;
+}
+
+#affichePanier:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px black;;
+}
+
+#tablePanier {
+    border: 1px solid black;
+}
+
+#tablePanier td{
+    border: 1px solid black;
+    text-align: center;
+}
+/************************************************/
+/****************** ANIMATIONS ******************/
+/************************************************/
+
+@keyframes rotate {
+    0%{
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+
+/************************************************/
+/****************** ANIMATIONS ******************/
+/************************************************/

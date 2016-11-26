@@ -17,7 +17,7 @@ $produit = Produit::rechercheParId($_POST['id_produit']);
 $boutique = Boutique::rechercheParId($produit->getIdBoutique());
 
 $tabRetour = array();
-$tabRetour['html'] = 'Erreur lors de l\'affichage de la page';
+$tabRetour['html'] = 'Erreur lors de l\'affichage de la page.';
 
 if($produit instanceof Produit) {
     $tabRetour['html'] = 'ID : '.$produit->getId().'<br>'.(string)$produit.'<br>

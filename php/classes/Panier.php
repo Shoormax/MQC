@@ -97,8 +97,8 @@ class Panier extends CommunTable
 
     /**
      * Permet d'ajouter ou de modifier un produit dans le panier.
-     * Utilisation :    $p = Panier::rechercheParId($id_panier)
-     *                  $p->ajoutProduit($id_product, $quantite)
+     * Utilisation :    $p = Panier::rechercheParId($id_panier);
+     *                  $p->ajoutProduit($id_product, $quantite);
      *
      * @author Valentin Dérudet
      *
@@ -129,8 +129,15 @@ class Panier extends CommunTable
     }
 
     /**
+     * Permet de retirer en partiellement ou complètement un produit de ce panier
+     * Utilisation :    $p = Panier::rechercherParId($id_panier);
+     *                  $p->suppressionProduit($id_product, $quantite);
+     *
+     * @author Valentin Dérudet
+     *
      * @param $id_product
      * @param null $quantite
+     *
      * @return bool|Panier
      */
     public function suppressionProduit($id_product, $quantite = null)

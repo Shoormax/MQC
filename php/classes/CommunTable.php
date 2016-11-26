@@ -23,7 +23,6 @@ class CommunTable
     {
         global $pdo;
         $class = get_called_class();
-
         if(method_exists(get_called_class(), 'isActive')) {
             $query = $pdo->prepare('SELECT * from '.$class.' where id_'.strtolower($class).' ='.$id.' AND active = 1');
         }
