@@ -11,7 +11,6 @@
 $boutique = Boutique::rechercheParId($produit->getIdBoutique());
 
 echo '<div class="apercuProduit" id="apercuProduit'.$produit->getId().'">
-ID : '.$produit->getId().'<br>
 '.(string)$produit.'<br>
 '.$produit->getPrix().' €<br>
 <img src="'.$produit->getImage().'" alt="imgArticle'.$produit->getLibelle().'" style="width:300px"/><br>

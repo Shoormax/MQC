@@ -20,9 +20,10 @@ $tabRetour = array();
 $tabRetour['html'] = 'Erreur lors de l\'affichage de la page.';
 
 if($produit instanceof Produit) {
-    $tabRetour['html'] = 'ID : '.$produit->getId().'<br>'.(string)$produit.'<br>
+    $tabRetour['html'] = (string)$produit.'<br>
                 '.$produit->getPrix().'<br><img src="'.$produit->getImage().'" alt=""photoarticlemdeir style="width:300px"/><br>
                 '.(string)$boutique.'<br>
+                <p>'.$produit->getDescription().'</p>
                 '. $boutique->getAdresseComplete('<br>').
                 '<br><br>';
 }
