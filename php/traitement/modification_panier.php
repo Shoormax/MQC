@@ -30,6 +30,8 @@ if($panier instanceof Panier) {
             $tabRetour['html'] = 'Ajout effectué avec succès.';
         }
         $tabRetour['id_utilisateur'] = $panier->getIdUtilisateur();
+        $quantite = $_POST['method'] == 'suppression' ? ($produit->getStock()+1) : ($produit->getStock() -1);
+        $tabRetour['stock'] = $produit->getLibelle().' ('.$quantite.')';
     }
 }
 

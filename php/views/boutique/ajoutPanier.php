@@ -49,6 +49,7 @@ else {
                     $tabRetour['status'] = 1;
                     //Pas de retour sur l'ajout car panier visuellement actualisé
                     $tabRetour['html'] = '';
+                    $tabRetour['stock'] = $produit->getLibelle().' ('.($produit->getStock()-$quantite).')';
                 }
                 catch (Exception $e) {
                     $tabRetour['status'] = $e->getCode();

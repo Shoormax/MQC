@@ -173,8 +173,8 @@ function ajoutPanier(id_utilisateur, id_produit) {
                 affichageErreur(retour['html'], retour['status']);
             }
             else {
-                affichageOk(retour['html']);
                 refreshAffichagePanier(id_utilisateur);
+                $('#libelleProduitAffichage'+id_produit).html(retour['stock']);
             }
         },
         error: function(retour) {
@@ -255,6 +255,7 @@ function modificationPanier(id_produit, id_panier, input) {
         dataType: "json",
         success: function (retour) {
             refreshAffichagePanier(retour['id_utilisateur']);
+            $('#libelleProduitAffichage'+id_produit).html(retour['stock']);
         },
         error: function(retour) {
             affichageErreur(retour['html']);
