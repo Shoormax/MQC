@@ -9,9 +9,8 @@
  * Accueil du site
  */
 include_once('php/path.php');
-require_once (__INCLUDE_PATH__.'header.php');
-
-require_once 'php/include/init.php';
+include_once 'php/include/header.php';
+include_once 'php/include/init.php';
 
 //@todo gérer la langue avec des cookies
 $id_langue = 1;
@@ -56,4 +55,4 @@ $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
     </body>
 
 <?php
-include_once(__INCLUDE_PATH__.'footer.php');
+include_once('php/include/footer.php');

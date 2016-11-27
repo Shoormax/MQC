@@ -11,7 +11,6 @@
  * Cela permet à l'utilisateur de voir le site pendant le chargement
  * des fichiers JS
  */
-include_once('../path.php');
 
 $aCss = [
     'index',

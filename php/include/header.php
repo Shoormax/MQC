@@ -10,7 +10,6 @@
  * ainsi que l'encodage utf8
  */
 header( 'content-type: text/html; charset=utf-8' );
-include_once('../path.php');
 
 $aCss = [
     'projectone',
