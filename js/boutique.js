@@ -341,7 +341,12 @@ function modificationProduit(id_produit, id_utilisateur) {
         data : {id_produit:id_produit, libelleProduit:libelleProduit, prixProduit:prixProduit, id_utilisateur:id_utilisateur, stock:stock, description:description},
         dataType: "json",
         success: function (retour) {
-            gestionProduits(id_utilisateur)
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                gestionProduits(id_utilisateur)
+            }
         },
         error: function(retour) {
             console.log(retour);
@@ -364,9 +369,11 @@ function supprimerProduit(id_produit, id_utilisateur) {
         data : {id_produit:id_produit},
         dataType: "json",
         success: function (retour) {
-            gestionProduits(id_utilisateur);
             if(retour['status'] != 1) {
                 affichageErreur(retour['html'], retour['status']);
+            }
+            else{
+                gestionProduits(id_utilisateur);
             }
         },
         error: function(retour) {
@@ -395,9 +402,11 @@ function ajoutProduit(id_boutique, id_utilisateur) {
         data : {id_boutique:id_boutique, libelle:libelle, prix:prix, stock:stock, description:description},
         dataType: "json",
         success: function (retour) {
-            gestionProduits(id_utilisateur);
             if(retour['status'] != 1) {
                 affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                gestionProduits(id_utilisateur);
             }
         },
         error: function(retour) {

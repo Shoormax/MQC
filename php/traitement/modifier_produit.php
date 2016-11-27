@@ -28,13 +28,21 @@ if($produit instanceof Produit) {
             $tabRetour['html'] = 'Impossible de mdofier ce produit car il est actuellement dans un panier non validé.';
         }
         else {
-            $tabRetour['status'] = 1;
-            $tabRetour['html'] = '';
-            $produit->setLibelle($_POST['libelleProduit']);
-            $produit->setPrix($_POST['prixProduit']);
-            $produit->setStock($_POST['stock']);
-            $produit->setDescription($_POST['description']);
-            $produit->update();
+            $tabRetour['html'] = 'Le libelle ne peut être vide.';
+            $tabRetour['status'] = '000015';
+            if(isset($_POST['libelleProduit']) && !empty($_POST['libelleProduit'])) {
+                $tabRetour['html'] = 'Le prix doit être renseigné.';
+                $tabRetour['status'] = '000015';
+                if (isset($_POST['prixProduit']) && !empty($_POST['prixProduit'])) {
+                    $tabRetour['status'] = 1;
+                    $tabRetour['html'] = '';
+                    $produit->setLibelle($_POST['libelleProduit']);
+                    $produit->setPrix($_POST['prixProduit']);
+                    $produit->setStock($_POST['stock']);
+                    $produit->setDescription($_POST['description']);
+                    $produit->update();
+                }
+            }
         }
     }
 }
