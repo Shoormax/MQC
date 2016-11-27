@@ -152,8 +152,6 @@ function redirectProduitDetaille(id_produit) {
  * @returns {boolean}
  */
 function ajoutPanier(id_utilisateur, id_produit) {
-    $('#inputAjoutPanier'+id_produit).hide();
-    $('#inputAjoutPanierLoader'+id_produit).show();
     if(id_utilisateur <= 0) {
         affichageErreur('Veuillez vous connecter pour ajouter ce produit à votre panier.');
         return false;
@@ -178,13 +176,9 @@ function ajoutPanier(id_utilisateur, id_produit) {
                 affichageOk(retour['html']);
                 refreshAffichagePanier(id_utilisateur);
             }
-            $('#inputAjoutPanierLoader'+id_produit).hide();
-            $('#inputAjoutPanier'+id_produit).show();
         },
         error: function(retour) {
             affichageErreur(retour['html'], retour['status']);
-            $('#inputAjoutPanierLoader'+id_produit).hide();
-            $('#inputAjoutPanier'+id_produit).show();
         }
     });
 }
