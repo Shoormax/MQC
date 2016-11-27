@@ -20,6 +20,9 @@ else if(strpos($_SERVER["SCRIPT_NAME"], "connexion.php")) {
 else if(strpos($_SERVER["SCRIPT_NAME"], "autocomplementationProduit.php")) {
     define("__ADDRESS_CLASSES__",  "classes/");
 }
+else if(strpos($_SERVER["SCRIPT_NAME"], "gestion_compte.php")) {
+    define("__ADDRESS_CLASSES__",  "../classes/");
+}
 
 if(file_exists(__ADDRESS_CLASSES__.'Configuration.php')) {
     include_once __ADDRESS_CLASSES__.'Configuration.php';

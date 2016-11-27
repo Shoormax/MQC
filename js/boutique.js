@@ -14,10 +14,13 @@ function gestionConnection() {
 
 }
 
-function apercuProduit(id_produit) {
-    var div = document.getElementById("detailProduit");
-    div.style.display = "block";
-    div.innerHTML = id_produit;
+/**
+ * Function pour tester des boutons et leur appel js
+ *
+ * @author Valentin Dérudet
+ */
+function test() {
+    alert('a');
 }
 
 /**
@@ -117,7 +120,6 @@ function affichageOk(texte) {
  *
  * @auhtor Valentin Dérudet
  *
- * @param id_utilisateur
  * @param id_produit
  * @returns {boolean}
  */
@@ -210,13 +212,12 @@ function refreshAffichagePanier(id_utilisateur) {
     $.ajax({
         url: 'php/traitement/panier.php',
         type: 'POST',
-        data : {id_utilisateur:id_utilisateur},
+        data: {id_utilisateur: id_utilisateur},
         dataType: "json",
         success: function (retour) {
             $('#contenuPanier').html(retour['html']);
         },
-        error: function(retour) {
-            console.log(retour);
+        error: function (retour) {
             affichageErreur(retour['html'], retour['status']);
         }
     });
@@ -300,6 +301,114 @@ function validationPanier(id_panier) {
         },
         error: function(retour) {
             affichageErreur(retour['html'], retour['status']);
+        }
+    });
+}
+
+/**
+ * Permet a un super utilisateur d'afficher les produits des/de la boutique(s) de l'utilisateur
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_utilisateur
+ */
+function gestionProduits(id_utilisateur) {
+    $.ajax({
+        url: 'php/views/boutique/affichage_produits_modification.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur},
+        dataType: "json",
+        success: function (retour) {
+            $('#gestionProduits').attr("onclick","location.reload()").html('Retour boutique');
+            $('#boutique').html(retour['html']);
+        },
+        error: function(retour) {
+            affichageErreur(retour['html'], retour['status'])
+        }
+    });
+}
+
+/**
+ * Permet a un super utilisateur de modifier ses produits
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_produit
+ * @param id_utilisateur
+ */
+function modificationProduit(id_produit, id_utilisateur) {
+    var libelleProduit = $('#libelleProduit'+id_produit).val(),
+        stock = $('#stockProduit'+id_produit).val(),
+        prixProduit = $('#prixProduit'+id_produit).val(),
+        description = $('#descriptionProduit'+id_produit).val();
+
+    $.ajax({
+        url: 'php/traitement/modifier_produit.php',
+        type: 'POST',
+        data : {id_produit:id_produit, libelleProduit:libelleProduit, prixProduit:prixProduit, id_utilisateur:id_utilisateur, stock:stock, description:description},
+        dataType: "json",
+        success: function (retour) {
+            gestionProduits(id_utilisateur)
+        },
+        error: function(retour) {
+
+        }
+    });
+}
+
+/**
+ * Permet de supprimer un produit d'une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_produit
+ * @param id_utilisateur
+ */
+function supprimerProduit(id_produit, id_utilisateur) {
+    $.ajax({
+        url: 'php/traitement/supprimer_produit.php',
+        type: 'POST',
+        data : {id_produit:id_produit},
+        dataType: "json",
+        success: function (retour) {
+            gestionProduits(id_utilisateur);
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Permet d'ajouter un produit et de le lier à une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_boutique
+ * @param id_utilisateur
+ */
+function ajoutProduit(id_boutique, id_utilisateur) {
+    var libelle = $('#libelleAjoutProduit').val(),
+        prix = $('#prixAjoutProduit').val(),
+        stock = $('#stockAjoutProduit').val(),
+        description = $('#descriptionAjoutProduit').val();
+
+    $.ajax({
+        url: 'php/traitement/ajout_produit.php',
+        type: 'POST',
+        data : {id_boutique:id_boutique, libelle:libelle, prix:prix, stock:stock, description:description},
+        dataType: "json",
+        success: function (retour) {
+            gestionProduits(id_utilisateur);
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
         }
     });
 }

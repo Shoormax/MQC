@@ -9,10 +9,8 @@ if(isset($_POST['connexion'])) {
 if(isset($_SESSION['user'])) {
     global $user;
     $user = Utilisateur::rechercheParId($_SESSION['user']);
-    Auth::setUser($user);
 }
-
-$produits = Produit::rechercherParParam(array('active' => 1), 10);
+$produits = Produit::rechercherParParam(array('active' => 1));
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +32,17 @@ $produits = Produit::rechercherParParam(array('active' => 1), 10);
     </div>
     <div class="extremite">
         <?php
-        if(Auth::user() instanceof Utilisateur) {
-            echo '<div>Bonjour '.(string)Auth::user().'</div>';
-            echo '<a href="./deconnexion.php">Déconnexion</a>';
+        if($user instanceof Utilisateur) {
+            echo '<a id="affichageCompte" href="php/views/gestion_compte.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>';
+            echo '<span>Bonjour '.(string)$user.'</span>';
+            echo '<p><a href="./deconnexion.php">Déconnexion</a></p>';
+            if($user->isSuperUser()) {
+                echo '<div id="gestionProduits" onclick="gestionProduits('.$user->getId().')"><i class="fa fa-product-hunt" aria-hidden="true"></i>Gérer mes produits</div>';
+            }
         } else {
             echo '<a href="./connexion.php">Connexion</a>';
         }
+
         ?>
     </div>
 </header>

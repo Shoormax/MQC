@@ -93,7 +93,7 @@ class Produit extends CommunTable
     /**
      * Permet d'ajouter un produit.
      * Utilisation :    $p = new Product();
-     *                  $p->add($id_utilisateur, $libelle, $prix, $stock);
+     *                  $p->add($id_boutique, $libelle, $prix, $stock);
      *
      * @author Valentin Dérudet
      *
@@ -104,7 +104,7 @@ class Produit extends CommunTable
      * @param $stock
      * @return bool|Produit
      */
-    public function add($libelle, $prix, $stock = 0, $id_boutique, $libelle_anglais = null, $description = null, $description_anglais = null,  $image = null)
+    public function add($libelle, $prix, $stock = 0, $id_boutique, $libelle_anglais = '', $description = '', $description_anglais = '',  $image = '')
     {
         global $pdo;
         if(!empty($libelle) && !empty($prix) && !empty($stock) && !empty($id_boutique)) {
@@ -237,6 +237,25 @@ class Produit extends CommunTable
     }
 
     /**
+     * Permet de vérifier si ce produit est actuellement dans un panier.
+     *
+     * @author Valentin Dérudet
+     *
+     * @return bool
+     */
+    public function isUtilise() {
+        $paniers = Panier::rechercherParParam(array('validation' => 0));
+        foreach($paniers as $panier) {
+            foreach ($panier->getProduits() as $p) {
+                if(in_array($this->getId(), $p)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      *
      * GETTERS / SETTERS
      *
@@ -316,7 +335,7 @@ class Produit extends CommunTable
      * @param boolean $active
      * @return Produit
      */
-    public function setActive(bool $active)
+    public function setActive($active)
     {
         $this->active = $active;
         return $this;
@@ -334,7 +353,7 @@ class Produit extends CommunTable
      * @param int $stock
      * @return Produit
      */
-    public function setStock(int $stock)
+    public function setStock($stock)
     {
         $this->stock = $stock;
         return $this;

@@ -203,6 +203,24 @@ header input {
     padding: 2%;
 }
 
+#affichageCompte {
+    cursor: pointer;
+}
+
+#gestionProduits {
+    cursor: pointer;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 2vh;
+    background-color: green;
+    padding: 1%;
+}
+
+#gestionProduits i {
+    font-size: 3vh;
+}
 /************************************************/
 /****************** ANIMATIONS ******************/
 /************************************************/

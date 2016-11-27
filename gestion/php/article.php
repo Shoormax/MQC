@@ -16,7 +16,7 @@ $template.= $a->isAccessibilite() ? "" : "<img class='imgArticle' src='../".$a->
             <input name='imageArticle".$a->getid()."' type='text' value='".$a->getImage()."'>
             <input type='hidden' name='MAX_FILE_SIZE' value='1048576' />
             <input type='file' style='color:black' name='fichierimgArticle".$a->getid()."'/><br />";
-$template .= " </div>
+$template .= "</div>
         <div class='wrap-textuel'>
             <div class='sous-wrap-text tcenter'>
                 <p><input type='text' class='titreShort' name='titreShort".$a->getid()."' value='".$a->getTitreShortTexte()."'/></p>
