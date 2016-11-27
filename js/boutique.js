@@ -121,7 +121,6 @@ function affichageOk(texte) {
  * @auhtor Valentin Dérudet
  *
  * @param id_produit
- * @returns {boolean}
  */
 function redirectProduitDetaille(id_produit) {
     if(typeof id_produit != 'undefinded') {
@@ -351,7 +350,7 @@ function modificationProduit(id_produit, id_utilisateur) {
             gestionProduits(id_utilisateur)
         },
         error: function(retour) {
-
+            console.log(retour);
         }
     });
 }
