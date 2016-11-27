@@ -26,6 +26,7 @@ if($user instanceof Utilisateur) {
     $panier = $user->getPanierNonValide();
     $tabRetour['html'] = '<table id="tablePanier">';
     if($panier instanceof Panier && !empty($panier->getProduits())) {
+        $tabRetour['html'] .= 'Créé le : '.$panier->getDateAdd(true);
         $tabRetour['html'] .= '<tr><td>Produit</td><td>Quantite</td><td>Prix unitaire</td><td>Prix total</td><td style="border: none"></td><td style="border: none"><i class="fa fa-times-circle" aria-hidden="true" onclick="affichagePanier()"></i></td></tr>';
         foreach ($panier->getProduits() as $p) {
             $produit = Produit::rechercheParId($p['id_produit']);

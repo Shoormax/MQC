@@ -228,10 +228,22 @@ class Panier extends CommunTable
     }
 
     /**
+     * Retourne la date add, le paramètre permet de renvoyer une chaine personnalisée pour l'affichage
+     * @todo A améliorer grandement !
+     *
+     * bool $affichee
+     *
      * @return mixed
      */
-    public function getDateAdd()
+    public function getDateAdd($affichee = false)
     {
+        //2016-11-26 14:48:56
+        if($affichee) {
+            $annee = substr($this->date_add, 0, 4);
+            $mois = substr($this->date_add, 5, 2);
+            $jour = substr($this->date_add, 8, 2);
+            return $jour.'/'.$mois.'/'.$annee;
+        }
         return $this->date_add;
     }
 
