@@ -31,7 +31,7 @@ else{
     <link rel="icon" type="image/png" href="../../img/min/Musee.png" />
     <link rel="stylesheet" href="../../css/boutique.css">
 </head>
-<body>
+<body <?php echo 'onload="affichageCommandes('.$user->getId().')"' ?>>
 <table>
     <tr>
         <td>
@@ -57,12 +57,17 @@ else{
             echo '<input type="button" value="Supprimer mon compte" onclick="suppressionCompte('.$user->getId().')"/>';
             echo '</td></tr>';
             echo '<tr><td>';
+            echo '<span class="hide" id="retourModif"></span><br>';
             echo '<a href="../../boutique.php">Retour boutique</a>';
             ?>
         </td>
     </tr>
 </table>
-<span class="hide" id="retourModif"></span>
+<?php
+echo 'Mes commandes
+<div class="tableauCommandes" id="affichageCommandes'.$user->getId().'">
+</div>';
+?>
 </body>
-<script src="../../js/modificationUtilisateur.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="../../js/gestion_compte.js" type="text/javascript" charset="utf-8" async defer></script>
 </html>

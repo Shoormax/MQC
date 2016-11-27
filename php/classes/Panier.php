@@ -258,10 +258,17 @@ class Panier extends CommunTable
     }
 
     /**
-     * @return mixed
+     * @param $affichee
+     * @return DateTime|string
      */
-    public function getDateUpd()
+    public function getDateUpd($affichee = false)
     {
+        if($affichee) {
+            $annee = substr($this->date_add, 0, 4);
+            $mois = substr($this->date_add, 5, 2);
+            $jour = substr($this->date_add, 8, 2);
+            return $jour.'/'.$mois.'/'.$annee;
+        }
         return $this->date_upd;
     }
 
