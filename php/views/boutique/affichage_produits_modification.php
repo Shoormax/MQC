@@ -35,7 +35,7 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
                                             <span>Stock : </span><input id="stockProduit'.$produit->getId().'" type="text" value="'.$produit->getStock().'"/><br>
                                             <img src="'.$produit->getImage().'" alt="imgArticle'.$produit->getLibelle().'" style="width:300px"/><br>
                                             <span>Lien image : </span><input type="text" value="'.$produit->getImage().'"/><br>
-                                            <textarea id="descriptionProduit'.$produit->getId().'">'.$produit->getDescription().'</textarea>
+                                            <textarea id="descriptionProduit'.$produit->getId().'">'.$produit->getDescription().'</textarea><br>
                                             <input type="button" value="Modifier" onclick="modificationProduit('.$produit->getId().', '.$user->getId().')">
                                             <input type="button" value="Supprimer" onclick="supprimerProduit('.$produit->getId().', '.$user->getId().')">
                                         </div>';
