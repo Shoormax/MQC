@@ -227,6 +227,15 @@ header input {
     width: 10vh;
 }
 
+.recapPanier td{
+    border: 1px solid black;
+    width: 10vh;
+}
+
+.recapPanier{
+    border: 1px solid black;
+}
+
 /************************************************/
 /****************** ANIMATIONS ******************/
 /************************************************/

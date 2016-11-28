@@ -270,7 +270,7 @@ function modificationPanier(id_produit, id_panier, input) {
  *
  * @param id_panier
  */
-function validationPanier(id_panier) {
+function validationPanier(id_panier, id_utilisateur) {
     $('#validationPanier'+id_panier).hide();
     $('#validationPanierLoader'+id_panier).show();
     if(id_panier <= 0) {
@@ -280,7 +280,7 @@ function validationPanier(id_panier) {
     $.ajax({
         url: 'php/traitement/validation_panier.php',
         type: 'POST',
-        data : {id_panier:id_panier},
+        data : {id_panier:id_panier, id_utilisateur:id_utilisateur},
         dataType: "json",
         success: function (retour) {
             if(retour['status'] != 1) {
@@ -288,7 +288,7 @@ function validationPanier(id_panier) {
             }
             else {
                 affichageOk(retour['html']);
-                refreshAffichagePanier(retour['id_utilisateur']);
+                refreshAffichagePanier(id_utilisateur);
             }
             $('#validationPanierLoader'+id_panier).hide();
             $('#validationPanier'+id_panier).show();

@@ -38,7 +38,7 @@ if($user instanceof Utilisateur) {
         }
         $tabRetour['html'] .= '<td style="border: none"></td><td style="border: none"></td><td>Total</td><td>'.$panier->getTotal().' €</td>';
         $tabRetour['html'] .= '</table>';
-        $tabRetour['html'] .= '<input class="button" type="button" id="validationPanier'.$panier->getId().'" onclick="validationPanier('.$panier->getId().')" value="Valider">';
+        $tabRetour['html'] .= '<input class="button" type="button" id="validationPanier'.$panier->getId().'" onclick="validationPanier('.$panier->getId().', '.$_POST['id_utilisateur'].')" value="Valider">';
         $tabRetour['html'] .= '<i class="fa fa-spinner hide" aria-hidden="true" id="validationPanierLoader'.$panier->getId().'"></i>';
 
     }
