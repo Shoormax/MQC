@@ -1,4 +1,0 @@
-#encodage UTF-8
-AddDefaultCharset UTF-8
-#include files
-php_value include_path "php/path.php"

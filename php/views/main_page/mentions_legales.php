@@ -5,8 +5,8 @@
  * Date: 28/09/2016
  * Time: 11:03
  */
-include_once('path.php');
-require_once (__INCLUDE_PATH__.'header.php');
+include_once '../../path.php';
+require_once '../../include/header.php';
 ?>
 <div id="contenu_mentions_legales">
     <h1>Mentions légales</h1>
