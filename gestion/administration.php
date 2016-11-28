@@ -36,7 +36,7 @@ $articles = Article::rechercherParParam($param, $limit);
 <a style="top: 8%;
     width: 5%;
     position: absolute;
-    left: 1%;" href="administration.php?co=true&language=<?php echo $id_langue?>">Langue</a>
+    left: 1%;" href="administration.php?language=<?php echo $id_langue?>">Langue</a>
     <link rel="icon" type="image/png" href="../img/min/Musee.png" />
     <body>
     <div id="btnDeconnexion"><a href="../deconnexion.php?retour=index">Déconnexion</a></div>
