@@ -227,13 +227,9 @@ header input {
     width: 10vh;
 }
 
-.recapPanier td{
+.recapPanier table td{
     border: 1px solid black;
     width: 10vh;
-}
-
-.recapPanier{
-    border: 1px solid black;
 }
 
 /************************************************/
