@@ -2,60 +2,18 @@
 
 define('FPDF_FONTPATH','../../fonts');
 require ('../include/fpdf.php');
+include_once '../path.php';
+include_once '../include/init.php';
+include_once '../classes/CommunTable.php';
+include_once '../classes/Utilisateur.php';
+include_once '../classes/Panier.php';
+include_once '../classes/Produit.php';
 
 class PDF extends FPDF
 {
-// Chargement des données
-    function LoadData($file)
-    {
-        // Lecture des lignes du fichier
-        $lines = file($file);
-        $data = array();
-        foreach($lines as $line)
-            $data[] = explode(';',trim($line));
-        return $data;
-    }
 
-// Tableau simple
-    function BasicTable($header, $data)
-    {
-        // En-tête
-        foreach($header as $col)
-            $this->Cell(40,7,$col,1);
-        $this->Ln();
-        // Données
-        foreach($data as $row)
-        {
-            foreach($row as $col)
-                $this->Cell(40,6,$col,1);
-            $this->Ln();
-        }
-    }
-
-// Tableau amélioré
-    function ImprovedTable($header, $data)
-    {
-        // Largeurs des colonnes
-        $w = array(40, 35, 45, 40);
-        // En-tête
-        for($i=0;$i<count($header);$i++)
-            $this->Cell($w[$i],7,$header[$i],1,0,'C');
-        $this->Ln();
-        // Données
-        foreach($data as $row)
-        {
-            $this->Cell($w[0],6,$row[0],'LR');
-            $this->Cell($w[1],6,$row[1],'LR');
-            $this->Cell($w[2],6,number_format($row[2],0,',',' '),'LR',0,'R');
-            $this->Cell($w[3],6,number_format($row[3],0,',',' '),'LR',0,'R');
-            $this->Ln();
-        }
-        // Trait de terminaison
-        $this->Cell(array_sum($w),0,'','T');
-    }
-
-// Tableau coloré
-    function FancyTable($header, $data)
+// Crée le tableau de produit
+    function ProduitTable($header, $panier, $produits)
     {
         // Couleurs, épaisseur du trait et police grasse
         $this->SetFillColor(255,0,0);
@@ -64,7 +22,7 @@ class PDF extends FPDF
         $this->SetLineWidth(.3);
         $this->SetFont('','B');
         // En-tête
-        $w = array(40, 35, 45, 40);
+        $w = array(10, 90,  25, 35, 30);
         for($i=0;$i<count($header);$i++)
             $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
         $this->Ln();
@@ -72,33 +30,47 @@ class PDF extends FPDF
         $this->SetFillColor(224,235,255);
         $this->SetTextColor(0);
         $this->SetFont('');
+
         // Données
         $fill = false;
-        foreach($data as $row)
+        foreach($produits as $produit)
         {
-            $this->Cell($w[0],6,$row[0],'LR',0,'L',$fill);
-            $this->Cell($w[1],6,$row[1],'LR',0,'L',$fill);
-            $this->Cell($w[2],6,number_format($row[2],0,',',' '),'LR',0,'R',$fill);
-            $this->Cell($w[3],6,number_format($row[3],0,',',' '),'LR',0,'R',$fill);
+            //Récupération du produit
+            $p = Produit::rechercheParId($produit['id_produit']);
+
+            $quantite = $panier->getQuantiteProduit($p->getId());
+            $prix = $p->getPrix();
+            $total = $prix * $quantite;
+
+
+            $this->Cell($w[0],7,$p->getId(),'LR', 0,'C',$fill);
+            $this->Cell($w[1],7,utf8_decode($p->getLibelle()),'LR', 0,'L',$fill);
+            $this->Cell($w[2],7,$quantite,'LR', 0,'C',$fill);
+            $this->Cell($w[3],7,$prix,'LR', 0,'C',$fill);
+            $this->Cell($w[4],7,$total,'LR', 0,'C',$fill);
+
+
             $this->Ln();
             $fill = !$fill;
         }
-        // Trait de terminaison
-        $this->Cell(array_sum($w),0,'','T');
+        // Dernière ligne Total
+        $this->Cell(125,0,'','T');
+        $this->SetFont('','B');
+        $this->Cell(35, 9, utf8_decode('Total à régler'), 1, 0, 'C');
+        $this->Cell(30, 9, $panier->getTotal(), 1, 0, 'C');
     }
 }
 
+//Récupération du panier à l'aide de l'url et de la méthode rechercheParId
+$panier = Panier::rechercheParId($_GET['id']);
+
 $pdf = new PDF();
 // Titres des colonnes
-$header = array('Pays', 'Capitale', 'Superficie (km²)', 'Pop. (milliers)');
+$header = array('ID', 'Libelle', utf8_decode('Quantité'), 'Prix unitaire', 'Total');
 // Chargement des données
-$data = $pdf->LoadData('pays.txt');
+$produits = $panier->getProduits();
 $pdf->SetFont('Arial','',14);
 $pdf->AddPage();
-$pdf->BasicTable($header,$data);
-$pdf->AddPage();
-$pdf->ImprovedTable($header,$data);
-$pdf->AddPage();
-$pdf->FancyTable($header,$data);
+$pdf->ProduitTable($header,$panier, $produits);
 $pdf->Output();
 ?>

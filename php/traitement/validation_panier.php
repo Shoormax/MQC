@@ -21,7 +21,7 @@ $panier = Panier::rechercheParId($_POST['id_panier']);
 if($panier instanceof Panier && !empty($panier->getProduits())) {
     $panier->setValidation(1);
     $panier->update();
-    $tabRetour['html'] = "Panier validé avec succès.<br><a href=\"php/traitement/facturation.php\" target=\"_blank\">Facture PDF</a>";
+    $tabRetour['html'] = "Panier validé avec succès.<br><a href=\"php/traitement/facturation.php?id=". $_POST['id_panier'] . "\" target=\"_blank\">Facture PDF</a>";
     $tabRetour['status'] = 1;
     $tabRetour['id_utilisateur'] = $panier->getIdUtilisateur();
 }
