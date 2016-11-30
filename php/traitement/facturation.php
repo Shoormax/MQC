@@ -8,11 +8,34 @@ include_once '../classes/CommunTable.php';
 include_once '../classes/Utilisateur.php';
 include_once '../classes/Panier.php';
 include_once '../classes/Produit.php';
+include_once '../classes/Boutique.php';
 
 class PDF extends FPDF
 {
 
-// Crée le tableau de produit
+    // En-tête
+    function Header()
+    {
+        // Logo
+        $this->Image('../../img/min/Musee.png',20,6,30);
+        // Police Arial gras 15
+        $this->SetFont('Arial','B',15);
+        $this->Cell(120);
+        // Titre
+        $this->Cell(70,10,'Facture de votre panier',1,0,'C');
+        $this->Ln(10);
+        //Date
+        $this->SetFont('Arial','',14);
+        $this->Cell(190,8,'Date : ' . date("d/m/Y"),0,0,'R');
+        $this->Ln(8);
+        //Nom société
+        //$this->SetTextColor(0,158,215);
+        $this->SetFont('Arial','',16);
+        $this->Cell(70,10,'Mon Quartier Confluence',0,0,'L');
+        $this->Ln(15);
+    }
+
+    // Crée le tableau de produit
     function ProduitTable($header, $panier, $produits)
     {
         // Couleurs, épaisseur du trait et police grasse
@@ -29,7 +52,7 @@ class PDF extends FPDF
         // Restauration des couleurs et de la police
         $this->SetFillColor(224,235,255);
         $this->SetTextColor(0);
-        $this->SetFont('');
+        $this->SetFont('Courier');
 
         // Données
         $fill = false;
@@ -44,7 +67,7 @@ class PDF extends FPDF
 
 
             $this->Cell($w[0],7,$p->getId(),'LR', 0,'C',$fill);
-            $this->Cell($w[1],7,utf8_decode($p->getLibelle()),'LR', 0,'L',$fill);
+            $this->Cell($w[1],7,'   ' . utf8_decode($p->getLibelle()),'LR', 0,'L',$fill);
             $this->Cell($w[2],7,$quantite,'LR', 0,'C',$fill);
             $this->Cell($w[3],7,$prix,'LR', 0,'C',$fill);
             $this->Cell($w[4],7,$total,'LR', 0,'C',$fill);
@@ -55,7 +78,7 @@ class PDF extends FPDF
         }
         // Dernière ligne Total
         $this->Cell(125,0,'','T');
-        $this->SetFont('','B');
+        $this->SetFont('Arial','B');
         $this->Cell(35, 9, utf8_decode('Total à régler'), 1, 0, 'C');
         $this->Cell(30, 9, $panier->getTotal(), 1, 0, 'C');
     }
