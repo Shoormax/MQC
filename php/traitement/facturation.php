@@ -13,6 +13,12 @@ include_once '../classes/Boutique.php';
 class PDF extends FPDF
 {
 
+    private $panier;
+
+    function setPanier($p) {
+        $this->panier = $p;
+    }
+
     // En-tête
     function Header()
     {
@@ -26,7 +32,8 @@ class PDF extends FPDF
         $this->Ln(10);
         //Date
         $this->SetFont('Arial','',14);
-        $this->Cell(190,8,'Date : ' . date("d/m/Y"),0,0,'R');
+        //$this->Cell(190,8,'Date : ' . date("d/m/Y"),0,0,'R');
+        $this->Cell(190,8,'Date : ' . $this->panier->getDateAdd(true),0,0,'R');
         $this->Ln(8);
         //Nom société
         //$this->SetTextColor(0,158,215);
@@ -35,9 +42,29 @@ class PDF extends FPDF
         $this->Ln(15);
     }
 
+    //Info utilisateur
+    function Utilisateur($user) {
+        $this->Rect(105,43,95,33);
+        $this->SetFont('Arial','IU',15);
+        $this->Cell(144);
+        $this->Cell(50,12,'Informations client',0,1,'L');
+        $this->SetFont('Arial','',14);
+        $this->Cell(100);
+        $this->Cell(70,6,utf8_decode('Nom : ' . $user->getNom()),0,1,'L');
+        $this->Cell(100);
+        $this->Cell(70,6,utf8_decode('Prénom : ' . $user->getPrenom()),0,1,'L');
+        $this->Cell(100);
+        $this->Cell(70,6,'Courriel : ' . $user->getEmail(),0,0,'L');
+        $this->Ln(15);
+    }
+
     // Crée le tableau de produit
-    function ProduitTable($header, $panier, $produits)
+    function TableauProduit($header, $boutique, $produits)
     {
+        // A ajouter : Infos boutique
+
+        $this->SetFont('Arial','B', 15);
+        $this->Cell(35, 10, '   Produits :', 0, 1, 'L');
         // Couleurs, épaisseur du trait et police grasse
         $this->SetFillColor(255,0,0);
         $this->SetTextColor(255);
@@ -47,7 +74,7 @@ class PDF extends FPDF
         // En-tête
         $w = array(10, 90,  25, 35, 30);
         for($i=0;$i<count($header);$i++)
-            $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
+            $this->Cell($w[$i],7,utf8_decode($header[$i]),1,0,'C',true);
         $this->Ln();
         // Restauration des couleurs et de la police
         $this->SetFillColor(224,235,255);
@@ -56,18 +83,17 @@ class PDF extends FPDF
 
         // Données
         $fill = false;
+        $somme = 0;
         foreach($produits as $produit)
         {
-            //Récupération du produit
-            $p = Produit::rechercheParId($produit['id_produit']);
 
-            $quantite = $panier->getQuantiteProduit($p->getId());
-            $prix = $p->getPrix();
+            $quantite = $this->panier->getQuantiteProduit($produit->getId());
+            $prix = $produit->getPrix();
             $total = $prix * $quantite;
+            $somme += $total;
 
-
-            $this->Cell($w[0],7,$p->getId(),'LR', 0,'C',$fill);
-            $this->Cell($w[1],7,'   ' . utf8_decode($p->getLibelle()),'LR', 0,'L',$fill);
+            $this->Cell($w[0],7,$produit->getId(),'LR', 0,'C',$fill);
+            $this->Cell($w[1],7,'   ' . utf8_decode($produit->getLibelle()),'LR', 0,'L',$fill);
             $this->Cell($w[2],7,$quantite,'LR', 0,'C',$fill);
             $this->Cell($w[3],7,$prix,'LR', 0,'C',$fill);
             $this->Cell($w[4],7,$total,'LR', 0,'C',$fill);
@@ -80,7 +106,9 @@ class PDF extends FPDF
         $this->Cell(125,0,'','T');
         $this->SetFont('Arial','B');
         $this->Cell(35, 9, utf8_decode('Total à régler'), 1, 0, 'C');
-        $this->Cell(30, 9, $panier->getTotal(), 1, 0, 'C');
+        $this->Cell(30, 9, $somme, 1, 0, 'C');
+
+        return $somme;
     }
 }
 
@@ -88,12 +116,41 @@ class PDF extends FPDF
 $panier = Panier::rechercheParId($_GET['id']);
 
 $pdf = new PDF();
+$pdf->setPanier($panier);
 // Titres des colonnes
-$header = array('ID', 'Libelle', utf8_decode('Quantité'), 'Prix unitaire', 'Total');
-// Chargement des données
+$header = array('ID', 'Libellé', 'Quantité', 'Prix unitaire', 'Total');
+// Récupération des produits et tri par boutique
 $produits = $panier->getProduits();
-$pdf->SetFont('Arial','',14);
+$idBoutiques = array();
+$produitsBoutique = array();
+$cpt = 0;
+foreach($produits as $produit) {
+    //Récupération du produit
+    $p = Produit::rechercheParId($produit['id_produit']);
+    //Si l'id de la boutique n'existe pas encore dans notre liste, on l'ajoute
+    if (!in_array($p->getIdBoutique(), $idBoutiques)) {
+        $idBoutiques[$cpt] = $p->getIdBoutique();
+        //On crée un tableau qui recevra les produits de cette boutique
+        $produitsBoutique[$p->getIdBoutique()] = array();
+        $cpt++;
+    }
+    //Ajout du produit dans sa boutique correspondantes
+    array_push($produitsBoutique[$p->getIdBoutique()], $p);
+}
+
 $pdf->AddPage();
-$pdf->ProduitTable($header,$panier, $produits);
+$pdf->Utilisateur(Utilisateur::rechercheParId($panier->getIdUtilisateur()));
+
+//Pour chaque boutiques différentes on appelle la méthode pour afficher les produits.
+//Et on ajoute le total de chaque boutique pour avoir la somme total à régler
+//On aurait très bien pu utiliser le champs total du panier mais cela fait une revérification
+//au cas où il n'y aurait pas eu d'update sur des produits
+$sommeTotal = 0;
+for ($i = 0; $i < $cpt; $i++) {
+    $b = Boutique::rechercheParId($idBoutiques[$i]);
+    $sommeTotal += $pdf->TableauProduit($header, $b, $produitsBoutique[$idBoutiques[$i]]);
+    if ($i != $cpt-1) $pdf->AddPage();
+}
+
 $pdf->Output();
 ?>
