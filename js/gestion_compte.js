@@ -45,8 +45,13 @@ function suppressionCompte(id_utilisateur) {
         data : {id_utilisateur:id_utilisateur, password:password},
         dataType: "json",
         success: function (retour) {
-            $('#retourModif').show().html(retour['html']);
-            window.location = '../../deconnexion.php';
+            if(retour['status'] != 1) {
+                $('#retourModif').show().html(retour['html']);
+            }
+            else {
+                $('#retourModif').show().html(retour['html']);
+                window.location = '../../deconnexion.php';
+            }
         },
         error: function(retour) {
             console.log(retour);
