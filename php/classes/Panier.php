@@ -167,7 +167,7 @@ class Panier extends CommunTable
     /**
      * Récupère tous les id_produit de ce panier.
      *
-     * @author Valenttin Dérudet
+     * @author Valentin Dérudet
      *
      * @return array
      */
@@ -182,7 +182,7 @@ class Panier extends CommunTable
     /**
      * Permet de récupérer la quantite d'un produit dans ce panier
      *
-     * @author Valenttin Dérudet
+     * @author Valentin Dérudet
      *
      * @param $id_product
      * @return int
