@@ -23,31 +23,45 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
-        $this->Image('../../img/min/Musee.png',20,6,30);
+        $this->Image('../../img/logo/Bleu.png',10,6,80);
         // Police Arial gras 15
         $this->SetFont('Arial','B',15);
         $this->Cell(120);
         // Titre
+        $this->SetDrawColor(0);
         $this->Cell(70,10,'Facture de votre panier',1,0,'C');
         $this->Ln(10);
         //Date
-        $this->SetFont('Arial','',14);
+        $this->SetFont('Arial','',12);
         //$this->Cell(190,8,'Date : ' . date("d/m/Y"),0,0,'R');
-        $this->Cell(190,8,'Date : ' . $this->panier->getDateAdd(true),0,0,'R');
+        $this->Cell(190,8,'Date : ' . $this->panier->getDateAdd(true) . '  ',0,0,'R');
         $this->Ln(8);
         //Nom société
         //$this->SetTextColor(0,158,215);
-        $this->SetFont('Arial','',16);
-        $this->Cell(70,10,'Mon Quartier Confluence',0,0,'L');
+        //$this->SetFont('Arial','',16);
+        //$this->Cell(70,10,'Mon Quartier Confluence',0,0,'L');
         $this->Ln(15);
+
+        $this->Utilisateur(Utilisateur::rechercheParId($this->panier->getIdUtilisateur()));
+    }
+
+    // En-tête
+    function Footer() {
+        $this->SetY(-15);
+        $this->SetFont('Arial','I',12);
+        $this->Cell(190, 12, utf8_decode('http://www.monquartierconfluence.labo-g4.fr/'), 0, 0, 'C', 0);
+        // Numéro de page centré
+        $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'R');
     }
 
     //Info utilisateur
     function Utilisateur($user) {
-        $this->Rect(105,43,95,33);
+        $this->Rect(108,43,92,33);
         $this->SetFont('Arial','IU',15);
-        $this->Cell(144);
-        $this->Cell(50,12,'Informations client',0,1,'L');
+        $this->Cell(98);
+        $this->SetTextColor(0,139,205);
+        $this->Cell(10,12,'                               Informations Client ',0,1,'L');
+        $this->SetTextColor(0);
         $this->SetFont('Arial','',14);
         $this->Cell(100);
         $this->Cell(70,6,utf8_decode('Nom : ' . $user->getNom()),0,1,'L');
@@ -61,16 +75,29 @@ class PDF extends FPDF
     // Crée le tableau de produit
     function TableauProduit($header, $boutique, $produits)
     {
-        // A ajouter : Infos boutique
+        // Infos boutique
+        $this->SetDrawColor(0);
+        $this->Rect(10,83,90,32);
+        $this->SetFont('Arial','IU',15);
+        $this->SetTextColor(0,139,205);
+        $this->Cell(10,12,' Informations Boutique                        ',0,1,'L');
+        $this->SetTextColor(0);
+        $this->SetFont('Arial','B',14);
+        $this->Cell(10,6,utf8_decode('   ' . $boutique->getLibelle()),0,1,'L');
+        $this->SetFont('Arial','',12);
+        $this->Cell(10,6,utf8_decode('    ' . $boutique->getAdresse()),0,1,'L');
+        $this->Cell(10,6,utf8_decode('    ' . $boutique->getCodePostal() . ', ' . $boutique->getVille()),0,1,'L');
+        $this->Ln(10);
 
+        // Tableau de produit
         $this->SetFont('Arial','B', 15);
-        $this->Cell(35, 10, '   Produits :', 0, 1, 'L');
-        // Couleurs, épaisseur du trait et police grasse
-        $this->SetFillColor(255,0,0);
+        $this->Cell(35, 10, '   Liste des produits :', 0, 1, 'L');
+        // Couleurs, épaisseur du trait et police grasse pour l'en-tête du tableau
+        $this->SetFillColor(0,139,205);
         $this->SetTextColor(255);
-        $this->SetDrawColor(128,0,0);
+        $this->SetDrawColor(0,40,100);
         $this->SetLineWidth(.3);
-        $this->SetFont('','B');
+        $this->SetFont('Arial','B',14);
         // En-tête
         $w = array(10, 90,  25, 35, 30);
         for($i=0;$i<count($header);$i++)
@@ -95,8 +122,8 @@ class PDF extends FPDF
             $this->Cell($w[0],7,$produit->getId(),'LR', 0,'C',$fill);
             $this->Cell($w[1],7,'   ' . utf8_decode($produit->getLibelle()),'LR', 0,'L',$fill);
             $this->Cell($w[2],7,$quantite,'LR', 0,'C',$fill);
-            $this->Cell($w[3],7,$prix,'LR', 0,'C',$fill);
-            $this->Cell($w[4],7,$total,'LR', 0,'C',$fill);
+            $this->Cell($w[3],7,number_format($prix, 2, ',', ' '),'LR', 0,'C',$fill);
+            $this->Cell($w[4],7,number_format($total, 2, ',', ' '),'LR', 0,'C',$fill);
 
 
             $this->Ln();
@@ -104,19 +131,40 @@ class PDF extends FPDF
         }
         // Dernière ligne Total
         $this->Cell(125,0,'','T');
-        $this->SetFont('Arial','B');
+        $this->SetFont('Arial','B', 13);
         $this->Cell(35, 9, utf8_decode('Total à régler'), 1, 0, 'C');
-        $this->Cell(30, 9, $somme, 1, 0, 'C');
+        $this->SetFont('Arial','B', 15);
+        $this->Cell(30, 9, number_format($somme, 2, ',', ' ')  . chr(128), 1, 1, 'C');
 
         return $somme;
+    }
+
+    function aPayer($prix) {
+        $this->Ln(20);
+        $this->SetFont('Arial','', 17);
+        $this->SetDrawColor(0);
+        $this->SetFillColor(0,139,205);
+        $this->SetTextColor(255);
+        $this->Cell(190, 11, utf8_decode('Le montant total de votre facture s\'élève à ') .
+            number_format($prix, 2, ',', ' ') . chr(128), 1, 0, 'C', 1);
+        $this->Ln(15);
+        $this->SetFont('Arial','I', 13);
+        $this->SetTextColor(0);
+        $this->Cell(190, 8, utf8_decode('Nous restons à votre disposition pour toutes informations complémentaires.'), 0, 0, 'C');
+        $this->Ln(20);
+        $this->SetFont('Arial','', 14);
+        $this->Cell(190, 8, utf8_decode('Cordialement.'), 0, 0, 'L');
     }
 }
 
 //Récupération du panier à l'aide de l'url et de la méthode rechercheParId
 $panier = Panier::rechercheParId($_GET['id']);
 
+//Création du pdf et attribution du panier, + alias pour le nb total de page
 $pdf = new PDF();
+$pdf->AliasNbPages();
 $pdf->setPanier($panier);
+
 // Titres des colonnes
 $header = array('ID', 'Libellé', 'Quantité', 'Prix unitaire', 'Total');
 // Récupération des produits et tri par boutique
@@ -139,7 +187,6 @@ foreach($produits as $produit) {
 }
 
 $pdf->AddPage();
-$pdf->Utilisateur(Utilisateur::rechercheParId($panier->getIdUtilisateur()));
 
 //Pour chaque boutiques différentes on appelle la méthode pour afficher les produits.
 //Et on ajoute le total de chaque boutique pour avoir la somme total à régler
@@ -151,6 +198,8 @@ for ($i = 0; $i < $cpt; $i++) {
     $sommeTotal += $pdf->TableauProduit($header, $b, $produitsBoutique[$idBoutiques[$i]]);
     if ($i != $cpt-1) $pdf->AddPage();
 }
+
+$pdf->aPayer($sommeTotal);
 
 $pdf->Output();
 ?>
