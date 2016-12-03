@@ -230,6 +230,17 @@ a.fatcure:hover {
 #gestionProduits i {
     font-size: 3vh;
 }
+
+.tableauCommandes td {
+    border: 1px solid black;
+    width: 10vh;
+}
+
+.recapPanier table td{
+    border: 1px solid black;
+    width: 10vh;
+}
+
 /************************************************/
 /****************** ANIMATIONS ******************/
 /************************************************/

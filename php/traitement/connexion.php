@@ -25,7 +25,7 @@ function connexion($email, $mdp) {
 function inscription($nom, $prenom, $email, $mdp) {
     global $sMessageErreurInscription;
     $u = new Utilisateur();
-    $user = $u->add(1, $nom, $prenom, $email, $mdp);
+    $user = $u->add(3, $nom, $prenom, $email, $mdp);
     if(!$user instanceof Utilisateur) {
         $GLOBALS['sMessageErreurInscription'] = 'Erreur vérifiez les champs';
         return false;

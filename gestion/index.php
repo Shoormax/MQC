@@ -1,6 +1,6 @@
 <?php
-include_once('../php/path.php');
-require_once (__INCLUDE_PATH__.'header.php');
+include_once '../php/path.php';
+require_once '../php/include/header.php';
 require_once '../php/include/init.php';
 ?>
 <HTML>

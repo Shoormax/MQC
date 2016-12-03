@@ -8,7 +8,7 @@
 /**
  * Accueil du site
  */
-include_once('php/path.php');
+include_once 'php/path.php';
 include_once 'php/include/header.php';
 include_once 'php/include/init.php';
 

@@ -5,11 +5,6 @@
  * Date: 20/09/2016
  * Time: 17:27
  */
-/**
- * Ce fichier permet de charger le css au lancement de la page
- * ainsi que l'encodage utf8
- */
-header( 'content-type: text/html; charset=utf-8' );
 
 $aCss = [
     'projectone',
@@ -35,3 +30,4 @@ $aCss = [
   ?>
   <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
 </head>
+

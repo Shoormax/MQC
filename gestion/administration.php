@@ -9,8 +9,8 @@
  * Gestion des articles côté admin.
  *
  */
-include_once('../php/path.php');
-require_once (__INCLUDE_PATH__.'header.php');
+include_once '../php/path.php';
+require_once '../php/include/header.php';
 require_once '../php/include/init.php';
 echo '<link rel="stylesheet" href="../css/admin.css" type="text/css">';
 //@todo gérer la langue avec des cookies
@@ -36,7 +36,7 @@ $articles = Article::rechercherParParam($param, $limit);
 <a style="top: 8%;
     width: 5%;
     position: absolute;
-    left: 1%;" href="administration.php?co=true&language=<?php echo $id_langue?>">Langue</a>
+    left: 1%;" href="administration.php?language=<?php echo $id_langue?>">Langue</a>
     <link rel="icon" type="image/png" href="../img/min/Musee.png" />
     <body>
     <div id="btnDeconnexion"><a href="../deconnexion.php?retour=index">Déconnexion</a></div>
@@ -56,7 +56,6 @@ $articles = Article::rechercherParParam($param, $limit);
             <img name="img" src="../img/AccueilConfluence25.png">
         </div>
         <?php
-        $prefixe = '../';
         foreach ($articles as $a) {
             include 'php/article.php';
         }
@@ -67,5 +66,5 @@ $articles = Article::rechercherParParam($param, $limit);
     </body>
 
 <?php
-include_once(__INCLUDE_PATH__.'footer.php');
+include_once '../php/include/footer.php';
 

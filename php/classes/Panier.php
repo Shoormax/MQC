@@ -167,7 +167,7 @@ class Panier extends CommunTable
     /**
      * Récupère tous les id_produit de ce panier.
      *
-     * @author Valenttin Dérudet
+     * @author Valentin Dérudet
      *
      * @return array
      */
@@ -182,7 +182,7 @@ class Panier extends CommunTable
     /**
      * Permet de récupérer la quantite d'un produit dans ce panier
      *
-     * @author Valenttin Dérudet
+     * @author Valentin Dérudet
      *
      * @param $id_product
      * @return int
@@ -258,10 +258,17 @@ class Panier extends CommunTable
     }
 
     /**
-     * @return mixed
+     * @param $affichee
+     * @return DateTime|string
      */
-    public function getDateUpd()
+    public function getDateUpd($affichee = false)
     {
+        if($affichee) {
+            $annee = substr($this->date_add, 0, 4);
+            $mois = substr($this->date_add, 5, 2);
+            $jour = substr($this->date_add, 8, 2);
+            return $jour.'/'.$mois.'/'.$annee;
+        }
         return $this->date_upd;
     }
 

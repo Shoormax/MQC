@@ -45,12 +45,66 @@ function suppressionCompte(id_utilisateur) {
         data : {id_utilisateur:id_utilisateur, password:password},
         dataType: "json",
         success: function (retour) {
-            $('#retourModif').show().html(retour['html']);
-            window.location = '../../deconnexion.php';
+            if(retour['status'] != 1) {
+                $('#retourModif').show().html(retour['html']);
+            }
+            else {
+                $('#retourModif').show().html(retour['html']);
+                window.location = '../../deconnexion.php';
+            }
         },
         error: function(retour) {
             console.log(retour);
             $('#retourModif').show().html(retour['html']);
         }
     });
+}
+
+/**
+ * Permet d'afficher les commandes d'un utilisateur
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_utilisateur
+ */
+function affichageCommandes(id_utilisateur) {
+    $.ajax({
+        url: '../traitement/affichage_commandes.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur},
+        dataType: "json",
+        success: function (retour) {
+            $('#affichageCommandes'+id_utilisateur).html(retour['html']);
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Permet d'afficher le contenu d'une commande
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_panier
+ */
+function affichage_contenu_commande(id_panier) {
+    if($('#affichageContenuCommande'+id_panier).html() == "") {
+        $.ajax({
+            url: '../traitement/affichage_contenu_commande.php',
+            type: 'POST',
+            data : {id_panier:id_panier},
+            dataType: "json",
+            success: function (retour) {
+                $('#affichageContenuCommande'+id_panier).html(retour['html']);
+            },
+            error: function(retour) {
+                console.log(retour);
+            }
+        });
+    }
+    else {
+        $('#affichageContenuCommande'+id_panier).html("");
+    }
 }
