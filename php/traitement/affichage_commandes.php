@@ -21,7 +21,7 @@ if($user instanceof Utilisateur) {
     if(is_array($paniers) && !empty($paniers)) {
         $tabRetour['html'] = '<table><tr><td>Créé le</td><td>Validé le</td><td>Total (€)</td></tr></table>';
         foreach($paniers as $p) {
-            $tabRetour['html'] .= '<div class="recap_commandes" onclick="affichage_contenu_commande('.$p->getId().')"><table><tr><td>'.$p->getDateAdd(true).'</td><td>'.$p->getDateUpd(true).'</td><td>'.$p->getTotal().'</td></tr></table></div>';
+            $tabRetour['html'] .= '<div class="recap_commandes" onclick="affichage_contenu_commande('.$p->getId().')"><table><tr><td>'.$p->getDateAdd(true).'</td><td>'.$p->getDateUpd(true).'</td><td>'.$p->getTotal().'</td><td><a href="../traitement/facturation.php?id='.$p->getId().'" target="_blank">Facture</a></td></tr></table></div>';
             $tabRetour['html'] .= '<div class="produit_panier" id="affichageContenuCommande'.$p->getId().'"></div>';
         }
     }
