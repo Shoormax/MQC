@@ -44,8 +44,10 @@ if($panier instanceof Panier && !empty($panier->getProduits())) {
 
     $mail = new Mail($user->getEmail(), $subject, $message, $header);
 
-    $tabRetour['html'] = 'Panier validé avec succès.';
+    $tabRetour['html'] = 'Panier validé avec succès.<br />
+                            <a class="facture" href="php/traitement/facturation.php?id='. $_POST['id_panier'] . '" target="_blank">Voir ma facture PDF</a>';
     $tabRetour['status'] = 1;
+    $tabRetour['id_utilisateur'] = $panier->getIdUtilisateur();
 }
 
 echo json_encode($tabRetour);

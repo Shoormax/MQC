@@ -173,6 +173,15 @@ header input {
     font-family: "Segoe UI", sans-serif;;
 }
 
+a.facture, a.facture:visited {
+    color: white;
+}
+
+a.fatcure:hover {
+    cursor: pointer;
+    color: red;
+}
+
 #affichageErreur a:hover,
 #affichageOk a:hover{
     cursor: pointer;
