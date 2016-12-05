@@ -26,21 +26,21 @@ $produits = Produit::rechercherParParam(array('active' => 1));
 </head>
 <body <?php echo isset($_SESSION['user']) ? 'onload="refreshAffichagePanier('.$user->getId().')"' : '' ?>>
 <header>
-    <div class="extremite"><a href="deconnexion.php?retour=index"><img style="width: 3vw" src="img/min/Musee.png" alt="Logo"/></a></div>
+    <div class="extremite"><a href="deconnexion.php?retour=index"><img style="width: 15%" src="img/min/Musee.png" alt="Logo"/></a></div>
     <div id="rechercheProduit">
         <input id="autoComplementationProduit" type="text" placeholder="Rechercher un produit..." onkeyup="rechercheProduit()">
     </div>
     <div class="extremite">
         <?php
         if($user instanceof Utilisateur) {
-            echo '<a id="affichageCompte" href="php/views/gestion_compte.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>';
-            echo '<span>Bonjour '.(string)$user.'</span>';
-            echo '<p><a href="./deconnexion.php">Déconnexion</a></p>';
+            echo '<div class="userConnect"><a id="affichageCompte" href="php/views/gestion_compte.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>';
+            echo '<span>Bonjour '.(string)$user.'</span></div>';
+            echo '<p class="connect"><a class="libelleConnect" href="./deconnexion.php">Déconnexion</a></p>';
             if($user->isSuperUser()) {
                 echo '<div id="gestionProduits" onclick="gestionProduits('.$user->getId().')"><i class="fa fa-product-hunt" aria-hidden="true"></i>Gérer mes produits</div>';
             }
         } else {
-            echo '<a href="./connexion.php">Connexion</a>';
+            echo '<a class="connect" href="./connexion.php">Connexion</a>';
         }
 
         ?>

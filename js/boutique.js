@@ -160,13 +160,11 @@ function ajoutPanier(id_utilisateur, id_produit) {
         affichageErreur('Erreur lors de l\'ajout du produit au panier.');
         return false;
     }
-    var quantite = $('#nombreProduit'+id_produit).val();
-    $('#nombreProduit'+id_produit).val(0);
 
     $.ajax({
         url: 'php/views/boutique/ajoutPanier.php',
         type: 'POST',
-        data : {id_utilisateur:id_utilisateur, id_produit:id_produit, quantite:quantite},
+        data : {id_utilisateur:id_utilisateur, id_produit:id_produit},
         dataType: "json",
         success: function(retour) {
             if(retour['status'] != 1) {

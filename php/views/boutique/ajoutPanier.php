@@ -22,18 +22,13 @@ if(isset($_POST['id_utilisateur']) && $_POST['id_utilisateur'] > 0)
 {
     $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
 }
-
-if(!isset($_POST['quantite']) || $_POST['quantite'] <= 0) {
-    $tabRetour['html'] = 'Veuillez entrer une quantité valide.';
-    $tabRetour['status'] = '000002';
-}
-elseif(!isset($_POST['id_produit']) || $_POST['id_produit'] <= 0){
+if(!isset($_POST['id_produit']) || $_POST['id_produit'] <= 0){
     $tabRetour['html'] = 'Erreur lors de l\'ajout de ce produit au panier, veuillez réessayer.';
     $tabRetour['status'] = '000003';
 }
 else {
     if($user instanceof Utilisateur) {
-        $quantite = $_POST['quantite'];
+        $quantite = 1;
         $produit = Produit::rechercheParId($_POST['id_produit']);
         if($produit instanceof Produit) {
             $tabRetour['html'] = 'Erreur lors de la sortie de stock, la quantité maximale que vous pouvez sortir est '.$produit->getStock().'.';

@@ -15,6 +15,10 @@ if(file_exists("C:/Users/Valentin")){
 }
 elseif(file_exists("C:/Users/quentin")){
   define("__LOCAL_PATH__", "http://localhost:8001/ProjectOne");
+    define('__DB_HOST__', 'localhost');
+    define('__DB_NAME__', 'mqc');
+    define('__USER__', 'root');
+    define('__PASSWORD__', 'root');
 }
 elseif( file_exists("C:/Users/AifeDesPaix") ) {
   define("__LOCAL_PATH__", "http://localhost/MQC");

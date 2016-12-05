@@ -21,8 +21,11 @@ header {
 }
 
 .extremite {
-    padding: 1%;
+    padding: 0 1%;
     color: #fff;
+    display:flex;
+    width:22%;
+    justify-content: flex-end;
 }
 
 #rechercheProduit {
@@ -62,26 +65,54 @@ header input {
 
 .apercuProduit img {
     margin: auto;
+    width: 100%;
 }
 
 #boutique {
     display: flex;
-    flex-flow: row wrap;
+    justify-content: space-between;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding: 2%;
 }
 
 .extremite a, .extremite a:visited, .extremite a:hover, .apercuProduit a:visited, .apercuProduit a:hover {
     text-decoration: none;
-    color: white;
+}
+
+.infosProduit{
+    padding: 5%;
+}
+
+.connect{
+    color: #ffffff;
+    font-size: 2em;
+    border-left: 1px solid #fff;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 4%;
+}
+
+.libelleConnect{
+    color: #ffffff;
+}
+
+.prixArticle{
+    font-weight: bold;
 }
 
 .apercuProduit {
-    color: #fff;
-    margin: 1vw;
-    text-align: center;
-    background: tomato;
-    padding: 1%;
+    color: black;
+    background-color: #EDEDED;
     font-family: "Segoe UI", sans-serif;
     order: 9999;
+    width: 17%;
+    padding: 1%;
+    margin-top: 1.3%;
+
+}
+.addToCart{
+    float: right;
 }
 
 .button {
@@ -111,14 +142,32 @@ header input {
     order : 1;
 }
 
+.infosProduit p{
+    margin: 0 0 10px 0;
+}
+
 .apercuProduit a{
     cursor: pointer;
     text-decoration: underline;
 }
 
-.fa-cart-plus, .fa-spinner {
+.userConnect{
+    width: 100%;
+    text-align: center;
+    margin: 2% 0;
+}
+
+.apercuProduit .fa-plus-circle, .fa-spinner {
     font-size: 4vh;
     padding: 3%;
+    color: #009ED7;
+    transition: all linear 0.3s;
+}
+
+.apercuProduit .fa-user-circle{
+    color: #009ED7;
+    font-size: 4vh;
+    margin-right: 6px;
 }
 
 .fa-spinner {
@@ -126,8 +175,9 @@ header input {
     -webkit-animation: rotate 2s infinite;
 }
 
-.fa-cart-plus:hover {
-    text-shadow: 1px 1px black;
+.apercuProduit .fa-plus-circle:hover {
+    transform: scale(1.3);
+
 }
 
 #affichageErreur {
@@ -137,6 +187,10 @@ header input {
     left: 27.5% ;
     z-index: 2000;
     top: 27.5%;
+}
+
+.redirectDetail{
+    text-align: center;
 }
 
 #messageErreur {
@@ -154,6 +208,10 @@ header input {
     background-color: #003E5B;
     color: #fff;
     font-family: "Segoe UI", sans-serif;
+}
+
+#contenuPanier{
+    padding: 6%;
 }
 
 #affichageOk {
@@ -179,7 +237,7 @@ header input {
 }
 
 .panier {
-    background-color: green;
+    background-color: #003E5B;
     position: absolute;
     right: 1%;
     top: 8%;
@@ -205,22 +263,31 @@ header input {
 
 #affichageCompte {
     cursor: pointer;
+    margin-right: 4%;
+    font-size: 1.5em;
+    color: #009ED7;
 }
 
 #gestionProduits {
     cursor: pointer;
-    color: black;
+    color: #ffffff;
     position: fixed;
     bottom: 0;
     right: 0;
-    font-size: 2vh;
-    background-color: green;
-    padding: 1%;
+    font-size: 3vh;
+    background-color: #009ED7;
+    padding: 1% 1% 1% 5%;
 }
 
 #gestionProduits i {
-    font-size: 3vh;
+    font-size: 1.5em;
+    position: absolute;
+    margin-right: 3%;
+    left: 8%;
+    top: 25%;
 }
+
+.tableauP
 
 .tableauCommandes td {
     border: 1px solid black;
@@ -248,3 +315,4 @@ header input {
 /************************************************/
 /****************** ANIMATIONS ******************/
 /************************************************/
+
