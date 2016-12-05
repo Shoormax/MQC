@@ -126,7 +126,7 @@ class Boutique extends CommunTable
     {
         global $pdo;
         
-        $query = "UPDATE boutique SET libelle = '".$this->libelle."', adresse = '".$this->adresse."', code_postal = '".$this->code_postal."', ville = 'Lyon2' WHERE id_boutique = 1";
+        $query = "UPDATE boutique SET libelle = '".$this->libelle."', adresse = '".$this->adresse."', code_postal = '".$this->code_postal."', ville = '".$this->ville."' WHERE id_boutique = ".$this->id_boutique;
         $pdo->exec($query);
         return $this;
     }

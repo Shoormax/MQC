@@ -26,8 +26,14 @@ if($panier instanceof Panier) {
             $tabRetour['html'] = 'Suppression effectuée avec succès.';
         }
         else{
-            $panier->ajoutProduit($_POST['id_produit'], 1);
-            $tabRetour['html'] = 'Ajout effectué avec succès.';
+            if($produit->getStock() > 0) {
+                $panier->ajoutProduit($_POST['id_produit'], 1);
+                $tabRetour['html'] = 'Ajout effectué avec succès.';
+            }
+            else {
+                $tabRetour['html'] = 'Impossible d\'ajouter ce produit en panier car le stock est insuffisant.';
+                $tabRetour['status'] = '000016';
+            }
         }
         $tabRetour['id_utilisateur'] = $panier->getIdUtilisateur();
         $quantite = $_POST['method'] == 'suppression' ? ($produit->getStock()+1) : ($produit->getStock() -1);

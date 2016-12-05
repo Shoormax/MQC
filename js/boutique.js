@@ -252,8 +252,13 @@ function modificationPanier(id_produit, id_panier, input) {
         data : {id_produit:id_produit, id_panier:id_panier, method:method},
         dataType: "json",
         success: function (retour) {
-            refreshAffichagePanier(retour['id_utilisateur']);
-            $('#libelleProduitAffichage'+id_produit).html(retour['stock']);
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html']);
+            }
+            else {
+                refreshAffichagePanier(retour['id_utilisateur']);
+                $('#libelleProduitAffichage'+id_produit).html(retour['stock']);
+            }
         },
         error: function(retour) {
             affichageErreur(retour['html']);
