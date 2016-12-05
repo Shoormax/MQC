@@ -227,7 +227,18 @@ a.fatcure:hover {
     padding: 1%;
 }
 
-#gestionProduits i {
+#gestionBoutiques {
+    cursor: pointer;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    font-size: 2vh;
+    right: 12%;
+    background-color: red;
+    padding: 1%;
+}
+
+#gestionProduits i, #gestionBoutiques i{
     font-size: 3vh;
 }
 

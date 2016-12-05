@@ -16,9 +16,12 @@ include_once 'php/include/init.php';
 $id_langue = 1;
 $articles = Article::rechercherParParam(array('id_langue' => $id_langue), 6);
 ?>
+    <script src="https://use.fontawesome.com/992faf6002.js"></script>
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <body>
     <div id="btnConnexion"><a href="boutique.php">Boutique</a></div>
+    <div class="reseauxSociaux"><a href="https://www.facebook.com/Quartier-Confluence-203568893403172/?skip_nax_wizard=true"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/MQConfluence"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></div>
     <div id="menu_haut">
         <div id="link_container" class="nav_item">
             <img src="img/svg/LogoAccueil.svg">

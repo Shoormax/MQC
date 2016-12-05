@@ -126,7 +126,7 @@ class Boutique extends CommunTable
     {
         global $pdo;
         
-        $query = "UPDATE boutique SET libelle = '".$this->libelle."', adresse = '".$this->adresse."', code_postal = '".$this->code_postal."', ville = '".$this->ville."' WHERE id_boutique = ".$this->id_boutique;
+        $query = "UPDATE boutique SET libelle = '".$this->libelle."', adresse = '".$this->adresse."', code_postal = '".$this->code_postal."', ville = '".$this->ville."', active = '".$this->active."' WHERE id_boutique = ".$this->id_boutique;
         $pdo->exec($query);
         return $this;
     }
@@ -209,6 +209,22 @@ class Boutique extends CommunTable
         $pdo->exec($query);
 
         return $this::rechercheParId($pdo->lastInsertId());
+    }
+
+    /**
+     * Permet de vérifier si une boutique est liée à des produits actifs
+     *
+     * @author Valentin Dérudet
+     *
+     * return bool
+     */
+    public function hasProduct()
+    {
+        $produits_actifs = Produit::rechercherParParam(array('id_boutique' => $this->id_boutique));
+        if(count($produits_actifs) > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
