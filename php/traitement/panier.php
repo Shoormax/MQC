@@ -12,10 +12,6 @@
  */
 include_once '../path.php';
 include_once '../include/init.php';
-include_once '../classes/CommunTable.php';
-include_once '../classes/Utilisateur.php';
-include_once '../classes/Produit.php';
-include_once '../classes/Panier.php';
 
 $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
 

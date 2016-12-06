@@ -7,8 +7,6 @@
  */
 include_once '../path.php';
 include_once '../include/init.php';
-include_once '../classes/CommunTable.php';
-include_once '../classes/Utilisateur.php';
 
 $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
 $tabRetour['html'] = 'Impossible d\'effectuer cette action.';
