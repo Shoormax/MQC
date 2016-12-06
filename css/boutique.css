@@ -11,7 +11,7 @@ html, body {
 }
 
 header {
-    height: 8%;
+    height: 68px;
     width: 100%;
     border-bottom: 1px solid black;
     display: flex;
@@ -24,18 +24,19 @@ header {
     padding: 0 1%;
     color: #fff;
     display:flex;
-    width:22%;
+    width: 33%;
     justify-content: flex-end;
+    box-sizing: border-box;
 }
 
 #rechercheProduit {
-    width: 50%;
+    width: 33%;
 }
 
 header input {
     text-align: center;
     height: 60%;
-    margin-top: 1vh;
+    margin: 2% 0;
     width: 100%;
     border: 1px solid black;
     border-radius: 3px;
@@ -88,6 +89,7 @@ header input {
     color: #ffffff;
     font-size: 2em;
     border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
     box-sizing: border-box;
     margin: 0;
     padding: 0 4%;
@@ -152,21 +154,26 @@ header input {
 }
 
 .userConnect{
-    width: 100%;
+    width: 33%;
     text-align: center;
     margin: 2% 0;
 }
 
 .apercuProduit .fa-plus-circle, .fa-spinner {
-    font-size: 4vh;
+    font-size: 35px;
     padding: 3%;
     color: #009ED7;
     transition: all linear 0.3s;
 }
 
+#gestionBoutiques{
+    text-align:center;
+    cursor: pointer;
+}
+
 .apercuProduit .fa-user-circle{
     color: #009ED7;
-    font-size: 4vh;
+    font-size: 35px;
     margin-right: 6px;
 }
 
@@ -211,7 +218,12 @@ header input {
 }
 
 #contenuPanier{
-    padding: 6%;
+    padding: 3%;
+    padding-top: 5%;
+}
+
+#gestionBoutiques .fa{
+    margin-right: 9%;
 }
 
 #affichageOk {
@@ -249,15 +261,29 @@ a.fatcure:hover {
     background-color: #003E5B;
     position: absolute;
     right: 1%;
-    top: 8%;
+    top: 75px;
     color: #fff;
+    padding: 0.5%;
     max-width: 30%;
 }
 
+.closerPanier{
+    top:3%;
+    right: 3%;
+    font-size: 150%;
+    position: absolute;
+}
+
+.traitBlanc{
+    background-color: #ffffff;
+    width: 100%;
+    height: 1px;
+    margin: 4% auto;
+}
+
 .fa-cart-arrow-down{
-    font-size: 4vh;
+    font-size: 200%;
     padding: 10%;
-    float: right;
 }
 
 .imagePanier{
@@ -267,7 +293,6 @@ a.fatcure:hover {
 
 #affichePanier:hover {
     cursor: pointer;
-    text-shadow: 1px 1px black;;
 }
 
 #tablePanier td{
@@ -310,19 +335,11 @@ a.fatcure:hover {
     margin-bottom: 4%;
 }
 .total{
-    display: flex;
-    justify-content: flex-end;
+    display: inline-block;
+    float: right;
 }
 
-.tableauCommandes td {
-    border: 1px solid black;
-    width: 10vh;
-}
 
-.recapPanier table td{
-    border: 1px solid black;
-    width: 10vh;
-}
 
 /************************************************/
 /****************** ANIMATIONS ******************/
