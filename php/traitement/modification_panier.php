@@ -24,11 +24,13 @@ if($panier instanceof Panier) {
         if($_POST['method'] == 'suppression'){
             $panier->suppressionProduit($_POST['id_produit'], $panier->getQuantiteProduit($produit->getId()) == 1 ? null : 1);
             $tabRetour['html'] = 'Suppression effectuée avec succès.';
+            $tabRetour['status'] = 1;
         }
         else{
             if($produit->getStock() > 0) {
                 $panier->ajoutProduit($_POST['id_produit'], 1);
                 $tabRetour['html'] = 'Ajout effectué avec succès.';
+                $tabRetour['status'] = 1;
             }
             else {
                 $tabRetour['html'] = 'Impossible d\'ajouter ce produit en panier car le stock est insuffisant.';

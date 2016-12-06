@@ -35,7 +35,7 @@ if($produit instanceof Produit) {
                 $tabRetour['status'] = '000015';
                 if (isset($_POST['prixProduit']) && !empty($_POST['prixProduit'])) {
                     $tabRetour['status'] = 1;
-                    $tabRetour['html'] = '';
+                    $tabRetour['html'] = 'Modifications effectuées avec succès.';
                     $produit->setLibelle($_POST['libelleProduit']);
                     $produit->setPrix($_POST['prixProduit']);
                     $produit->setStock($_POST['stock']);

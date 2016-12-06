@@ -7,7 +7,6 @@
  */
 include_once('../../path.php');
 include_once ('../../include/init.php');
-include_once ('../../classes/Auth.php');
 include_once ('../../classes/CommunTable.php');
 include_once ('../../classes/Utilisateur.php');
 include_once ('../../classes/Produit.php');
@@ -40,7 +39,7 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
                                             <input type="button" value="Supprimer" onclick="supprimerProduit('.$produit->getId().', '.$user->getId().')">
                                         </div>';
             }
-            $tabRetour['html'] .= '<div class="apercuProduit" id="apercuProduit'.$produit->getId().'">
+            $tabRetour['html'] .= '<div class="apercuProduit">
                                         <span>Libelle : </span><input id="libelleAjoutProduit" type="text" placeholder="Libelle du produit"/><br>
                                         <span>Prix : </span><input id="prixAjoutProduit" type="text" placeholder="Prix du produit"/> €<br>
                                         <span>Stock : </span><input id="stockAjoutProduit" type="text" placeholder="Stock produit"/><br>

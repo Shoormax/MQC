@@ -349,6 +349,7 @@ function modificationProduit(id_produit, id_utilisateur) {
                 affichageErreur(retour['html'], retour['status']);
             }
             else {
+                affichageOk(retour['html']);
                 gestionProduits(id_utilisateur)
             }
         },
@@ -411,6 +412,129 @@ function ajoutProduit(id_boutique, id_utilisateur) {
             }
             else {
                 gestionProduits(id_utilisateur);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Permet d'afficher les boutiques actives et permet d'en ajouter une
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_utilisateur
+ */
+function gestionBoutique(id_utilisateur) {
+    $('#autoComplementationProduit').hide();
+    $.ajax({
+        url: 'php/views/boutique/modification_boutique.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                $('#gestionBoutiques').attr("onclick","location.reload()").html('Retour boutique');
+                $('#boutique').html(retour['html']);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Permet de modifier une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_boutique
+ * @param id_utilisateur
+ */
+function modificationBoutique(id_boutique, id_utilisateur) {
+    var libelle = $('#libelleBoutique' + id_boutique).val(),
+        adresse = $('#adresseBoutique' + id_boutique).val(),
+        code_postal = $('#codePostalBoutique' + id_boutique).val(),
+        ville = $('#villeBoutique' + id_boutique).val();
+
+    $.ajax({
+        url: 'php/traitement/modification_boutique.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur, id_boutique:id_boutique, libelle:libelle, adresse:adresse, code_postal:code_postal, ville:ville},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                affichageOk(retour['html']);
+                gestionBoutique(id_utilisateur);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Permet de supprimer une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_boutique
+ * @param id_utilisateur
+ */
+function suppressionBoutique(id_boutique, id_utilisateur) {
+    $.ajax({
+        url: 'php/traitement/suppression_boutique.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur, id_boutique:id_boutique},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                gestionBoutique(id_utilisateur);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Permet d'ajouter une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_utilisateur
+ */
+function ajoutBoutique(id_utilisateur) {
+    var libelle = $('#libelleAjoutBoutique').val(),
+        adresse = $('#adresseAjoutBoutique').val(),
+        code_postal = $('#codePostalAjoutBoutique').val(),
+        ville = $('#villeAjoutBoutique').val();
+
+    $.ajax({
+        url: 'php/traitement/ajout_boutique.php',
+        type: 'POST',
+        data : {id_utilisateur:id_utilisateur, libelle:libelle, adresse:adresse, code_postal:code_postal, ville:ville},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                gestionBoutique(id_utilisateur);
             }
         },
         error: function(retour) {

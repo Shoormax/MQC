@@ -39,6 +39,9 @@ $produits = Produit::rechercherParParam(array('active' => 1));
             if($user->isSuperUser()) {
                 echo '<div id="gestionProduits" onclick="gestionProduits('.$user->getId().')"><i class="fa fa-product-hunt" aria-hidden="true"></i>Gérer mes produits</div>';
             }
+            if($user->isAdmin()) {
+                echo '<div id="gestionBoutiques" onclick="gestionBoutique('.$user->getId().')"><i class="fa fa-address-book" aria-hidden="true"></i>Gérer mes boutiques</div>';
+            }
         } else {
             echo '<a class="connect" href="./connexion.php">Connexion</a>';
         }

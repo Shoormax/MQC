@@ -272,3 +272,20 @@ input[type="button"] {
 #Produit {
     color: black;
 }
+
+.reseauxSociaux {
+    color: #000;
+    position: fixed;
+    font-size: 5vh;
+    bottom:0;
+    left:0.3vw;;
+}
+
+.reseauxSociaux a, .reseauxSociaux a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.reseauxSociaux a:hover {
+    color: #003E5B;
+}
