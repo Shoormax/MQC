@@ -251,12 +251,18 @@ a.fatcure:hover {
     right: 1%;
     top: 8%;
     color: #fff;
+    max-width: 30%;
 }
 
 .fa-cart-arrow-down{
     font-size: 4vh;
     padding: 10%;
     float: right;
+}
+
+.imagePanier{
+    width: 15%;
+    height: 15%;
 }
 
 #affichePanier:hover {
@@ -296,7 +302,17 @@ a.fatcure:hover {
     top: 25%;
 }
 
-.tableauP
+.blocPanier{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4%;
+}
+.total{
+    display: flex;
+    justify-content: flex-end;
+}
 
 .tableauCommandes td {
     border: 1px solid black;
