@@ -10,6 +10,11 @@ if(isset($_SESSION['user'])) {
     global $user;
     $user = Utilisateur::rechercheParId($_SESSION['user']);
 }
+
+$id_cart = 'undefined';
+if(isset($_GET['id_cart']) && (!empty($_GET['id_cart']) || $_GET['id_cart'] == 0)) {
+    $id_cart = $_GET['id_cart'];
+}
 $produits = Produit::rechercherParParam(array('active' => 1));
 ?>
 
@@ -24,7 +29,7 @@ $produits = Produit::rechercherParParam(array('active' => 1));
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <link rel="stylesheet" href="css/boutique.css">
 </head>
-<body <?php echo isset($_SESSION['user']) ? 'onload="refreshAffichagePanier('.$user->getId().')"' : '' ?>>
+<body <?php echo isset($_SESSION['user']) ? 'onload="onLoadMethods('.$user->getId().', '.$id_cart.')"' : '' ?>>
 <header>
     <div class="extremite"><a href="deconnexion.php?retour=index"><img style="width: 3vw" src="img/min/Musee.png" alt="Logo"/></a></div>
     <div id="rechercheProduit">
@@ -32,6 +37,7 @@ $produits = Produit::rechercherParParam(array('active' => 1));
     </div>
     <div class="extremite">
         <?php
+
         if($user instanceof Utilisateur) {
             echo '<a id="affichageCompte" href="php/views/gestion_compte.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>';
             echo '<span>Bonjour '.(string)$user.'</span>';
