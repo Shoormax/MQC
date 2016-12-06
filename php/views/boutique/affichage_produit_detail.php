@@ -7,11 +7,6 @@
  */
 include_once('../../path.php');
 include_once ('../../include/init.php');
-include_once ('../../classes/Auth.php');
-include_once ('../../classes/CommunTable.php');
-include_once ('../../classes/Utilisateur.php');
-include_once ('../../classes/Produit.php');
-include_once ('../../classes/Boutique.php');
 
 $produit = Produit::rechercheParId($_POST['id_produit']);
 $boutique = Boutique::rechercheParId($produit->getIdBoutique());

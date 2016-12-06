@@ -7,9 +7,6 @@
  */
 include_once '../path.php';
 include_once '../include/init.php';
-include_once '../classes/CommunTable.php';
-include_once '../classes/Utilisateur.php';
-//id_utilisateur:id_utilisateur, nom:nom, prenom:prenom, email:email, new_password:new_password, password:password
 
 $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
 

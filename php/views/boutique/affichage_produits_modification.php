@@ -7,10 +7,6 @@
  */
 include_once('../../path.php');
 include_once ('../../include/init.php');
-include_once ('../../classes/CommunTable.php');
-include_once ('../../classes/Utilisateur.php');
-include_once ('../../classes/Produit.php');
-include_once ('../../classes/Boutique.php');
 
 $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
 $tabRetour['html'] = 'Impossible d\'afficher cette page.';

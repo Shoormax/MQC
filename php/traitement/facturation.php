@@ -4,11 +4,6 @@ define('FPDF_FONTPATH','../../fonts');
 require ('../include/fpdf.php');
 include_once '../path.php';
 include_once '../include/init.php';
-include_once '../classes/CommunTable.php';
-include_once '../classes/Utilisateur.php';
-include_once '../classes/Panier.php';
-include_once '../classes/Produit.php';
-include_once '../classes/Boutique.php';
 
 class PDF extends FPDF
 {

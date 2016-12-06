@@ -7,8 +7,6 @@
  */
 include('../../php/path.php');
 include ('../../php/include/init.php');
-include ('../../php/classes/CommunTable.php');
-include ('../../php/classes/Article.php');
 
 $limit = null;
 if(isset($_GET['limit'])) {
