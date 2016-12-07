@@ -27,7 +27,7 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
                                                 <div class="lesInputs"><span>Stock : </span><input name="stockModifProduit" type="text" value="'.$produit->getStock().'"/></div>
                                                 <img src="'.$produit->getImage().'" alt="imgProduit'.$produit->getLibelle().'" style="margin-bottom:4%"/>
                                                 <input type="file" name="imageModifProduit" accept="image/*">
-                                                <textarea class="descriptionProduitModif" name="descriptionModifProduit">'.$produit->getDescription().'</textarea
+                                                <textarea class="descriptionProduitModif" name="descriptionModifProduit">'.$produit->getDescription().'</textarea>
                                                 <input class="buttonModif" type="button" value="Modifier" onclick="modificationProduit('.$produit->getId().', '.$user->getId().')">
                                                 <input class="buttonModif" type="button" value="Supprimer" onclick="supprimerProduit('.$produit->getId().', '.$user->getId().')">
                                                 <input class="buttonModif" type="hidden" name="MAX_FILE_SIZE" value="1048576"/>
