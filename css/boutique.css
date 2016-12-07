@@ -77,7 +77,6 @@ header input {
     color: #ffffff;
     font-size: 2em;
     border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
     box-sizing: border-box;
     margin: 0;
     padding: 0 4%;
@@ -152,7 +151,7 @@ header input {
 .userConnect{
     width: 33%;
     text-align: center;
-    margin: 2% 0;
+    margin: 2%;
 }
 
 .apercuProduit .fa-plus-circle, .fa-spinner {
@@ -160,11 +159,6 @@ header input {
     padding: 3%;
     color: #009ED7;
     transition: all linear 0.3s;
-}
-
-#gestionBoutiques{
-    text-align:center;
-    cursor: pointer;
 }
 
 .apercuProduit .fa-user-circle{
@@ -202,7 +196,6 @@ header input {
     background-color: #ffffff;
     font-family: "Segoe UI", sans-serif;;
     padding: 4%;
-    border-radius: 14px;
     border: 2px solid #003E5B;
 }
 
@@ -292,7 +285,6 @@ header input {
     background-color: #ffffff;
     font-family: "Segoe UI", sans-serif;;
     padding: 4%;
-    border-radius: 14px;
     border: 2px solid #003E5B;
 }
 
@@ -394,6 +386,25 @@ header input {
 }
 
 #gestionProduits i {
+    font-size: 1.5em;
+    position: absolute;
+    margin-right: 3%;
+    left: 8%;
+    top: 25%;
+}
+
+#gestionBoutiques{
+    cursor: pointer;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    right: 26%;
+    font-size: 3vh;
+    background-color: #009ED7;
+    padding: 1% 1% 1% 5%;
+}
+
+#gestionBoutiques i {
     font-size: 1.5em;
     position: absolute;
     margin-right: 3%;

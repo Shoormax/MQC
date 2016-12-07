@@ -17,19 +17,19 @@ if($user instanceof Utilisateur && $user->isAdmin()) {
 
     foreach (Boutique::rechercheAll() as $boutique) {
         $tabRetour['html'] .=  '<div class="apercuProduit" id="modificationBoutique'.$boutique->getId().'">
-            <span>Libelle :</span><input id="libelleBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getLibelle().'"/><br>
-            <span>Adresse :</span><input id="adresseBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getAdresse().'"/><br>
-            <span>Code postal :</span><input id="codePostalBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getCodePostal().'"/><br>
-            <span>Ville :</span><input id="villeBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getVille().'"/><br>
+            <div class="lesInputs"><span>Libelle :</span><input id="libelleBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getLibelle().'"/></div>
+            <div class="lesInputs"><span>Adresse :</span><input id="adresseBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getAdresse().'"/></div>
+            <div class="lesInputs"><span>Code postal :</span><input id="codePostalBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getCodePostal().'"/></div>
+            <div class="lesInputs"><span>Ville :</span><input id="villeBoutique'.$boutique->getId().'" type="text" value="'.$boutique->getVille().'"/></div>
             <input type="button" value="Modifier" onclick="modificationBoutique('.$boutique->getId().', '.$user->getId().')">
             <input type="button" value="Supprimer" onclick="suppressionBoutique('.$boutique->getId().', '.$user->getId().')">
         </div>';
     }
     $tabRetour['html'] .= '<div class="apercuProduit">
-                            <span>Libelle : </span><input id="libelleAjoutBoutique" type="text" placeholder="Libelle de la boutique"/><br>
-                            <span>Adresse : </span><input id="adresseAjoutBoutique" type="text" placeholder="Adresse de la boutique"/><br>
-                            <span>Code postal : </span><input id="codePostalAjoutBoutique" type="text" placeholder="Code postal de la boutique"/><br>
-                            <span>Ville : </span><input id="villeAjoutBoutique" type="text" placeholder="Ville de la boutique"/><br>
+                            <div class="lesInputs"><span>Libelle : </span><input id="libelleAjoutBoutique" type="text" placeholder="Libelle"/></div>
+                            <div class="lesInputs"><span>Adresse : </span><input id="adresseAjoutBoutique" type="text" placeholder="Adresse"/></div>
+                            <div class="lesInputs"><span>Code postal : </span><input id="codePostalAjoutBoutique" type="text" placeholder="Code"/></div>
+                            <div class="lesInputs"><span>Ville : </span><input id="villeAjoutBoutique" type="text" placeholder="Ville"/></div>
                             <input type="button" value="Ajouter" onclick="ajoutBoutique('.$user->getId().')">
                         </div>';
 }
