@@ -13,7 +13,7 @@
 function deploiement(id){
     var el  = document.getElementById(id),
         list = document.getElementsByClassName('article');
-    if(el.getAttribute('data-toggle') === 'true') {
+    if(el.getAttribute('data-toggle') === true) {
         var elPara = document.getElementById(id+'Para');
         elPara.style.textAlign = "left" ;
         elPara.style.width = "50%" ;
