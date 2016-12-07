@@ -13,7 +13,7 @@ include_once '../php/path.php';
 require_once '../php/include/header.php';
 require_once '../php/include/init.php';
 echo '<link rel="stylesheet" href="../css/admin.css" type="text/css">';
-//@todo gérer la langue avec des cookies
+
 if(!isset($_SESSION['user'])) {
     header('Location: index.php');
 }
@@ -29,7 +29,7 @@ else {
 
 $param = array('id_langue' => $id_langue);
 
-$limit = 6;
+$limit = 5;
 $articles = Article::rechercherParParam($param, $limit);
 ?>
     <link rel="icon" type="image/png" href="../img/min/Musee.png" />
