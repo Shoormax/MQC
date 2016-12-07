@@ -60,7 +60,7 @@ $articles = Article::rechercherParParam($param, $limit);
         }
         ?>
     </div>
-    <input type='submit' class='button' style='border:2px solid' value='Enregistrer'>
+    <input type='submit' class='button' style='background-color: #003E5B; margin-bottom:3%;' value='Enregistrer'>
     </form>
     </body>
 
