@@ -19,9 +19,9 @@ if($user instanceof Utilisateur) {
     $paniers = Panier::rechercherParParam(array('id_utilisateur' => $_POST['id_utilisateur'], 'validation' => 1));
     $tabRetour['html'] = 'Vous n\'avez aucune commande passée précédement.';
     if(is_array($paniers) && !empty($paniers)) {
-        $tabRetour['html'] = '<table><tr><td>Créé le</td><td>Validé le</td><td>Total (€)</td></tr></table>';
+        $tabRetour['html'] = '<div class="titreCommande">Mes Commandes</div><div class="recap_commandes"><span>Créé le</span><span>Validé le</span><span>Total (€)</span><span></span></div><div class="traitBlanc"></div>';
         foreach($paniers as $p) {
-            $tabRetour['html'] .= '<div class="recap_commandes" onclick="affichage_contenu_commande('.$p->getId().')"><table><tr><td>'.$p->getDateAdd(true).'</td><td>'.$p->getDateUpd(true).'</td><td>'.$p->getTotal().'</td><td><a href="../traitement/facturation.php?id='.$p->getId().'" target="_blank">Facture</a></td></tr></table></div>';
+            $tabRetour['html'] .= '<div class="recap_commandes pointer" onclick="affichage_contenu_commande('.$p->getId().')"><span>'.$p->getDateAdd(true).'</span><span>'.$p->getDateUpd(true).'</span><span>'.$p->getTotal().'</span><span><a href="../traitement/facturation.php?id='.$p->getId().'" target="_blank">Facture</a></span></div>';
             $tabRetour['html'] .= '<div class="produit_panier" id="affichageContenuCommande'.$p->getId().'"></div>';
         }
     }

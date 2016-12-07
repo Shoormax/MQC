@@ -25,14 +25,14 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
         else {
             foreach ($produits as $produit) {
                 $tabRetour['html'] .=  '<div class="apercuProduit" id="apercuProduit'.$produit->getId().'">
-                                            <span>Libelle : </span><input id="libelleProduit'.$produit->getId().'" type="text" value="'.$produit->getLibelle().'"/><br>
-                                            <span>Prix : </span><input id="prixProduit'.$produit->getId().'" type="text" value="'.$produit->getPrix().'"/> €<br>
-                                            <span>Stock : </span><input id="stockProduit'.$produit->getId().'" type="text" value="'.$produit->getStock().'"/><br>
-                                            <img src="'.$produit->getImage().'" alt="imgProduit'.$produit->getLibelle().'" style="width:300px"/><br>
-                                            <span>Lien image : </span><input type="text" value="'.$produit->getImage().'"/><br>
-                                            <textarea id="descriptionProduit'.$produit->getId().'">'.$produit->getDescription().'</textarea><br>
-                                            <input type="button" value="Modifier" onclick="modificationProduit('.$produit->getId().', '.$user->getId().')">
-                                            <input type="button" value="Supprimer" onclick="supprimerProduit('.$produit->getId().', '.$user->getId().')">
+                                            <div class="lesInputs"><span>Libelle : </span><input id="libelleProduit'.$produit->getId().'" type="text" value="'.$produit->getLibelle().'"/></div>
+                                            <div class="lesInputs"><span>Prix(€) : </span><input id="prixProduit'.$produit->getId().'" type="text" value="'.$produit->getPrix().'"/></div>
+                                            <div class="lesInputs"><span>Stock : </span><input id="stockProduit'.$produit->getId().'" type="text" value="'.$produit->getStock().'"/></div>
+                                            <img src="'.$produit->getImage().'" alt="imgProduit'.$produit->getLibelle().'" style="margin-bottom: 4%"/>
+                                            <div class="lesInputs"><span>Lien image : </span><input type="text" value="'.$produit->getImage().'"/></div>
+                                            <textarea class="descriptionProduitModif" id="descriptionProduit'.$produit->getId().'">'.$produit->getDescription().'</textarea>
+                                            <div class="lesInputs"><input class="buttonModif" type="button" value="Modifier" onclick="modificationProduit('.$produit->getId().', '.$user->getId().')">
+                                            <input type="button" class="buttonModif" value="Supprimer" onclick="supprimerProduit('.$produit->getId().', '.$user->getId().')"></div>
                                         </div>';
             }
             $tabRetour['html'] .= '<div class="apercuProduit">

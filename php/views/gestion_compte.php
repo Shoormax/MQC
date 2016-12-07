@@ -32,7 +32,8 @@ else{
     <link rel="stylesheet" href="../../css/boutique.css">
 </head>
 <body <?php echo 'onload="affichageCommandes('.$user->getId().')"' ?>>
-<table>
+<div class="container">
+<table class="tableForm">
     <tr>
         <td>
             <?php
@@ -51,23 +52,25 @@ else{
             echo '<input id="nouveauPassword'.$user->getId().'" type="password" placeholder="Nouveau mot de passe"/>';
             echo '</td></tr>';
             echo '<tr><td>';
-            echo '<input type="button" value="Modifier" onclick="modificationUtilisateur('.$user->getId().')"/>';
+            echo '<input type="button" class="buttonModif" value="Modifier" onclick="modificationUtilisateur('.$user->getId().')"/>';
             echo '</td></tr>';
             echo '<tr><td>';
-            echo '<input type="button" value="Supprimer mon compte" onclick="suppressionCompte('.$user->getId().')"/>';
+            echo '<input type="button" class="buttonModif" value="Supprimer mon compte" onclick="suppressionCompte('.$user->getId().')"/>';
             echo '</td></tr>';
             echo '<tr><td>';
             echo '<span class="hide" id="retourModif"></span><br>';
-            echo '<a href="../../boutique.php">Retour boutique</a>';
+            echo '<a class="buttonModif" href="../../boutique.php">Retour boutique</a>';
             ?>
         </td>
     </tr>
 </table>
 <?php
-echo 'Mes commandes
+
+echo '<div class="mesCommandes">
 <div class="tableauCommandes" id="affichageCommandes'.$user->getId().'">
 </div>';
 ?>
+</div>
 </body>
 <script src="../../js/gestion_compte.js" type="text/javascript" charset="utf-8" async defer></script>
 </html>

@@ -27,7 +27,6 @@ $articles = Article::rechercherParParam($param, 6);
     <script src="https://use.fontawesome.com/992faf6002.js"></script>
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <body>
-    <a class="swicthLangue" href="index.php?language=<?php echo $id_langue?>">Langue</a>
     <div id="menu_haut">
         <div id="link_container" class="nav_item">
             <img src="img/svg/LogoAccueil.svg">
