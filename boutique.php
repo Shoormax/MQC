@@ -32,7 +32,7 @@ $produits = Produit::rechercherParParam(array('active' => 1));
 </head>
 <body <?php echo isset($_SESSION['user']) ? 'onload="onLoadMethods('.$user->getId().', \''.$id_cart.'\')"' : '' ?>>
 <header>
-    <div class="extremite"><a href="deconnexion.php?retour=index"><img style="width: 12%" src="img/min/Musee.png" alt="Logo"/></a></div>
+    <div class="extremite"><a href="deconnexion.php?retour=index"><img style="width: 28%" src="img/logo/Bleu.png" alt="Logo"/></a></div>
     <div id="rechercheProduit">
         <input id="autoComplementationProduit" type="text" placeholder="Rechercher un produit..." onkeyup="rechercheProduit()">
     </div>
