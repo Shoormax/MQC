@@ -7,8 +7,10 @@ session_start();
  * Date: 15/11/2016
  * Time: 21:00
  */
+
 if(!isset($_COOKIE["langue"]) || empty($_COOKIE["langue"])) {
   setcookie("langue", 1, time()+80000);
+  header('Location: '.$_SERVER['PHP_SELF']);
 }
 
 
