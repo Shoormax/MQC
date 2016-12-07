@@ -52,7 +52,7 @@ $articles = Article::rechercherParParam($param, $limit);
     <form action='php/modificationArticles.php?<?php foreach ($param as $key => $val){echo $key.'='.$val.'&';} echo 'limit='.$limit; ?>' method='post'  enctype="multipart/form-data">
     <div id="container">
         <div id="panorama" >
-            <img name="img" src="../img/AccueilConfluence25.png">
+            <img name="img" src="../img/banniere_V2.png">
         </div>
         <?php
         foreach ($articles as $a) {

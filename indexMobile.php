@@ -47,7 +47,7 @@ $articles = Article::rechercherParParam($param, 6);
 
     <div id="container">
         <div id="panorama" >
-            <img src="img/AccueilConfluence25.png">
+            <img src="img/banniere_V2.png">
         </div>
         <?php
         foreach ($articles as $a) {

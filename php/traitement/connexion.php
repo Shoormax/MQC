@@ -4,8 +4,6 @@ require_once '../include/header.php';
 require_once '../include/init.php';
 
 function connexion($email, $mdp) {
-    global $sMessageErreurConnexion;
-
     $user = Utilisateur::rechercherParParam(array("email"=>$email, "password"=>$mdp), 1);
 
     if($user instanceof Utilisateur) {
@@ -23,11 +21,10 @@ function connexion($email, $mdp) {
 }
 
 function inscription($nom, $prenom, $email, $mdp) {
-    global $sMessageErreurInscription;
     $u = new Utilisateur();
     $user = $u->add(3, $nom, $prenom, $email, $mdp);
     if(!$user instanceof Utilisateur) {
-        $GLOBALS['sMessageErreurInscription'] = 'Erreur vérifiez les champs';
+        header('Location: ' . __LOCAL_PATH__ . '/connexion.php');
         return false;
     } else {
         connexion($email, $mdp);
@@ -54,4 +51,3 @@ if(isset($_POST['connexion'])) {
             $_POST['password']);
     }
 }
-// todo Le passage des messages erreur via GLOBALS ne marche pas COMPREND PO POURQUOI MDR TORP NOOB JE SUIS FDP LOL
