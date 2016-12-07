@@ -15,12 +15,15 @@ $tabRetour = array();
 $tabRetour['html'] = 'Erreur lors de l\'affichage de la page.';
 
 if($produit instanceof Produit) {
-    $tabRetour['html'] = '<div>'.(string)$produit.'</div>
-                <div>'.$produit->getPrix().' €<br><img src="'.$produit->getImage().'" alt="imgeArticle" style="width:300px"/></div>
+    $tabRetour['html'] = '<div class="contentDetail">
+                <img src="'.$produit->getImage().'" alt="imgeArticle" style="width:100%"/>   
+                <div class="lesInputs"><div>'.(string)$produit.'</div>
+                <div class="prixArticle">'.$produit->getPrix().' €</div></div>
+                <div class="separator"></div>
                 <div>'.(string)$boutique.'</div>
-                <div>'.$produit->getDescription().'</div>
+                <div class="tleft">'.$produit->getDescription().'</div>
                 <div>'. $boutique->getAdresseComplete('<br>').
-                '</div>';
+                '</div></div>';
 }
 
 echo json_encode($tabRetour);
