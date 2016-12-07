@@ -32,4 +32,6 @@ catch (PDOException $e) {
     die;
 }
 
-
+if(!isset($_COOKIE["langue"]) || empty($_COOKIE["langue"])) {
+  setcookie("langue", 1, time()+80000);
+}

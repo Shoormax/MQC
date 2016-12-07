@@ -14,11 +14,6 @@ require_once '../php/include/header.php';
 require_once '../php/include/init.php';
 echo '<link rel="stylesheet" href="../css/admin.css" type="text/css">';
 
-
-if(!isset($_COOKIE["langue"]) || empty($_COOKIE["langue"])) {
-  setcookie("langue", 1, time()+80000);
-}
-
 if(!isset($_SESSION['user'])) {
     header('Location: index.php');
 }
