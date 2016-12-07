@@ -1,13 +1,45 @@
 @media print {
     html {
-
+        color: black;
     }
 
-    img, #menu_haut, #mentions_legales, #articleContact {
+    img, #menu_haut, #mentions_legales, #articleContact, .reseauxSociaux, button, #carte, .swicthLangue, #btnConnexion {
         display: none;
     }
 
     #container, .sous-container, .wrap-titre-sous-container, h3, .wrap-textuel {
         box-shadow: none;
+    }
+
+    #container {
+        width: 100%;
+        margin : 0;
+    }
+
+    .sous-container {
+        padding: 0;
+    }
+
+    .article {
+        page-break-after: always;
+        margin-top: 30pt;
+    }
+
+    .wrap-titre-sous-container, h3 {
+        color: black;
+        font-size: 30pt;
+    }
+
+    .wrap-textuel {
+        width: 100%;
+        margin: 0;
+    }
+
+    .sous-wrap-text p {
+        display: none;
+    }
+
+    .sous-wrap-text span {
+        font-size: 15pt;
     }
 }
