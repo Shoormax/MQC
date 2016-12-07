@@ -544,3 +544,13 @@ function ajoutBoutique(id_utilisateur) {
         }
     });
 }
+
+function onLoadMethods(id_utilisateur, id_panier) {
+    refreshAffichagePanier(id_utilisateur);
+    if(id_panier == 0) {
+        affichageErreur('Votre panier n\'a pas été validé.');
+    }
+    else if(id_panier > 0) {
+        validationPanier(id_panier, id_utilisateur);
+    }
+}

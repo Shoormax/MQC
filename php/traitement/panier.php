@@ -33,10 +33,18 @@ if($user instanceof Utilisateur) {
         }
         $tabRetour['html'] .= '<div class="traitBlanc"></div>';
         $tabRetour['html'] .= '<div class="total"><span>Total : '.$panier->getTotal().' €</span></div>';
-        $tabRetour['html'] .= '<div><input class="button" type="button" id="validationPanier'.$panier->getId().'" onclick="validationPanier('.$panier->getId().', '.$_POST['id_utilisateur'].')" value="Valider">';
-        $tabRetour['html'] .= '<i class="fa fa-spinner hide" aria-hidden="true" id="validationPanierLoader'.$panier->getId().'"></i></div>';
-
-    }
+        $tabRetour['html'] .= '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                    <input type="hidden" name="cmd" value="_xclick">
+                                    <input type="hidden" name="business" value="monquartierconfluence@gmail.com">
+                                    <input type="hidden" name="upload" value="1">
+                                    <input type="hidden" name="currency_code" value="EUR">
+                                    <input type="hidden" name="hosted_button_id" value="T2A34QTTHRW82">
+                                    <input type="hidden" name="item_name" value="Votre panier">
+                                    <input type="hidden" name="amount" value="'.$panier->getTotal().'">
+                                    <input type="hidden" name="return" value="http://localhost/MQC/boutique.php?id_cart='.$panier->getId().'">
+                                    <input type="hidden" name="cancel_return" value="http://localhost/MQC/boutique.php?id_cart=0">
+                                    <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/x-click-but01.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne!">
+                                </form>';
     else{
         $tabRetour['html'] = '<a onclick="affichagePanier()">Ce panier est vide.</a>';
     }
