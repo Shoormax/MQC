@@ -190,7 +190,7 @@ header input {
 #affichageErreur {
     position: fixed;
     width: 45%;
-    height: 45%;
+    max-height: 45%;
     left: 27.5% ;
     z-index: 2000;
     top: 27.5%;
@@ -212,8 +212,9 @@ header input {
 
 #codeErreur {
     position: absolute;
-    bottom: 7vh;
-    right: 1vw;
+    bottom: 0;
+    right: 0;
+    padding: 4px;
     background-color: #003E5B;
     color: #fff;
     font-family: "Segoe UI", sans-serif;

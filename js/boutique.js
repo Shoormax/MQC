@@ -133,7 +133,7 @@ function redirectProduitDetaille(id_produit) {
                 affichageOk(retour['html']);
             },
             error: function(retour) {
-                affichageErreur(retour['html']);
+                affichageErreur(retour['html'], retour('status'));
             }
         });
     }
@@ -255,7 +255,7 @@ function modificationPanier(id_produit, id_panier, input) {
         dataType: "json",
         success: function (retour) {
             if(retour['status'] != 1) {
-                affichageErreur(retour['html']);
+                affichageErreur(retour['html'], retour['status']);
             }
             else {
                 refreshAffichagePanier(retour['id_utilisateur']);
@@ -263,7 +263,7 @@ function modificationPanier(id_produit, id_panier, input) {
             }
         },
         error: function(retour) {
-            affichageErreur(retour['html']);
+            affichageErreur(retour['html'], retour['status']);
         }
     });
 }

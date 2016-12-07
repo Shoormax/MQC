@@ -25,7 +25,7 @@ $produits = Produit::rechercherParParam(array('active' => 1));
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Boutique - Mon Quartier Confluence</title>
     <script src="https://use.fontawesome.com/992faf6002.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <link rel="stylesheet" href="css/boutique.css">
 </head>
