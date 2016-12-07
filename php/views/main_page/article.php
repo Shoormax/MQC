@@ -24,7 +24,7 @@ $template = "<div id='".$a->getTitreNavbar()."' class='sous-container'>
             <div class='wrap-textuel'>
                 <div class='sous-wrap-text tcenter'>
                     <p>".$a->getTitreShortTexte()."</p>
-                    <span>".$a->getShortTexte()."</span>
+                    <span>".nl2br($a->getShortTexte())."</span>
                 </div>
             </div>
             <div class='clearfix'></div>

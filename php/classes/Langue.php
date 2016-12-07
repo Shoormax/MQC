@@ -97,7 +97,7 @@ class Langue extends CommunTable
    * @param int $except
    * @return string
    */
-    public static function afficherDrapeau($except = 1) {
+    public static function afficherDrapeau($except = 1, $pageRetour = '') {
       $langues = Langue::rechercheAll();
 
       $drapeauxHtml = '';
@@ -105,9 +105,14 @@ class Langue extends CommunTable
         /** @var Langue $langue */
         foreach ($langues as $langue) {
           if($langue->getId() != $except) {
-            $drapeauxHtml .= '<a href="updateCookie.php?language='.$langue->getId().'">';
+            $link = __LOCAL_PATH__.'/updateCookie.php';
+            $link .= '?language='.$langue->getId();
+            if(!empty($pageRetour)) {
+              $link .= '&url='.$pageRetour;
+            }
+            $drapeauxHtml .= '<a href="'.$link.'">';
 
-            $urlImage = 'img/langue/'.$langue->getLibelle().'.png';
+            $urlImage = __LOCAL_PATH__.'/img/langue/'.$langue->getLibelle().'.png';
             $drapeauxHtml .= '<img src="'.$urlImage.'" alt="'.$langue->getLibelle().'">';
 
             $drapeauxHtml .= '</a>';

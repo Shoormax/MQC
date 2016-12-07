@@ -14,7 +14,6 @@ include_once 'php/include/init.php';
 
 $param = array('id_langue' => $_COOKIE["langue"]);
 
-//@todo gérer la langue avec des cookies
 $articles = Article::rechercherParParam($param, 10);
 ?>
     <script src="https://use.fontawesome.com/992faf6002.js"></script>
