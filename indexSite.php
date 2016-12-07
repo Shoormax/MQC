@@ -55,9 +55,9 @@ $articles = Article::rechercherParParam($param, 10);
             include 'php/views/main_page/article.php';
         }
         include 'php/views/main_page/contact.php';
+        $ml = $id_langue == 2 ? 'Terms and conditions' : 'Mentions légales';
+        echo'<a id="mentions_legales" href="php/views/main_page/mentions_legales.php">'.$ml.'</a>';
         ?>
-
-        <a id="mentions_legales" href="php/views/main_page/mentions_legales.php">Mentions légales</a>
     </div>
     </body>
 

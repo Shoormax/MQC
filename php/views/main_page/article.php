@@ -5,8 +5,9 @@
  * Date: 20/11/2016
  * Time: 15:56
  */
+$id = $a->getTitreArticle() == 'Accessibilité' ? 'access' : null;
 $template = "<div id='".$a->getTitreNavbar()."' class='sous-container'>
-        <div class='article' id=''>
+        <div class='article' id='".$id."'>
             <div class='wrap-visuel'>
                 <div class='wrap-titre-sous-container tcenter'>
                     <span class='titre-sous-container'>".$a->getTitreArticle()."</span>

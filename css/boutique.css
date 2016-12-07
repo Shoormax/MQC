@@ -59,7 +59,7 @@ header input {
 
 #boutique {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-flow: row;
     flex-wrap: wrap;
     padding: 2%;
@@ -91,14 +91,22 @@ header input {
     font-weight: bold;
 }
 
+.container{
+    width:60%;
+    margin: 5% auto;
+    display: flex;
+    justify-content: center;
+}
+
 .apercuProduit {
     color: black;
     background-color: #EDEDED;
     font-family: "Segoe UI", sans-serif;
     order: 9999;
     width: 17%;
+    margin-right: 1%;
     padding: 1%;
-    margin-top: 1.3%;
+    margin-top: 1%;
 
 }
 .addToCart{
@@ -213,6 +221,58 @@ header input {
     padding-top: 5%;
 }
 
+.lesInputs{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4%;
+}
+
+.buttonModif{
+    border: none;
+    background-color: #009ED7;
+    color: #fff;
+    padding: 2%;
+    text-decoration: none;
+}
+
+.tableauCommandes{
+    display: flex;
+    width: 160%;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #009ED7;
+    color: #ffffff;
+    padding: 22px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.tableauCommandes a{
+    color: #ffffff;
+}
+
+.titreCommande{
+    text-align: center;
+    display: block;
+    margin-bottom: 4%;
+    text-decoration: underline;
+}
+
+.recap_commandes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.descriptionProduitModif{
+    width: 100%;
+    height: 95px;
+    margin: 3% 0;
+    resize: none;
+}
+
 #gestionBoutiques .fa{
     margin-right: 9%;
 }
@@ -274,6 +334,27 @@ header input {
     margin: 4% auto;
 }
 
+.traitBlancPetit{
+    background-color: #ffffff;
+    width: 100%;
+    height: 1px;
+    margin: 2% auto;
+}
+
+
+.tableForm{
+    margin-right: 3%;
+    width: 25%;
+}
+
+.tableForm input{
+    width: 100%;
+}
+
+.tableForm a{
+    width: 150%;
+
+}
 .fa-cart-arrow-down{
     font-size: 200%;
     padding: 10%;

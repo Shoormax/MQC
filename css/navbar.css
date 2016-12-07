@@ -20,8 +20,16 @@
     box-shadow: 0 1vh 0.5vh 0 rgba(0,0,0,0.3)
 }
 
+.buttonModif{
+    border: none;
+    background-color: #009ED7;
+    color: #fff;
+    padding: 2%;
+    text-decoration: none;
+}
+
 #menu_haut span {
-    font-size: 37%;
+    font-size: 60%;
     color: #008bcd;
 }
 
