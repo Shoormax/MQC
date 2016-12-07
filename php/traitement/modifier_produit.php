@@ -13,7 +13,7 @@ $tabRetour = array();
 $produits = array();
 $tabRetour['html'] = '000012';
 $tabRetour['status'] = 'Impossible de modifier ce produit.';
-$image = '';
+
 if($produit instanceof Produit) {
     $produit = Produit::rechercheParId($_POST['id_produit']);
     $paniers = Panier::rechercherParParam(array('validation' => 0));
@@ -21,6 +21,7 @@ if($produit instanceof Produit) {
     $tabRetour['html'] = 'Impossible de modifier ce produit.';
 
     if ($produit instanceof Produit) {
+        $image = $produit->getImage();
         if ($produit->isUtilise()) {
             $tabRetour['status'] = '000023';
             $tabRetour['html'] = 'Impossible de modifier ce produit car il est actuellement dans un panier non validé.';
