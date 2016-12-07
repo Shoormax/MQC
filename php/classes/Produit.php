@@ -58,6 +58,8 @@ class Produit extends CommunTable
      */
     private $description_anglais;
 
+    CONST DEFAULT_IMAGE = 'img/icone_produit_defaut.png';
+
     /**
      * Produit constructor.
      *
@@ -108,18 +110,20 @@ class Produit extends CommunTable
     {
         global $pdo;
         if(!empty($libelle) && !empty($prix) && !empty($stock) && !empty($id_boutique)) {
+            $image = empty($image) ? self::DEFAULT_IMAGE : $image;
             $this->libelle = $libelle;
             $this->libelle_anglais = $libelle_anglais;
             $this->description = $description;
             $this->description_anglais = $description_anglais;
             $this->prix = $prix;
             $this->active = 1;
-            $this->stock = $libelle;
+            $this->stock = $stock;
             $this->image = $image;
             $this->id_boutique = $id_boutique;
 
             $query = 'INSERT INTO Produit (id_produit, libelle, libelle_anglais, description, description_anglais, prix, active, stock, image, id_boutique) 
-                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'",  "'.$description.'",  "'.$description_anglais.'",'.$prix.', "1", "'.$stock.'", "'.$image.'", "'.$id_boutique.'")';
+                      VALUES (DEFAULT, "'.$libelle.'", "'.$libelle_anglais.'",  "'.$description.'",  "'.$description_anglais.'",'.  $prix.', "1", "'.$stock.'", "'.$image.'", "'.$id_boutique.'")';
+
         }
         else{
             return false;
@@ -143,8 +147,10 @@ class Produit extends CommunTable
     {
         global $pdo;
 
+        $image = empty($this->image) ? self::DEFAULT_IMAGE : $this->image;
+
         $query = 'UPDATE Produit SET libelle = "'.$this->libelle.'", libelle_anglais = "'.$this->libelle_anglais.'", 
-                    prix = "'.$this->prix.'", active = "'.$this->active.'", stock = "'.$this->stock.'", image = "'.$this->image.'",
+                    prix = "'.$this->prix.'", active = "'.$this->active.'", stock = "'.$this->stock.'", image = "'.$image.'",
                     id_boutique = "'.$this->id_boutique.'", description = "'.$this->description.'", 
                     description_anglais = "'.$this->description_anglais.'" WHERE id_produit ='.$this->id_produit;
 

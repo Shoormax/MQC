@@ -124,7 +124,7 @@ function affichageOk(texte) {
  */
 function redirectProduitDetaille(id_produit) {
     if(typeof id_produit != 'undefinded') {
-    $.ajax({
+        $.ajax({
             url: 'php/views/boutique/affichage_produit_detail.php',
             type: 'POST',
             data : {id_produit:id_produit},
@@ -335,17 +335,18 @@ function gestionProduits(id_utilisateur) {
  * @param id_produit
  * @param id_utilisateur
  */
-function modificationProduit(id_produit, id_utilisateur) {
-    var libelleProduit = $('#libelleProduit'+id_produit).val(),
-        stock = $('#stockProduit'+id_produit).val(),
-        prixProduit = $('#prixProduit'+id_produit).val(),
-        description = $('#descriptionProduit'+id_produit).val();
+function modificationProduit(id_produit, id_utilisateur){
+    var $form = $('#formModifProduit'+id_produit),
+        formdata = (window.FormData) ? new FormData($form[0]) : null,
+        data = (formdata !== null) ? formdata : $form.serialize();
 
     $.ajax({
-        url: 'php/traitement/modifier_produit.php',
-        type: 'POST',
-        data : {id_produit:id_produit, libelleProduit:libelleProduit, prixProduit:prixProduit, id_utilisateur:id_utilisateur, stock:stock, description:description},
-        dataType: "json",
+        url: $form.attr('action'),
+        type: $form.attr('method'),
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        data: data,
         success: function (retour) {
             if(retour['status'] != 1) {
                 affichageErreur(retour['html'], retour['status']);
@@ -398,16 +399,16 @@ function supprimerProduit(id_produit, id_utilisateur) {
  * @param id_utilisateur
  */
 function ajoutProduit(id_boutique, id_utilisateur) {
-    var libelle = $('#libelleAjoutProduit').val(),
-        prix = $('#prixAjoutProduit').val(),
-        stock = $('#stockAjoutProduit').val(),
-        description = $('#descriptionAjoutProduit').val();
-
+    var $form = $('#formAjoutProduit'),
+        formdata = (window.FormData) ? new FormData($form[0]) : null,
+        data = (formdata !== null) ? formdata : $form.serialize();
     $.ajax({
-        url: 'php/traitement/ajout_produit.php',
-        type: 'POST',
-        data : {id_boutique:id_boutique, libelle:libelle, prix:prix, stock:stock, description:description},
-        dataType: "json",
+        url: $form.attr('action'),
+        type: $form.attr('method'),
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        data:data,
         success: function (retour) {
             if(retour['status'] != 1) {
                 affichageErreur(retour['html'], retour['status']);
