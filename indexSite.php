@@ -14,7 +14,7 @@ include_once 'php/include/init.php';
 
 $param = array('id_langue' => $_COOKIE["langue"]);
 
-$articles = Article::rechercherParParam($param, 5);
+$articles = Article::rechercherParParam($param, 6);
 ?>
     <script src="https://use.fontawesome.com/992faf6002.js"></script>
     <link rel="icon" type="image/png" href="img/min/Musee.png" />

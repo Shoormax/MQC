@@ -350,3 +350,5 @@ UPDATE `article` SET `image_navbar` = 'Accessibilite' WHERE `article`.`id_articl
 ALTER TABLE `panier` ADD `validation` TINYINT NOT NULL DEFAULT '0' AFTER `date_upd`;
 ALTER TABLE `boutique` CHANGE `Ville` `ville` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 
+INSERT INTO `mqc`.`article` (`id_article`, `titre_article`, `titre_short_texte`, `short_texte`, `texte`, `date_add`, `date_upd`, `active`, `id_langue`, `image`, `titre_navbar`, `image_navbar`) VALUES (NULL, 'Prochainement', 'Prochainement', 'Le quartier de Confluence est en perpétuelle extension. ', '', '2016-12-07 00:00:00', NULL, '1', '1', '', 'Prochainement', 'Prochainement');
+INSERT INTO `mqc`.`article` (`id_article`, `titre_article`, `titre_short_texte`, `short_texte`, `texte`, `date_add`, `date_upd`, `active`, `id_langue`, `image`, `titre_navbar`, `image_navbar`) VALUES (NULL, 'Prochainement', 'Prochainement', 'Le quartier de Confluence est en perpétuelle extension. ', '', '2016-12-07 00:00:00', NULL, '1', '2', '', 'Prochainement', 'Prochainement')
