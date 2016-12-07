@@ -1,30 +1,96 @@
 
 @media screen and (max-width: 720px)  {
-  #container {
-    width: 100%;
-    height: 100%;
-    box-shadow: none;
-    margin: 9% auto;
-  }
+    #container {
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        margin: 9% auto;
+    }
 
-  .p_flou {
-    width: 100%;
-  }
+    .p_flou {
+        width: 100%;
+    }
 
-  #messageContact {
-    height: 35.6%;
-  }
+    #menu_haut{
+        width: 100vw;
+        overflow: hidden;
+    }
 
-  input[type="button"] {
-    width: 93.3%;
-  }
- 
- #menu_haut span {
-  display: none;
- }
+    #messageContact {
+        height: 35.6%;
+    }
 
-  .nav_item img {
-    height: 75%;
-  }
+    input[type="button"] {
+        width: 93.3%;
+    }
 
+    #menu_haut span {
+        display: none;
+    }
+
+    .nav_item img {
+        width: 75%;
+        height: 100%;
+    }
+
+    #panorama{
+        height: 30%;
+    }
+    .sous-wrap-text{
+        font-size: 3vw;
+        padding: 6% !important;
+    }
+
+    .wrap-titre-sous-container{
+        font-size: 6vw;
+    }
+
+    #contactInfos input{
+        line-height: normal;
+        height: 3vh;
+        font-size: 2.5vh;
+    }
+
+    #messageContact{
+        line-height: normal;
+        height: 9.3vh;
+        font-size: 1.5vh;
+    }
+
+    #carte{
+        width: 250%;
+    }
+
+    #carte{
+        width: 100% !important;
+        margin-bottom: 5%;
+    }
+
+    #Contact{
+        height: 30% !important;
+    }
+
+    #Contact .moitie{
+        margin-bottom: 5%;
+    }
+
+    .article .wrap-visuel{
+        float: none;
+        width: auto;
+        margin-bottom: 6%;
+    }
+
+    .article .wrap-textuel{
+        float: none;
+        width: auto;
+        margin-left: 0;
+    }
+
+    .imgArticle{
+        margin-top: 3%;
+    }
+
+    .nav_item{
+        width: 18vw;
+    }
 }

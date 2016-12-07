@@ -14,10 +14,9 @@ if(file_exists("C:/Users/Valentin")){
   define('__PASSWORD__', '');
 }
 elseif(file_exists("C:/Users/quentin")){
-  define("__LOCAL_PATH__", "http://localhost:8001/ProjectOne");
-    define('__DB_HOST__', 'localhost');
-    define('__DB_NAME__', 'mqc');
-    define('__USER__', 'root');
+  define("__LOCAL_PATH__", "http://172.20.10.3:8001/ProjectOne");
+   define('__DB_HOST__', 'localhost');
+   define('__DB_NAME__', 'mqc');    define('__USER__', 'root');
     define('__PASSWORD__', 'root');
 }
 elseif( file_exists("C:/Users/AifeDesPaix") ) {

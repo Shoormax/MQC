@@ -22,10 +22,11 @@ $aCss = [
   <!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et
 		qu'elle ne peut pas être redimensionnée par l'utilisateur -->
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
   <title>Mon Quartier Confluence</title>
   <?php
   foreach ($aCss as $sNomFicher) {
-    echo '<link rel="stylesheet" href="'.__CSS_PATH__.$sNomFicher.'.css" type="text/css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.__CSS_PATH__.$sNomFicher.'.css" >';
   }
   ?>
   <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
