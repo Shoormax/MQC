@@ -5,8 +5,8 @@
  * Date: 20/11/2016
  * Time: 15:10
  */
-include_once('../../path.php');
-include_once ('../../include/init.php');
+include_once '../../path.php';
+include_once '../../include/init.php';
 
 $produit = Produit::rechercheParId($_POST['id_produit']);
 $boutique = Boutique::rechercheParId($produit->getIdBoutique());

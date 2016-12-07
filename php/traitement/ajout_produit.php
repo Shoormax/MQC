@@ -7,10 +7,6 @@
  */
 include_once '../path.php';
 include_once '../include/init.php';
-include_once '../classes/CommunTable.php';
-include_once '../classes/Boutique.php';
-include_once '../classes/Produit.php';
-
 //libelle prix stock id_boutique
 $tabRetour = array();
 $boutique = Boutique::rechercheParId($_POST['id_boutique']);
