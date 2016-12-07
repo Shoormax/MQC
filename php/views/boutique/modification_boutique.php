@@ -5,8 +5,8 @@
  * Date: 05/12/2016
  * Time: 17:48
  */
-include_once('../../path.php');
-include_once ('../../include/init.php');
+include_once '../../path.php';
+include_once '../../include/init.php';
 $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
 $tabRetour['status'] = '000017';
 $tabRetour['html'] = 'Impossible d\'afficher cette page.';
