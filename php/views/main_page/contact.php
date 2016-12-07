@@ -5,7 +5,7 @@
  * Date: 26/09/2016
  * Time: 13:46
  */
-if(isset($_GET['language']) && !empty($_GET['language']) && $_GET['language'] == 1) {
+if($_COOKIE["langue"] == 2) {
     echo' <div id="Contact" class="sous-container">
         <div class="article" id="articleContact">
             <form method="post" action="#Contact">
