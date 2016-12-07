@@ -210,6 +210,7 @@ input[type="button"] {
     padding: 1vw;
     display: block;
     text-align: center;
+    font-size: 0.7em;
 }
 
 #mentions_legales:hover{

@@ -9,13 +9,15 @@ if(isset($_POST['connexion'])) {
 if(isset($_SESSION['user'])) {
     global $user;
     $user = Utilisateur::rechercheParId($_SESSION['user']);
+    if(!($user instanceof Utilisateur)) {
+      header('Location: deconnexion.php');
+    }
 }
 
 $id_cart = 'undefined';
 if(isset($_GET['id_cart']) && (!empty($_GET['id_cart']) || $_GET['id_cart'] == 0)) {
     $id_cart = $_GET['id_cart'];
 }
-
 $produits = Produit::rechercherParParam(array('active' => 1));
 ?>
 
@@ -30,7 +32,7 @@ $produits = Produit::rechercherParParam(array('active' => 1));
     <link rel="icon" type="image/png" href="img/min/Musee.png" />
     <link rel="stylesheet" href="css/boutique.css">
 </head>
-<body <?php echo isset($_SESSION['user']) ? 'onload="onLoadMethods('.$user->getId().', \''.$id_cart.'\')"' : '' ?>>
+<body <?php echo isset($_SESSION['user']) &&  !empty($_SESSION['user']) ? 'onload="onLoadMethods('.$user->getId().', '.$id_cart.')"' : '' ?>>
 <header>
     <div class="extremite"><a href="deconnexion.php?retour=index"><img style="width: 28%" src="img/logo/Bleu.png" alt="Logo"/></a></div>
     <div id="rechercheProduit">

@@ -5,8 +5,25 @@
  * Date: 26/09/2016
  * Time: 13:46
  */
-?>
-    <div id="Contact" class="sous-container">
+if($_COOKIE["langue"] == 2) {
+    echo' <div id="Contact" class="sous-container">
+        <div class="article" id="articleContact">
+            <form method="post" action="#Contact">
+                <div class="moitie fleft" id="contactInfos">
+                    <input type="text" name="nom" placeholder="Lastname">
+                    <input type="text" name="prenom" placeholder="Firstname">
+                    <input id="mail_contact" type="mail" name="email" placeholder="E-mail">
+                </div>
+                <div class="moitie fleft">
+                    <textarea id="messageContact" name="messageContact" placeholder="Type your message here."></textarea>
+                </div>
+                <input class="button" type="submit" value="Send"">
+            </form>
+        </div>
+    </div>';
+}
+else {
+   echo' <div id="Contact" class="sous-container">
         <div class="article" id="articleContact">
             <form method="post" action="#Contact">
                 <div class="moitie fleft" id="contactInfos">
@@ -20,9 +37,9 @@
                 <input class="button" type="submit" value="Envoyer"">
             </form>
         </div>
-    </div>
+    </div>';
+}
 
-<?php
 if(!empty($_POST)) {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];

@@ -263,6 +263,7 @@ COMMIT;
 START TRANSACTION;
 USE `mqc`;
 INSERT INTO `mqc`.`utilisateur` (`id_utilisateur`, `id_droit`, `nom`, `prenom`, `email`, `password`, `date_add`, `date_upd`, `active`) VALUES (1, 1, 'Doe', 'John', 'DoeJohn@gmail.com', 'JohnDoe', '2016-11-19 00:00:00', NULL, 1);
+INSERT INTO `mqc`.`utilisateur` (`id_utilisateur`, `id_droit`, `nom`, `prenom`, `email`, `password`, `date_add`, `date_upd`, `active`) VALUES (26, 1, 'a@a.a', 'a', 'a', 'a', '2016-11-19 00:00:00', NULL, 1);
 
 COMMIT;
 
@@ -348,3 +349,4 @@ UPDATE `article` SET `image_navbar` = 'Accessibilite' WHERE `article`.`id_articl
 
 ALTER TABLE `panier` ADD `validation` TINYINT NOT NULL DEFAULT '0' AFTER `date_upd`;
 ALTER TABLE `boutique` CHANGE `Ville` `ville` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+

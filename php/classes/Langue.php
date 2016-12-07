@@ -88,4 +88,37 @@ class Langue extends CommunTable
         $this->libelle = $libelle;
         return $this;
     }
+
+  /**
+   * Ceci frère est une fonction statique sa mère, elle permet de tranquillement
+   * te balancer des liens html contenant tous les drapeaux sauf celui que tu ne veux pas xdlol
+   * Alors utilise ce pouvori avec précaution car un grand pour implique
+   * de grandes responsabilités enculé
+   * @param int $except
+   * @return string
+   */
+    public static function afficherDrapeau($except = 1, $pageRetour = '') {
+      $langues = Langue::rechercheAll();
+
+      $drapeauxHtml = '';
+      if(is_array($langues)) {
+        /** @var Langue $langue */
+        foreach ($langues as $langue) {
+          if($langue->getId() != $except) {
+            $link = __LOCAL_PATH__.'/updateCookie.php';
+            $link .= '?language='.$langue->getId();
+            if(!empty($pageRetour)) {
+              $link .= '&url='.$pageRetour;
+            }
+            $drapeauxHtml .= '<a href="'.$link.'">';
+
+            $urlImage = __LOCAL_PATH__.'/img/langue/'.$langue->getLibelle().'.png';
+            $drapeauxHtml .= '<img src="'.$urlImage.'" alt="'.$langue->getLibelle().'">';
+
+            $drapeauxHtml .= '</a>';
+          }
+        }
+      }
+      return $drapeauxHtml;
+    }
 }
