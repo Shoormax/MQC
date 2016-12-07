@@ -7,6 +7,11 @@ session_start();
  * Date: 15/11/2016
  * Time: 21:00
  */
+if(!isset($_COOKIE["langue"]) || empty($_COOKIE["langue"])) {
+  setcookie("langue", 1, time()+80000);
+}
+
+
 if(__LOCAL_PATH__ !== "http://monquartierconfluence.labo-g4.fr/MonQuartierConfluence") {
     ini_set('display_errors', 1);
 }
@@ -30,8 +35,4 @@ try {
 catch (PDOException $e) {
     echo "Erreur : ".$e->getMessage()."<br>";
     die;
-}
-
-if(!isset($_COOKIE["langue"]) || empty($_COOKIE["langue"])) {
-  setcookie("langue", 1, time()+80000);
 }
