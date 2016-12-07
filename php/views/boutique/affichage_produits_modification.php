@@ -19,12 +19,8 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
     foreach ($boutiques as $b) {
         $boutique = Boutique::rechercheParId($b['id_boutique']);
         $produits = $boutique->getProduits();
-        if(empty($produits)) {
-            $tabRetour['html'] = 'Cette boutique n\'a aucun produit.';
-        }
-        else {
-            foreach ($produits as $produit) {
-                $tabRetour['html'] .=  '<div class="apercuProduit" id="apercuProduit'.$produit->getId().'">
+        foreach ($produits as $produit) {
+            $tabRetour['html'] .=  '<div class="apercuProduit" id="apercuProduit'.$produit->getId().'">
                                             <form id="formModifProduit'.$produit->getId().'" action="php/traitement/modifier_produit.php" method="post" enctype="multipart/form-data">
                                                 <div class="lesInputs"><span>Libelle : </span><input name="libelleModifProduit" type="text" value="'.$produit->getLibelle().'"/></div>
                                                 <div class="lesInputs"><span>Prix (€) : </span><input name="prixModifProduit" type="text" value="'.$produit->getPrix().'"/></div>
@@ -38,8 +34,8 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
                                                 <input type="hidden" name="id_produit" value="'.$produit->getId().'">
                                             </form>
                                         </div>';
-            }
-            $tabRetour['html'] .= '<div class="apercuProduit">
+        }
+        $tabRetour['html'] .= '<div class="apercuProduit">
                                         <form id="formAjoutProduit" action="php/traitement/ajout_produit.php" method="post" enctype="multipart/form-data">
                                             <div  class="lesInputs"><span>Libelle : </span><input name="libelleAjoutProduit" id="libelleAjoutProduit" type="text" placeholder="Libelle du produit"/></div>
                                             <div  class="lesInputs"><span>Prix (€) : </span><input name="prixAjoutProduit" id="prixAjoutProduit" type="text" placeholder="Prix du produit"/></div>
@@ -52,7 +48,6 @@ if($user instanceof Utilisateur && $user->isSuperUser()) {
                                             <input type="hidden" name="MAX_FILE_SIZE" value="1048576"/>
                                         </form>
                                     </div>';
-        }
     }
 }
 

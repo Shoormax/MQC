@@ -86,17 +86,13 @@
 }
 
 .swicthLangue {
-    color: #ffffff;
     position: fixed;
     bottom: 0;
     right: 0;
-    padding: 10px;
-    background-color: #003E5B;
     text-decoration: none;
 }
 .swicthLangue img {
-    width: 60px;
-    height: 50px;
+    width: 9%;
     float: right;
 }
 

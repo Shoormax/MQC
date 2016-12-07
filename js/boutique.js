@@ -546,6 +546,14 @@ function ajoutBoutique(id_utilisateur) {
     });
 }
 
+/**
+ * Méthodes lancées au chargement de la page
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_utilisateur
+ * @param id_panier
+ */
 function onLoadMethods(id_utilisateur, id_panier) {
     refreshAffichagePanier(id_utilisateur);
     if(id_panier == 0) {
@@ -554,4 +562,60 @@ function onLoadMethods(id_utilisateur, id_panier) {
     else if(id_panier > 0) {
         validationPanier(id_panier, id_utilisateur);
     }
+}
+
+/**
+ * Méthodes lancée pour lier un utilisateur à une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_boutique
+ */
+function linkUserToStore(id_boutique) {
+    var id_utilisateur = $('#selectUserBoutique').val();
+    $.ajax({
+        url: 'php/traitement/lier_utilisateur_boutique.php',
+        type: 'POST',
+        data : {id_boutique:id_boutique, id_utilisateur:id_utilisateur},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                gestionBoutique(id_utilisateur);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
+}
+
+/**
+ * Méthodes lancée pour retirer un utilisateur d'une boutique
+ *
+ * @author Valentin Dérudet
+ *
+ * @param id_boutique
+ * @param id_utilisateur
+ */
+function retirerUtilisateurBoutique(id_boutique, id_utilisateur) {
+    $.ajax({
+        url: 'php/traitement/retirer_utilisateur_boutique.php',
+        type: 'POST',
+        data : {id_boutique:id_boutique, id_utilisateur:id_utilisateur},
+        dataType: "json",
+        success: function (retour) {
+            if(retour['status'] != 1) {
+                affichageErreur(retour['html'], retour['status']);
+            }
+            else {
+                gestionBoutique(id_utilisateur);
+            }
+        },
+        error: function(retour) {
+            console.log(retour);
+        }
+    });
 }

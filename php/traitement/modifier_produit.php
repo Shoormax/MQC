@@ -31,7 +31,7 @@ if($produit instanceof Produit) {
             $tabRetour['status'] = '000024';
             if(isset($_POST['libelleModifProduit']) && !empty($_POST['libelleModifProduit'])) {
                 $tabRetour['html'] = 'Le prix doit être renseigné.';
-                $tabRetour['status'] = '000025';
+                $tabRetour['status'] = '000026';
                 if (isset($_POST['prixModifProduit']) && !empty($_POST['prixModifProduit'])) {
                     $tabRetour['status'] = 1;
                     $tabRetour['html'] = 'Modifications effectuées avec succès.';

@@ -141,7 +141,26 @@ class Boutique extends CommunTable
     public function delete()
     {
         $this->setActive(0);
+        $this->deleteBoutiqueHasUtilisateur($this->id_boutique);
         return $this->update();
+    }
+
+    /**
+     * Permet de supprimer le contenu de la table boutique_has_utilisateur pour cette boutique
+     *
+     * @author Valentin Dérudet
+     *
+     * @param $id_boutique
+     *
+     * @return Boutique
+     */
+    public function deleteBoutiqueHasUtilisateur($id_boutique)
+    {
+        global $pdo;
+
+        $query = "DELETE FROM boutique_has_utilisateur WHERE id_boutique =".$id_boutique;
+        $pdo->exec($query);
+        return $this;
     }
 
     /**
@@ -186,7 +205,7 @@ class Boutique extends CommunTable
     {
         global $pdo;
 
-        $query = "INSERT INTO boutique_has_utilisateur (id_boutique, id_utilisateur, active) VALUES (".$this->id_boutique.", ".$id_utilisateur.", 1)";
+        $query = "INSERT INTO boutique_has_utilisateur (id_boutique, id_utilisateur) VALUES (".$this->id_boutique.", ".$id_utilisateur.")";
         $pdo->exec($query);
 
         return $this::rechercheParId($pdo->lastInsertId());
@@ -205,7 +224,7 @@ class Boutique extends CommunTable
     {
         global $pdo;
 
-        $query = "UPDATE boutique_has_utilisateur SET active = 0 WHERE id_boutique = ".$this->id_boutique." AND id_utilisateur = ".$id_utilisateur;
+        $query = "DELETE FROM boutique_has_utilisateur WHERE id_boutique = ".$this->id_boutique." AND id_utilisateur = ".$id_utilisateur;
         $pdo->exec($query);
 
         return $this::rechercheParId($pdo->lastInsertId());

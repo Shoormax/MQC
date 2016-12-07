@@ -424,8 +424,28 @@ header input {
     float: right;
 }
 
+.selectUserBoutique {
+    padding: 2%;
+    margin-right: 3%;
+    margin-bottom: 3%;
+}
 
+.utilisateurBoutique {
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 5%;
+}
 
+#retirerUserBoutique {
+    border: none;
+    background-color: #009ED7;
+    color: #fff;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-decoration: none;
+}
 /************************************************/
 /****************** ANIMATIONS ******************/
 /************************************************/
