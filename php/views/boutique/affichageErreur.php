@@ -11,5 +11,5 @@
     </div>
     <div id="codeErreur">
     </div>
-    <a style="background-color: #003E5B; color:#fff;padding: 1%" onclick="fermerErreur('affichageErreur')">Fermer</a>
+    <a class="closingModale" onclick="fermerErreur('affichageErreur')">Fermer</a>
 </div>

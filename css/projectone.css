@@ -276,7 +276,7 @@ input[type="button"] {
 .reseauxSociaux {
     color: #000;
     position: fixed;
-    font-size: 5vh;
+    font-size: 130%;
     bottom:0;
     left:0.3vw;;
 }
@@ -288,4 +288,8 @@ input[type="button"] {
 
 .reseauxSociaux a:hover {
     color: #003E5B;
+}
+
+.menu_haut_mobile{
+
 }

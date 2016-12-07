@@ -9,5 +9,5 @@
 <div id="affichageOk" class="hide">
     <div id="messageOk">
     </div>
-    <a style="background-color: #003E5B; color:#fff;padding: 1%" onclick="fermerErreur('affichageOk')">Fermer</a>
+    <a class="closingModale" onclick="fermerErreur('affichageOk')">Fermer</a>
 </div>

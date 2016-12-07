@@ -223,10 +223,12 @@ function affichagePanier() {
     if ($('#contenuPanier').is(':visible')) {
         $('#contenuPanier').hide();
         $('.fa-cart-arrow-down').show()
+        $('.panier').width('2%');
     }
     else  {
         $('.fa-cart-arrow-down').hide();
         $('#contenuPanier').show();
+        $('.panier').width('30%');
     }
 }
 

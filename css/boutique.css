@@ -201,11 +201,13 @@ header input {
 }
 
 #messageErreur {
+    min-height: 30%;
     text-align: center;
-    line-height: 40vh;
-    background-color: #003E5B;
-    color: #fff;
-    font-family: "Segoe UI", sans-serif;
+    background-color: #ffffff;
+    font-family: "Segoe UI", sans-serif;;
+    padding: 4%;
+    border-radius: 14px;
+    border: 2px solid #003E5B;
 }
 
 #codeErreur {
@@ -238,19 +240,21 @@ header input {
 #messageOk {
     min-height: 30%;
     text-align: center;
-    background-color: #003E5B;
-    color: #fff;
+    background-color: #ffffff;
     font-family: "Segoe UI", sans-serif;;
+    padding: 4%;
+    border-radius: 14px;
+    border: 2px solid #003E5B;
 }
 
-a.facture, a.facture:visited {
-    color: white;
+.closingModale{
+    position: absolute;
+    top: 0;
+    background-color: #003E5B;
+    color:#fff;
+    padding: 1%
 }
 
-a.fatcure:hover {
-    cursor: pointer;
-    color: red;
-}
 
 #affichageErreur a:hover,
 #affichageOk a:hover{
@@ -264,7 +268,7 @@ a.fatcure:hover {
     top: 75px;
     color: #fff;
     padding: 0.5%;
-    max-width: 30%;
+    width: 2%;
 }
 
 .closerPanier{

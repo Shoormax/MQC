@@ -21,7 +21,7 @@
 }
 
 #menu_haut span {
-    font-size: 3vh;
+    font-size: 37%;
     color: #008bcd;
 }
 
@@ -66,10 +66,20 @@
 #btnConnexion {
     color: #000;
     position: fixed;
-    bottom: 0;
-    right: 0;
+    top: 35%;
+    left: 7.4%;
     padding: 10px;
     background-color: #003E5B;
+}
+
+.swicthLangue{
+    color: #ffffff;
+    position: fixed;
+    top: 65%;
+    left: 8.9%;
+    padding: 10px;
+    background-color: #003E5B;
+    text-decoration: none;
 }
 
 #btnDeconnexion {;
