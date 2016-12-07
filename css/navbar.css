@@ -72,14 +72,19 @@
     background-color: #003E5B;
 }
 
-.swicthLangue{
+.swicthLangue {
     color: #ffffff;
     position: fixed;
-    top: 65%;
-    left: 8.9%;
+    bottom: 0;
+    right: 0;
     padding: 10px;
     background-color: #003E5B;
     text-decoration: none;
+}
+.swicthLangue img {
+    width: 120px;
+    height: 60px;
+    float: right;
 }
 
 #btnDeconnexion {;
