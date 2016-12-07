@@ -348,3 +348,4 @@ UPDATE `article` SET `image_navbar` = 'Accessibilite' WHERE `article`.`id_articl
 
 ALTER TABLE `panier` ADD `validation` TINYINT NOT NULL DEFAULT '0' AFTER `date_upd`;
 ALTER TABLE `boutique` CHANGE `Ville` `ville` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+

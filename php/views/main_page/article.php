@@ -12,9 +12,12 @@ $template = "<div id='".$a->getTitreNavbar()."' class='sous-container'>
                     <span class='titre-sous-container'>".$a->getTitreArticle()."</span>
                 </div>";
  $template .= $a->getTitreArticle() == 'Accessibilité' ?
-            "<button type='button' id='btn_famille'>Famille</button>
-            <button type='button' id='btn_sportif'>Sportif</button>
-            <button type='button' id='btn_culturel'>Culturel</button>
+            "
+            <div id='buttonsMap'>
+              <button type='button' id='btn_famille'>Familial</button>
+              <button type='button' id='btn_sportif'>Sportif</button>
+              <button type='button' id='btn_culturel'>Culturel</button>
+            </div>
             <div id='carte'></div>" :
             "<img class='imgArticle' src='".$a->getImage()."'>";
             $template .= "</div>

@@ -43,19 +43,6 @@ header input {
     font-size: 1.2em;
 }
 
-
-#btnConnexion {
-    float: right;
-    cursor: pointer;
-    display: block;
-    height: 100%;
-    line-height: 60px;
-    vertical-align: middle;
-    padding-right: 10px;
-    color: #fff;
-    text-decoration: none;
-}
-
 .hide{
     display: none;
 }
