@@ -118,10 +118,9 @@
 
 #buttonsMap button {
     border: 0;
-    background-color: #003E5B;
+    background-color: rgb(0,139,205);
     margin: 5px;
     color: #fff;;
-    border-radius: 5px;
-    padding: 3px;
+    padding: 5px;
 }
 
