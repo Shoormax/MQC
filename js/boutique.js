@@ -55,7 +55,7 @@ function rechercheProduit(){
     if(texte.length <= 0) {
         $('.apercuProduit').removeClass("produitRecherche");
     }
-    else if(texte.length > 2) {
+    else if(texte.length > 1) {
         $('.apercuProduit').removeClass("produitRecherche");
 
         $.ajax({

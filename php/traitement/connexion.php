@@ -27,6 +27,8 @@ function inscription($nom, $prenom, $email, $mdp) {
         header('Location: ' . __LOCAL_PATH__ . '/connexion.php');
         return false;
     } else {
+        $mail = new Mail($user->getEmail(), 'Inscription MonQuartierConfluence', 'Merci pour votre inscription à notre site, nous expérons que vous y trouverez ce que vous cherchez. En cas de prolème n\'hésitez pas à nous contacter.', 'FROM : no-reply@monquartierconfluence.fr');
+        $mail->send();
         connexion($email, $mdp);
     }
 }
