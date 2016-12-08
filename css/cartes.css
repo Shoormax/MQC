@@ -3,3 +3,7 @@
     width: 115%;
     height: 350px;
 }
+
+#imageCartePrint {
+    display: none;
+}

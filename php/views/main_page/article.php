@@ -22,7 +22,7 @@ $template = "<div id='".$a->getTitreNavbar()."' class='sous-container'>
               <button type='button' id='btn_sportif'>".$sportif."</button>
               <button type='button' id='btn_culturel'>".$culturel."</button>
             </div>
-            <div id='carte'></div>" :
+            <div id='carte'></div><img src='img/carte/famille.png' id='imageCartePrint'/>" :
             "<img class='imgArticle' src='".$a->getImage()."'>";
             $template .= "</div>
             <div class='wrap-textuel'>

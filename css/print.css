@@ -3,7 +3,16 @@
         color: black;
     }
 
-    img, #menu_haut, #mentions_legales, #articleContact, .reseauxSociaux, button, #carte, .swicthLangue, #btnConnexion {
+    img,
+    #menu_haut,
+    #mentions_legales,
+    .reseauxSociaux,
+    button,
+    #cookieChoiceInfo,
+    .swicthLangue,
+    #btnConnexion,
+    #Contact,
+    #carte {
         display: none;
     }
 
@@ -11,9 +20,20 @@
         box-shadow: none;
     }
 
-    #container {
+    #container{
         width: 100%;
         margin : 0;
+    }
+
+    .wrap-visuel {
+        width: 100%;
+    }
+
+    #imageCartePrint {
+        width: 60%;
+        height: 60%;
+        margin: auto;
+        display: block !important;
     }
 
     .sous-container {

@@ -247,9 +247,9 @@ function initMap() {
     ];
 
     // --------------- Boutons d'action ---------------
-
     var buttonFamily = document.getElementById("btn_famille");
     buttonFamily.addEventListener('click', function(){
+        document.getElementById('imageCartePrint').src = 'img/carte/famille.png';
         waitForNextAnimation(buttons);
         destructActiveMarkers();
         clear(itineraireSportif);
@@ -260,6 +260,7 @@ function initMap() {
 
     var buttonSport = document.getElementById("btn_sportif");
     buttonSport.addEventListener('click', function(){
+        document.getElementById('imageCartePrint').src = 'img/carte/sportif.png';
         waitForNextAnimation(buttons);
         destructActiveMarkers();
         clear(itineraireFamille);
@@ -270,6 +271,7 @@ function initMap() {
 
     var buttonCulture = document.getElementById("btn_culturel");
     buttonCulture.addEventListener('click', function(){
+        document.getElementById('imageCartePrint').src = 'img/carte/culturel.png';
         waitForNextAnimation(buttons);
         destructActiveMarkers();
         clear(itineraireSportif);
