@@ -8,10 +8,11 @@
 include_once '../../path.php';
 include_once '../../include/init.php';
 $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
+
 $tabRetour['status'] = '000017';
 $tabRetour['html'] = 'Impossible d\'afficher cette page.';
 
-if($user instanceof Utilisateur && $user->isAdmin()) {
+if($user instanceof Utilisateur) {
     $tabRetour['status'] = 1;
     $tabRetour['html'] = '';
 
@@ -34,7 +35,7 @@ if($user instanceof Utilisateur && $user->isAdmin()) {
         $tabRetour['html'] .= '</select><input class="buttonModif" type="button" value="Lier" onclick="linkUserToStore('.$boutique->getId().')">
                                 </div>';
         foreach ($boutique->getUtilisateurs() as $key => $value) {
-            $tabRetour['html'] .= '<div  class="lesInputs"><span>'.((string)Utilisateur::rechercheParId($value[$key])).'</span><input type="button" id="retirerUserBoutique" value="Retirer" onclick="retirerUtilisateurBoutique('.$boutique->getId().','.$value[$key].')"/></div>';
+            $tabRetour['html'] .= '<div  class="lesInputs"><span>'.((string)Utilisateur::rechercheParId($value[0])).'</span><input type="button" id="retirerUserBoutique" value="Retirer" onclick="retirerUtilisateurBoutique('.$boutique->getId().','.$value[0].')"/></div>';
         }
         $tabRetour['html'] .='<input class="buttonModif" type="button" value="Modifier" onclick="modificationBoutique('.$boutique->getId().', '.$user->getId().')">
                                 <input class="buttonModif" type="button" value="Supprimer" onclick="suppressionBoutique('.$boutique->getId().', '.$user->getId().')">

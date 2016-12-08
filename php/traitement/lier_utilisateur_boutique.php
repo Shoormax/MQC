@@ -17,6 +17,10 @@ if($boutique instanceof Boutique) {
     $tabRetour['status'] = '000028';
     $user = Utilisateur::rechercheParId($_POST['id_utilisateur']);
     if($user instanceof Utilisateur) {
+        if($user->getIdDroit() != 1) {
+            $user->setIdDroit(2);
+            $user->update();
+        }
         $boutique->addUtilisateur($user->getId());
         $tabRetour['html'] = 'Ajout de l\'utilisateur à la boutique effectué avec succès.';
         $tabRetour['status'] = 1;

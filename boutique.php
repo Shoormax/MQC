@@ -45,7 +45,8 @@ $produits = Produit::rechercherParParam(array('active' => 1));
             echo '<div class="userConnect"><a id="affichageCompte" href="php/views/gestion_compte.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>';
             echo '<span>Bonjour '.(string)$user.'</span></div>';
             echo '<p class="connect"><a class="libelleConnect" href="./deconnexion.php">Déconnexion</a></p>';
-            if($user->isSuperUser()) {
+
+            if($user->isSuperUser() && $user->getBoutique()) {
                 echo '<div id="gestionProduits" onclick="gestionProduits('.$user->getId().')"><i class="fa fa-product-hunt" aria-hidden="true"></i>Gérer mes produits</div>';
             }
             if($user->isAdmin()) {
